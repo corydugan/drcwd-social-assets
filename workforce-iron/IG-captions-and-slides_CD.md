@@ -1,6 +1,6 @@
 # Instagram Series — Workforce Iron / Screening (6 posts)
 
-> ✅ **STAT CORRECTED 2026-06-25.** IG-1's earlier "52% of 640 WA women over two years" framing was fabricated (self-reported prior diagnosis, not prevalence) — replaced with a verified global figure (WHO 2023: ~1 in 3 women of reproductive age anaemic; iron deficiency the leading cause). slide-3-stat-52.png regenerated to match. Keep "one in three" scoped to women only.
+> ✅ **STAT CORRECTED 2026-06-25.** The earlier fabricated "52% of 640 WA women iron deficient/anaemic OVER TWO YEARS" framing (it was self-reported prior diagnosis, not prevalence; flagged by the 06-22 Stale-Source Audit) has been REPLACED across IG-1 (caption + post1.html + the stat slide) with a verified global figure: *"Close to one in three women of reproductive age live with anaemia worldwide, and iron deficiency is the leading cause"* (WHO 2023: 30.7% of women 15-49; global all-ages anaemia 24.3% / ~1.92B, GBD 2021 Lancet Haematology; verified by science-fact-checker 2026-06-25). NOTE: "one in three" is true ONLY scoped to women of reproductive age — never to the whole population (that is ~1 in 4). Keep separate from the AU figures (1 in 3 girls 14-18 / 1 in 5 adult women). Before publishing, run the 4-agent gate (web-design-reviewer · web-tech-auditor · conversion-copy-critic · science-fact-checker).
 
 **Created:** 2026-06-19 · drCWDugan v3 "Authority" · IG translation of the B2B LinkedIn mining posts.
 **Channel:** @dr.cwdugan (Instagram). **Audience:** individual women + the FIFO/shift-work public (NOT the HSE buyer — that's the LinkedIn set). Same science, consumer framing.
@@ -64,13 +64,13 @@
 **Caption:**
 > Here is a piece of physiology almost no one explains.
 >
-> When you do not sleep enough, your body makes more of a hormone called hepcidin. Hepcidin is your iron gatekeeper, and when it goes up it blocks how much iron you absorb from food.
+> Your body controls iron with a hormone called hepcidin. When it rises, it blocks how much iron you absorb from food, and the things a hard roster piles on, heavy physical demand, stress, inflammation and broken sleep, all push it up.
 >
-> So a compressed roster does not just reveal low iron. It can actively cause it, by shutting the gate at the worst possible time.
+> So a compressed roster does not just reveal low iron. It can make it harder to recover, by shutting the gate at the worst possible time.
 >
 > Add heavy periods and you have iron deficiency without anaemia: real symptoms, normal haemoglobin, a test that says you are fine.
 >
-> This is the mechanism I spent my doctorate on. Save it, it is worth understanding.
+> Worth understanding. Save it.
 >
 > Educational content, not individual medical advice.
 >
@@ -85,7 +85,7 @@
 **Caption:**
 > Most worksite health screens were not designed to catch iron deficiency in women. That is the honest truth.
 >
-> I am building better ones. Protocols that add the right blood markers, flag only the people who need follow-up, and keep all the data inside the worksite's own medical team.
+> Better ones are possible: screens that add the right blood markers, flag only the people who need follow-up, and keep the data inside the worksite's own medical team.
 >
 > If your workplace runs health checks, it is fair to ask what they actually measure, and whether ferritin is on the list.
 >
@@ -100,17 +100,19 @@
 ## IG 5 — "Why I left the journals for this" (from Post 5 — pedigree, personal)
 **Format:** single design image OR 3-slide (personal story — strong IG performer).
 **Caption:**
-> I spent a decade researching iron deficiency in women. A PhD, more than 30 papers, work the WHO cited when it updated its guidance.
+> The research on iron deficiency in women is everywhere. It just does not reach the women living with it.
 >
-> And still, every week, I meet women whose test came back "normal" while they were running on empty.
+> Every week there are women whose test came back "normal" while they were running on empty, because what explains that never makes it out of the journals.
 >
-> Peer-reviewed papers do not reach the people living with this. So I am translating the research into something you can actually use, and into better screening for the workplaces where it is missed most.
+> So the work now is translation: turning what the evidence already shows into something you can actually use, and into better screening for the workplaces where it is missed most.
 >
-> That is the whole project.
+> The research, translated. Link in bio.
+>
+> Educational content, not individual medical advice.
 >
 > #WomensHealth #IronDeficiency #Research #FIFO
 
-**Slides:** 1 COVER "Why I left the *journals* for this." · 2 CONTENT the gap between papers and people (30+ pubs, WHO-cited, 3,000 women) · 3 CTA "The research, translated. Link in bio."
+**Slides:** 1 COVER "The research never reaches the people who need it." · 2 CONTENT the gap between the evidence and the people living with it · 3 CTA "The research, translated. Link in bio."
 
 ---
 
