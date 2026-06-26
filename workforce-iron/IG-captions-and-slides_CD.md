@@ -1,4 +1,7 @@
 # Instagram Series — Workforce Iron / Screening (6 posts)
+
+> ✅ **STAT CORRECTED 2026-06-25.** IG-1's earlier "52% of 640 WA women over two years" framing was fabricated (self-reported prior diagnosis, not prevalence) — replaced with a verified global figure (WHO 2023: ~1 in 3 women of reproductive age anaemic; iron deficiency the leading cause). slide-3-stat-52.png regenerated to match. Keep "one in three" scoped to women only.
+
 **Created:** 2026-06-19 · drCWDugan v3 "Authority" · IG translation of the B2B LinkedIn mining posts.
 **Channel:** @dr.cwdugan (Instagram). **Audience:** individual women + the FIFO/shift-work public (NOT the HSE buyer — that's the LinkedIn set). Same science, consumer framing.
 **Voice:** AU English, first person, no emoji, no exclamation marks, cite the number.
@@ -16,7 +19,7 @@
 >
 > Most workplace health checks measure haemoglobin and stop there. The trouble is that haemoglobin is the last thing to fall. You can be iron deficient for months, with the fatigue and brain fog to match, while your haemoglobin still reads normal.
 >
-> In a Western Australian study of 640 women, 52% were found to be iron deficient or anaemic over two years. Only 12% were anaemic. A haemoglobin-only check would have missed most of them.
+> Close to one in three women of reproductive age live with anaemia worldwide, and iron deficiency is the leading cause. Iron deficiency without anaemia is more common still, and a haemoglobin-only check does not see it.
 >
 > The fix is one extra number on a test you are probably already having. Ferritin.
 >
@@ -29,8 +32,8 @@
 **Slides:**
 1. COVER — eyebrow "Workforce health" · H1 "Your 'normal' bloods might be *lying* to you." · sub "Most worksite health checks measure the one number that drops last."
 2. CONTENT — "Haemoglobin is the last domino." Short: by the time Hb drops you've been deficient for months; ferritin falls first.
-3. STAT (grape "the point" slide) — big "52%" · "of 640 WA women were iron deficient or anaemic over two years. Only 12% were anaemic." (MacLean et al., Vox Sanguinis, 2025)
-4. CONTENT — "A haemoglobin-only check would have missed most of them." The gap, plainly.
+3. STAT (grape "the point" slide) — big "1 in 3" · "women of reproductive age live with anaemia worldwide, and iron deficiency is the leading cause." (WHO, 2023 · Global Burden of Disease 2021)
+4. CONTENT — "A haemoglobin-only test can read normal while your iron is empty." The gap, plainly.
 5. CTA — "Ask for *ferritin*." · "One extra number on a test you are probably already having." · pill: "Read the plain-English guide · drcorydugan.com" · disclaimer.
 
 ---
