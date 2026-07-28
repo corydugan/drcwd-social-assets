@@ -1,0 +1,23 @@
+# Secrets and env
+.env
+.env.*
+!.env.example
+.Renviron
+*.pem
+*.key
+credentials.json
+token.json
+
+# OS and editor
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and temp
+*.log
+tmp/
+
+# Web
+node_modules/
+dist/
+.cache/
