@@ -25,10 +25,10 @@ SPINE_X, SPINE_TOP, SPINE_BOT = 250, 700, 1330
 ROWS = [
     (740,  "Exhausted",     "and sleep does not fix it"),
     (838,  "Breathless",    "on stairs, hills, a brisk walk"),
-    (936,  "Foggy",         "concentration, finding words"),
+    (936,  "Foggy",         "concentration and memory"),
     (1034, "Cold",          "hands and feet"),
     (1132, "Restless legs", "worse at night"),
-    (1230, "Hair shedding", "and brittle nails"),
+    (1230, "Craving ice",   "chewing it, constantly"),
 ]
 T0, STEP = 7.4, 2.5          # first branch, then one every 2.5s
 
@@ -44,7 +44,7 @@ def frame(f):
             d.text((W/2, 392), "make blood.",         font=B.SERIF(74), fill=B.mix(B.FG, a), anchor="ma")
         a = B.seg(f, 1.4, 2.4) * out
         if a > 0:
-            d.text((W/2, 512), "It carries the oxygen everything else runs on",
+            d.text((W/2, 512), "Every cell needs it to turn oxygen into energy",
                    font=B.SANS(36), fill=B.mix(B.FG_SUBTLE, a), anchor="ma")
 
         # the spine: drawn ONCE, before any symptom, so the symptoms read as
@@ -73,15 +73,15 @@ def frame(f):
         if a > 0:
             d.line([(110, 1440), (110 + (W-220)*B.seg(f, 23.2, 24.2), 1440)],
                    fill=B.mix(B.RULE, a), width=4)
-            d.text((W/2, 1478), "All of this happens before",       font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
-            d.text((W/2, 1548), "your haemoglobin ever drops.",     font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
+            d.text((W/2, 1478), "All of this can start before",       font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
+            d.text((W/2, 1548), "your haemoglobin drops.",     font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
         a = B.seg(f, 25.6, 26.6) * out
         if a > 0:
             d.text((W/2, 1650), "Which is why the blood test can look fine.",
                    font=B.SANS_M(38), fill=B.mix(B.EYEBROW, a), anchor="ma")
 
-        for a0, b0, txt in [(4.0, 7.2,  "Iron's job is carrying oxygen."),
-                            (7.4, 23.0, "So a shortage shows up wherever oxygen is spent.")]:
+        for a0, b0, txt in [(4.0, 7.2,  "Iron's job: carry oxygen, make energy."),
+                            (7.4, 23.0, "So a shortage shows up wherever energy is spent.")]:
             if a0 <= f/FPS < b0:
                 al = min(B.smooth((f/FPS-a0)/0.5), B.smooth((b0-f/FPS)/0.5), 1.0) * out
                 d.text((W/2, 1760), txt, font=B.SANS_M(40), fill=B.mix(B.FG_MUTED, al), anchor="ma")

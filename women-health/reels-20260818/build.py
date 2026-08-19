@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 """Beat 1 reel, INK surface, with a logo outro.
 
+GATED 2026-08-18. Two labels changed on the evidence check. "NORMAL" became
+"NORMAL FERRITIN" because the argument holds for ferritin and NOT for
+haemoglobin: Braat 2024, Lancet Haematol PMID 38432242, screened reference
+populations properly across eight countries and the female haemoglobin limit
+barely moved. Anchored to ferritin, Parker 2021 PMID 33179023 and Mei 2021
+PMID 34329578 carry it. "whoever was tested" became "a group assumed healthy":
+reference individuals are selected by exclusion criteria, not taken as found,
+and the old wording was the line a lab-medicine colleague would attack.
+
 Frames are drawn with PIL rather than rendered from a browser: a draw-on line is
 a polyline truncated at frame n, so the whiteboard effect is exact and costs
 about 30ms a frame instead of 2.7 seconds.
@@ -130,8 +139,8 @@ def frame(f):
                        fill=mix(EYEBROW, out), width=5)
         a = seg(f, 11.4, 12.4) * out
         if a > 0:
-            d.text((W/2, 320), "“NORMAL”", font=SANS_B(52), fill=mix(FG, a), anchor="ma")
-            d.text((W/2, 396), "the middle 95% of whoever was tested",
+            d.text((W/2, 320), "“NORMAL FERRITIN”", font=SANS_B(52), fill=mix(FG, a), anchor="ma")
+            d.text((W/2, 396), "the middle 95% of a group assumed healthy",
                    font=SANS(34), fill=mix(FG_SUBTLE, a), anchor="ma")
 
         dfc = seg(f, 15.4, 18.0)

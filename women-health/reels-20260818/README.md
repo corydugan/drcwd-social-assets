@@ -25,6 +25,22 @@ the lockup ever changes.
 
 Needs: Pillow, numpy, ffmpeg, and DM Sans + DM Serif Display in ~/Library/Fonts.
 
-NOT GATED. Neither reel has been through science-evidence-checker. Nothing on
-screen carries a number, a prevalence or a threshold, which is deliberate, but
-the symptom list is health content under Cory's name.
+GATED 2026-08-18 by science-evidence-checker. Nine edits applied, all label
+swaps. Reel 1 is now anchored to FERRITIN, because the reference-range argument
+holds there and not for haemoglobin: Braat 2024, Lancet Haematol PMID 38432242,
+screened reference populations properly and the female haemoglobin limit barely
+moved. Reel 2 now says "energy" rather than "oxygen", because four of its six
+branches are not oxygen-transport stories. "finding words" and "brittle nails"
+were deleted as unsupported; pica replaced the latter.
+
+Nothing on screen carries a number, a prevalence or a threshold. That is
+deliberate and it should stay that way.
+
+ONE OBJECTION LEFT OPEN. All six symptoms in reel 2 also describe
+hypothyroidism, depression, sleep apnoea and coeliac disease. A closing
+differential beat was offered and not taken.
+
+STANDING WARNING. The Gemini Notebook `Iron: Diagnosis` corpus returned three
+FABRICATED PMIDs during this gate. The papers were real, the identifiers were
+not. Run any corpus-supplied PMID through `~/.claude/scripts/pubmed.py exists`
+before it enters copy.
