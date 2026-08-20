@@ -437,3 +437,61 @@ completed sign-off: filled triangle, full wordmark, full rule, address.
 
 Total 4.6 seconds. Crossfade 0.4 seconds into it from the content, never a cut.
 Nothing is spoken over any of it.
+
+---
+
+## 11. THE OPENING QUESTION
+
+The opening card names the subject. It does not say why anyone should stay, and
+in a vertical feed the first two seconds are the whole retention problem.
+
+**Do not read the card aloud.** The eyebrow, title and subtitle are on screen,
+large, for three seconds. Speaking them is the same redundancy as speaking the
+name over the lockup.
+
+Instead, ask ONE question over the card. It is spoken, never on screen, so the
+card stays clean and the viewer gets two channels rather than one.
+
+### Placement, and why it is free
+
+    0.0 - 3.0   the opening card, currently SILENT
+    0.5 - 2.8   the question, spoken over it
+    3.0         narration begins as it already does
+
+No re-timing is needed. The room already exists. This is the one addition in the
+whole series that costs nothing.
+
+### The rule for writing one
+
+- It is a QUESTION, and the episode answers it. If the episode does not answer
+  it, it is a hook and hooks are not this brand.
+- It comes out of that episode's own closing line, worked backwards. The closing
+  line is the answer, so the question is whatever that answer settles.
+- No number, no prevalence, no threshold. Section 7 applies to spoken words too.
+- Second person. "Your iron", not "the patient's iron".
+- One sentence. Two at the absolute limit, and then only if the first is short.
+- Do not answer it in the question. "Did you know ferritin falls first?" is a
+  statement wearing a question mark.
+
+### The eleven
+
+| Ep | Spoken over the card |
+|---|---|
+| 01 ferritin | When your iron starts running out, which number moves first? |
+| 02 serum iron | Why can the same blood give two different iron results in one day? |
+| 03 TSAT | Your iron is being carried somewhere. How much of that carrying is actually being used? |
+| 04 TIBC | Why does one number on your iron panel go up when you are running out? |
+| 05 transferrin | Three lines on your panel are readings of the same protein. Which three? |
+| 06 haemoglobin | If your haemoglobin came back normal, are you in the clear? |
+| 07 sTfR | Which iron marker still works when you are inflamed? |
+| 08 MCV | What does the size of a red cell tell you about the iron that built it? |
+| 09 hepcidin | What decides whether the iron you swallow ever gets in? |
+| 10 ZPP | What does a red cell do when it cannot find the iron it needs? |
+| 11 CRP | Your ferritin came back normal. Can you trust it? |
+
+Each is answered inside its own episode by the closing line in section 9.
+
+### Acceptance check, added
+
+9. If the file carries audio, exactly one question is spoken over the opening
+   card, it is not printed on screen, and the episode answers it.
