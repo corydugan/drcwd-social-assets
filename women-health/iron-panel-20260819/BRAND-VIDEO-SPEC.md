@@ -326,3 +326,114 @@ is what makes the line land rather than merely arrive.
 
 8. If the file carries audio, the closing lockup is silent of speech, and the
    final narrated word ends at least 0.3 seconds before the lockup begins.
+
+---
+
+## 10. THE CLOSING LOCKUP, RESOLVED TO ABSOLUTE PIXELS
+
+Section 5 describes the lockup in lockup-SVG units. This section is the same
+lockup with every unit resolved to pixels on the 1080 x 1920 frame, derived from
+`reels-20260818/build.py` and `series.py`. It is written to be pasted whole into
+any tool that has to reproduce the animation without reading the repo.
+
+### Canvas and field
+
+    Frame          1080 x 1920, portrait
+    Frame rate     30 fps
+    Field colour   #0B0B0C, filling the whole frame, nothing else on screen
+    Ink white      #FFFFFF
+    Grape rule     #8A6FB8
+    Address grey   #E4E5E7
+
+### Easing, applied to all five beats
+
+    smoothstep:  p = t * t * (3 - 2t),  where t is 0 at the beat's start
+                 and 1 at its end, clamped to that range.
+
+No other curve appears in the closing. No bounce, no elastic, no overshoot.
+
+### Geometry, in pixels, fixed
+
+    Triangle       apex          (185.4,  882.7)
+                   bottom left   (149.5,  948.2)
+                   bottom right  (221.3,  948.2)
+                   stroke 6px, joint "curve", colour #FFFFFF
+                   71.8 wide, 65.5 tall
+
+    Wordmark box   x 256.1, y 880.0, width 674.4, height 92.0
+                   the words "Dr. Cory Dugan" set in DM Serif Display, white
+                   supplied as a PNG with the triangle REMOVED from it
+
+    Grape rule     y 1016.0, from x 149.5 to x 930.5 at full extent
+                   780.9 long, 3px, colour #8A6FB8
+
+    Address line   centred on x 540, baseline 40px below the rule
+                   DM Sans Regular, 34px minimum, #E4E5E7, tracking 0.08em
+
+The whole group spans x 149.5 to x 930.5 and is centred horizontally. It sits at
+about 46 percent of frame height, which keeps it clear of a phone's bottom UI.
+
+### Beat 1, the triangle draws itself. 0.0 to 1.2 seconds.
+
+A single continuous white stroke travels around the triangle's own outline and
+returns to where it began. It is not a fade and not a scale.
+
+Path, in this order:
+
+    start at the APEX      (185.4, 882.7)
+    down and left to       (149.5, 948.2)
+    across to              (221.3, 948.2)
+    back up to the APEX    (185.4, 882.7)
+
+**Truncate the path by ARC LENGTH, not by vertex count.** At eased progress p,
+draw the first p of the total 221.2px perimeter. The three sides are 74.7,
+71.8 and 74.7 pixels, so the pen crosses the first corner at p = 0.338 and the
+second at p = 0.662. Truncating per-vertex instead makes the pen hesitate at the
+corners, which is the single most visible way to get this wrong.
+
+### Beat 2, the triangle fills. 1.1 to 1.7 seconds, overlapping beat 1 by 0.1s.
+
+The solid white triangle fades up underneath the stroke, alpha 0 to 255 on the
+same smoothstep. The outline is still being completed as the fill begins. Do not
+wait for the outline to close.
+
+### Beat 3, the wordmark wipes in. 1.6 to 2.5 seconds.
+
+A left-to-right column reveal of the wordmark image. At eased progress p, show
+the leftmost round(674.4 x p) pixel columns of the 674.4-wide image and none of
+the rest.
+
+**Hard edge. No feather, no fade, no slide.** The letters do not move; they are
+uncovered where they already are. The reveal edge is a vertical cut.
+
+### Beat 4, the rule expands from the centre. 2.5 to 3.2 seconds.
+
+A 3px #8A6FB8 line grows outward from x 540, symmetrically both ways, at
+y 1016.0. At eased progress p it spans from 540 - 390.5p to 540 + 390.5p,
+reaching x 149.5 and x 930.5 at completion.
+
+It grows from the middle. It does not sweep from one side.
+
+### Beat 5, the address settles in. 3.2 to 4.0 seconds.
+
+    drcorydugan.com
+
+Fades up, the only fade in the closing. DM Sans Regular, #E4E5E7, 34px minimum,
+centred on x 540, 40px below the rule. See section 9 for why it is a bare domain.
+
+### Hold
+
+4.0 to 4.6 seconds. Nothing moves. The final frame of every video is the
+completed sign-off: filled triangle, full wordmark, full rule, address.
+
+### The whole timeline
+
+    0.00 - 1.20   triangle outline draws, apex first, by arc length
+    1.10 - 1.70   triangle fills, overlapping
+    1.60 - 2.50   wordmark wipes left to right, hard edge
+    2.50 - 3.20   grape rule grows from the centre
+    3.20 - 4.00   address fades up
+    4.00 - 4.60   hold
+
+Total 4.6 seconds. Crossfade 0.4 seconds into it from the content, never a cut.
+Nothing is spoken over any of it.
