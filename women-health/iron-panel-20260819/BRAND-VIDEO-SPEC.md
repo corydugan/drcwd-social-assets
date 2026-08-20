@@ -139,7 +139,62 @@ It sits 44 units below the wordmark's baseline box, before scaling.
 
 Then hold. The last frame of every video is the completed lockup on the field.
 
-### Summary of the closing timeline
+### Beat 5, the address settles in, 0.8s
+
+The lockup names him. This beat is the only part of the closing that does
+business, and it is deliberately quiet: an address, not a call to action. A
+shouted CTA on all eleven episodes of a series turns a body of work into an
+advert.
+
+Below the grape rule, on the same centre line, one line of text fades up. It is a
+**fade**, the only one in the closing, which is what makes it read as a settling
+rather than another beat of the animation.
+
+    The line reads   drcorydugan.com
+
+Set in **DM Sans Regular**, not the serif. The serif is the wordmark and nothing
+else on this card may share it. Colour is `#E4E5E7`, not pure white, so it sits
+clearly below the name in the hierarchy rather than competing with it. Set the
+tracking open, about 0.08em, because a lowercase URL at small size closes up.
+
+Size no smaller than **34px on the 1080 frame**. The design system floor is 32px
+for anything intended to be read; a URL is the one string on screen a viewer may
+try to type, so it clears the floor rather than sitting on it.
+
+It sits 40 units below the grape rule, before the 1.56 scale.
+
+**Use the bare domain.** Not a path, not a campaign URL, not a redirect.
+`drcorydugan.com/iron-protocol` currently serves a redirect to the iron guide,
+and a redirect baked into eleven permanent videos is a broken link waiting for a
+site tidy-up. The bare domain cannot rot.
+
+**No handle.** Handles differ per platform and these files are cut once and
+posted everywhere.
+
+### The campaign variant, used sparingly
+
+For a video that carries a real offer, and for no more than one video in any
+series, the address line may carry a destination in front of it:
+
+    The iron guide  ·  drcorydugan.com
+
+Same type, same colour, same size. The separator is a middot with a space either
+side. Never an em dash or an en dash. If this variant is used, Beat 5 runs 1.0s
+rather than 0.8s to let the extra words land.
+
+### Revised closing timeline
+
+    0.0 - 1.2   triangle outline draws
+    1.1 - 1.7   triangle fills solid
+    1.6 - 2.5   wordmark wipes in
+    2.5 - 3.2   grape rule expands from the centre
+    3.2 - 4.0   the address fades up
+    4.0 - 4.6   hold on the finished sign-off
+
+Total 4.6 seconds, or 4.8 with the campaign variant. The last frame of every
+video is the completed sign-off: triangle, wordmark, rule, address.
+
+### Summary of the closing timeline (superseded, see the revised timeline above)
 
     0.0 - 1.2   triangle outline draws
     1.1 - 1.7   triangle fills solid
@@ -184,8 +239,10 @@ A video is finished when all of these pass:
 
 1. Frame is 1080 x 1920. Output frame rate is stated and consistent.
 2. The opening card's title is fully visible, not clipped at either edge.
-3. The closing lockup runs all four beats, in order, and the final frame is the
-   completed lockup.
+3. The closing lockup runs all five beats, in order, and the final frame is the
+   completed sign-off including the address line.
+7. The address line reads a bare domain, resolves without a redirect, and is set
+   in DM Sans at 34px or larger.
 4. No grape-800 #352051 appears anywhere on the ink field.
 5. Every transition into and out of a card is a crossfade, not a cut.
 6. A text search of every string in the video finds no em dash, no en dash, and
