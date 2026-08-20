@@ -247,3 +247,82 @@ A video is finished when all of these pass:
 5. Every transition into and out of a card is a crossfade, not a cut.
 6. A text search of every string in the video finds no em dash, no en dash, and
    none of the four banned words.
+
+---
+
+## 9. VOICE OVER, AND THE LAST SECONDS
+
+The eleven episodes ship silent. `S.narrate()` in `series.py` is on-screen
+captions with start and end times, not audio, which means **the script and its
+timings already exist**. A voice track is a read of those slots, not a new
+writing job.
+
+### Whose voice
+
+Cory's own, recorded. A synthetic read on a video whose entire claim is
+"a health scientist explains your blood panel" undercuts the claim. Text to
+speech is acceptable for a rough cut to check timing, never for a shipped file.
+
+A Google Cloud TTS key is on file if a rough cut is wanted. Use an Australian
+English voice, never a US one, on a channel whose spelling is already AU.
+
+### THE RULE FOR THE LAST SECONDS
+
+**Nothing is spoken over the closing lockup. Not the name, not the address.**
+
+The lockup is a signature, and a signature is silent. Speaking the name while
+the name is being drawn is redundant, and speaking a URL is the one thing that
+turns the sign-off from an address into an advert, which Beat 5 was written to
+avoid. Nobody has ever typed a URL they heard.
+
+So the last seconds run:
+
+    the final narrated line       spoken
+    the on-screen closing card    spoken, after a pause of about 0.4s
+    a beat of silence             about 0.4s
+    the closing lockup            SILENT, all five beats
+
+If a music bed is used it may continue under the lockup and should resolve on
+the final frame. It must not start there, because a bed arriving at the sign-off
+reads as an advert break.
+
+### Episode 1, written out
+
+    18.2 - 21.4   "Haemoglobin only falls once the store is gone."
+    21.8 - 24.8   "The store runs down, long before the blood does."
+    24.8 - 25.2   silence
+    25.2 - 29.8   lockup, silent
+
+The line at 21.8 is the one already on screen as the closing card. Speaking it
+is the only doubling permitted in the whole video, because it is the thesis and
+it is the line people screenshot.
+
+### The closing line of every episode
+
+Each is already written and on screen. This is the last thing said in each file.
+
+| Episode | The line |
+|---|---|
+| 01 ferritin | The store runs down, long before the blood does. |
+| 02 serum iron | It rises after a meal, and drifts across the day. |
+| 03 TSAT | A low share is one of the two ways deficiency is called. |
+| 04 TIBC | So the room goes up while the iron on board does not. |
+| 05 transferrin | Learn the carrier and three of them stop being separate. |
+| 06 haemoglobin | Anaemia is where the shortage ends, not where it starts. |
+| 07 sTfR | It is less disturbed by inflammation than ferritin is. |
+| 08 MCV | A red cell lives for months, so this one moves last of all. |
+| 09 hepcidin | Inflammation raises it, whether or not you need what is behind it. |
+| 10 ZPP | The wrong molecule builds up, and counting it is the test. |
+| 11 CRP | CRP is what tells you which of the two you are looking at. |
+
+### Reading direction
+
+Read down, not up. These are statements of how something works, not
+announcements. The last word of each line is where the pitch drops. Leave the
+pause before the closing line longer than feels comfortable, because that pause
+is what makes the line land rather than merely arrive.
+
+### Acceptance check, added
+
+8. If the file carries audio, the closing lockup is silent of speech, and the
+   final narrated word ends at least 0.3 seconds before the lockup begins.
