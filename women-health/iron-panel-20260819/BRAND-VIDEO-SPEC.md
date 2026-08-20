@@ -495,3 +495,81 @@ Each is answered inside its own episode by the closing line in section 9.
 
 9. If the file carries audio, exactly one question is spoken over the opening
    card, it is not printed on screen, and the episode answers it.
+
+---
+
+## 12. THE VOICE DECISION, 19 August 2026
+
+Researched across three passes: platform landscape, licensing of free tiers, and
+the evidence on accent and gender. Recorded here so it is not re-litigated.
+
+### The platform
+
+**Google Cloud Text-to-Speech, Chirp 3 HD, en-AU female.** Fourteen genuine
+Australian female voices: Achernar, Aoede, Autonoe, Callirrhoe, Despina,
+Erinome, Gacrux, Kore, Laomedeia, Leda, Pulcherrima, Sulafat, Vindemiatrix,
+Zephyr.
+
+Free allowance is 1,000,000 characters a month, resetting monthly. This series
+is about 4,000 characters, so 0.4% of one month. Commercial use is explicit in
+Google's docs, the output is yours, and no attribution is required.
+
+It needs OAuth, not an API key: `gcloud auth application-default login`.
+
+Fallback with equally clean terms: **Amazon Polly "Olivia"**, native en-AU,
+100,000 generative characters a month free.
+
+### Ruled out, and why
+
+| Platform | Reason |
+|---|---|
+| ElevenLabs free | Non-commercial by its own terms, and requires "elevenlabs.io" IN THE TITLE of the post. Upgrading later does not clear audio made on the free tier. |
+| Azure Speech F0 | Product terms grant output rights to the paid tier only. |
+| Murf free | Cannot export a file at all. |
+| Coqui XTTS, F5-TTS | Weights are non-commercial even though the code is permissive. |
+| Kokoro, Piper | Licences are clean, but neither ships an Australian voice. |
+| Gemini TTS | No free tier. Whether the Gemini API free tier covers TTS is ambiguous, and on the free tier Google states human reviewers may read inputs and outputs. |
+
+### The accent
+
+**General Australian.** In a study of 138 Australian listeners rating 12 English
+accents, General Australian scored positively across both status and solidarity,
+and the authors conclude it now functions as both norms. Broad Australian and L2
+accents rated more negatively. So the contrast that matters is General versus
+Broad, not Australian versus British versus American.
+
+Do not over-invest in this. The founding accent-and-credibility result did not
+replicate, and the mechanism with the best support is processing fluency, which
+argues for audio clarity rather than for a nationality.
+
+### The female voice
+
+The evidence is thin and contested. One conference paper of 120 participants
+found a female voice assistant raised anthropomorphism, which raised perceived
+credibility. Single study, unreplicated, not a health outcome.
+
+**Do not treat "women trust women's voices" as established.** The choice is
+defensible on brand grounds. It is not evidence-based, and the file should say so.
+
+### THE FINDING THAT SHOULD BE ACTED ON FIRST
+
+Every comparable channel that works uses a named human on camera, not a
+synthetic narrator. The AMA NSW list of Australian doctor creators is three
+humans presenting to camera. A content analysis of 700 contraception videos with
+1.18 billion views found clinicians made 19.3% of videos and drew 41.3% of views,
+concentrated in six identifiable faces.
+
+The assumption worth breaking is not which synthetic voice. It is synthetic voice
+versus Cory's face.
+
+Second to that: caption quality has real peer-reviewed support for comprehension
+and retention, and accent does not. Hand-corrected captions beat voice selection
+as an investment.
+
+### What to test rather than assume
+
+- Same script, three voices: General Australian, British, General American.
+  Measure three-second hold, average watch time, saves.
+- General Australian versus Broad Australian, which the AU data says matters more.
+- Synthetic narrator versus Cory on camera.
+- Hand-written captions versus auto-captions, voice held constant.
