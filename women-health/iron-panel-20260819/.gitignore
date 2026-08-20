@@ -1,0 +1,17 @@
+# Render intermediates and outputs. The generators are the source of truth;
+# every mp4 and every frame in here is reproducible by running a script.
+#
+# Without this file the folder is 952MB, almost all of it PNG frame sequences.
+# The reels-20260818 folder has carried the same rule since it was created.
+frames*/
+.wrap/
+.short01/
+# img.py writes its camera-move frames here, about 2.5MB each.
+# NOTE: gitignore has no trailing comments, only whole-line ones.
+.kb/
+*.mp4
+__pycache__/
+
+# Generated hero footage. Regenerate with veo.py or img.py; the prompts that
+# produce them are in _heroes/*.txt and PROMPTS.md, and those ARE tracked.
+_heroes/*.mp4

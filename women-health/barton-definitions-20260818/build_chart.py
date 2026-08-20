@@ -44,10 +44,14 @@ BW=380; GAP=(W-2*M-3*BW)//2
 for i,(name,defn,val,n) in enumerate(BARS):
     x=M+i*(BW+GAP)
     h=int((BOT-TOP)*(val/MAXV))
-    col = ACCENT if i==2 else GRAPE if i==1 else (58,58,66)
+    # sequential ramp, grape 700/500/200, monotonic in lightness and validated
+    # for CVD separation. The old grey base sat at 1.55:1 against the field and
+    # nearly vanished.
+    col = [(74,47,112),(138,111,184),(216,207,231)][i]
     d.rectangle([x,BOT-h,x+BW,BOT],fill=col)
-    d.text((x,BOT-h-118),f"{val:.2f}%",font=SANS_B(96),
-           fill=FG if i==2 else MUTED)
+    # "Text wears text tokens, never the series color." The bar carries  style-gate-allow: quotes the design system verbatim
+    # identity; the number does not repeat it.
+    d.text((x,BOT-h-118),f"{val:.2f}%",font=SANS_B(96),fill=FG)
     d.text((x,BOT+34),name,font=SANS_B(52),fill=FG)
     d.text((x,BOT+108),defn,font=SANS(36),fill=SUBTLE)
     d.text((x,BOT+160),n,font=SANS(34),fill=(120,121,128))
@@ -55,10 +59,18 @@ d.line([(M,BOT),(W-M,BOT)],fill=RULE,width=4)
 d.text((M,BOT+250),"IDE is the ferritin level below which the marrow is already short of iron for making red cells.",
        font=SANS(34),fill=SUBTLE)
 
-d.rectangle([M,2300,W-M,2470],fill=GRAPE)
-d.text((M+44,2334),"Nothing about these women changed.",font=SERIF(64),fill=FG)
-d.text((M+44,2412),"The prevalence rose 4.9-fold, 95% CI 4.7 to 5.2, P<.001.",
-       font=SANS_M(38),fill=(232,226,242))
+# measured, not hardcoded: the first version pinned the box at 170px and
+# started the text 34px down, which left the block high and a gap beneath it
+_h1,_h2 = SERIF(64), SANS_M(38)
+_l1,_l2 = "Nothing about these women changed.", "The prevalence rose 4.9-fold, 95% CI 4.7 to 5.2, P<.001."
+_pad, _gap = 44, 20
+_b1 = _h1.getbbox(_l1); _b2 = _h2.getbbox(_l2)
+_block = (_b1[3]-_b1[1]) + _gap + (_b2[3]-_b2[1])
+_top = 2300; _bh = _block + _pad*2
+d.rectangle([M,_top,W-M,_top+_bh],fill=GRAPE)
+_y = _top + _pad
+d.text((M+44,_y-_b1[1]),_l1,font=_h1,fill=FG); _y += (_b1[3]-_b1[1]) + _gap
+d.text((M+44,_y-_b2[1]),_l2,font=_h2,fill=(232,226,242))
 d.text((M,2545),"Barton JC, Wiener HW, Barton JC, Acton RT. JAMA Netw Open. 2024;7(6):e2413967. PMID 38848068.",
        font=SANS(30),fill=(110,111,117))
 d.text((M,2592),"HEIRS screening study, 5 field centres, US and Canada. Women aged 25 and over, mean age 49.6.",

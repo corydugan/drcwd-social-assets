@@ -16,7 +16,7 @@ matching the reels. Flip SURFACE below to go back to paper.
 EVERY NUMBER VERIFIED 2026-08-18 against the open-access full text at
 PMC10300696, not against a summary of it:
     Weyand AC, Chaitoff A, Freed GL, Sholzberg M, Choi SW, McGann PT.
-    Prevalence of Iron Deficiency and Iron-Deficiency Anemia in US Females
+    Prevalence of Iron Deficiency and Iron-Deficiency Anemia in US Females  style-gate-allow: verbatim journal title
     Aged 12-21 Years, 2003-2020. JAMA. 2023;329(24):2191-2193. PMID 37367984.
     n = 3,490 of 4,052 eligible. Ferritin not measured 2011 to 2014.
 """
@@ -62,11 +62,20 @@ def chrome(d, eyebrow, page):
     d.text((tx,2556),wm,font=SERIF(44),fill=C["logo"],anchor="ra")
 
 def panel(d, y0, lines, h=None, size=72):
-    h = h or (len(lines)*96+64)
-    d.rectangle([M,y0,W-M,y0+h],fill=C["panel"])
-    yy=y0+44
+    """Text vertically CENTRED in the box, with the height derived from the text.
+
+    The first version hardcoded a start of y0+44 and a line step of 96, so the
+    text sat high and left dead space at the bottom. Measure, do not guess.
+    """
+    fnt = SERIF(size)
+    step = int(size * 1.30)
+    pad  = int(size * 0.62)
+    h = h if h else len(lines) * step + pad * 2
+    d.rectangle([M, y0, W - M, y0 + h], fill=C["panel"])
+    block = len(lines) * step
+    y = y0 + (h - block) / 2
     for ln in lines:
-        d.text((M+52,yy),ln,font=SERIF(size),fill=(255,255,255)); yy+=96
+        d.text((M + 52, y), ln, font=fnt, fill=(255, 255, 255)); y += step
 
 # ---------------------------------------------------------------- card 1
 def card1():
@@ -82,7 +91,7 @@ def card1():
         d.text((x,1030),lab,font=SANS_M(40),fill=C["subtle"])
         d.text((x,1084),ci,font=SANS(32),fill=C["dim"]); x+=640
     d.line([(M,1240),(W-M,1240)],fill=C["rule"],width=4)
-    panel(d,1360,["Move that line by 35 µg/L","and the number goes from 17% to 77%."],280,74)
+    panel(d,1360,["Move that line by 35 µg/L","and the number goes from 17% to 77%."],size=74)
     d.text((M,1760),"Same 3,490 girls and young women. Same blood. Same assay.",font=SANS_M(44),fill=C["muted"])
     d.text((M,1830),"Nobody was re-tested.",font=SANS_M(44),fill=C["muted"])
     d.text((M,2380),METHOD,font=SANS_B(28),fill=C["dim"])
@@ -90,34 +99,40 @@ def card1():
     return img,"s1-hook.png"
 
 # ---------------------------------------------------------------- the curve
+# One sequential ramp, shared by both charts. Validated 2026-08-18 with the
+# dataviz skill's validator: adjacent CVD separation ΔE 22.7 deutan / 22.6
+# tritan, monotonic in lightness (0.371 to 0.869), which is the check that
+# applies to a sequential ramp. The darkest step sits at 1.6:1 against the ink
+# field; the relief the validator requires is direct labels, and every mark
+# carries one.
+RAMP = [(74,47,112), (138,111,184), (216,207,231)]   # grape 700, 500, 200
+
 def curve(d, top, bot, left, right, big=True):
-    """Three published points. The line between them is drawn straight and the
-    caption says so, because the paper reports three cut-offs, not a curve."""
+    """A LOLLIPOP, not a line.
+
+    The first version joined the three published cut-offs with a dashed line.
+    Two problems, both in the dataviz anti-pattern catalogue: dashing reads as
+    projection, and a line between three points asserts a continuum that was
+    never measured. The caption was doing work the chart should do. A stem to
+    each point carries the magnitude and interpolates nothing.
+    """
     pts=[(15,17.0),(25,38.6),(50,77.5)]
-    def px(v): return left+(right-left)*(v-5)/50.0
+    span=right-left
+    def px(i): return left+span*(0.18+0.32*i)
     def py(v): return bot-(bot-top)*(v/100.0)
-    d.line([(left,bot),(right,bot)],fill=C["rule"],width=4)
-    d.line([(left,bot),(left,top)],fill=C["rule"],width=4)
     for gy in (0,40,100):
         d.line([(left,py(gy)),(right,py(gy))],fill=C["rule"],width=2)
         d.text((left-24,py(gy)),str(gy),font=SANS(34),fill=C["dim"],anchor="rm")
-    path=[(px(x),py(y)) for x,y in pts]
-    for i in range(len(path)-1):
-        x1,y1=path[i]; x2,y2=path[i+1]; n=26
-        for k in range(n):
-            if k%2: continue
-            a=k/n; b=(k+1)/n
-            d.line([(x1+(x2-x1)*a,y1+(y2-y1)*a),(x1+(x2-x1)*b,y1+(y2-y1)*b)],
-                   fill=C["accent"],width=6)
-    for (xv,yv),(pxx,pyy) in zip(pts,path):
-        hi = xv==25
-        r = 22 if hi else 15
-        d.ellipse([pxx-r,pyy-r,pxx+r,pyy+r],fill=C["accent"] if hi else C["fg"])
-        d.text((pxx,pyy-74),f"{yv:g}%",font=SANS_B(60 if big else 48),
-               fill=C["fg"],anchor="ma")
-        d.text((pxx,bot+26),str(xv),font=SANS(36),fill=C["subtle"],anchor="ma")
-    d.text(((left+right)/2,bot+96),"FERRITIN CUT-OFF, µg/L",font=SANS_B(30),
-           fill=C["dim"],anchor="ma")
+    d.line([(left,bot),(right,bot)],fill=C["rule"],width=3)
+    for i,(xv,yv) in enumerate(pts):
+        x=px(i); y=py(yv); col=RAMP[i]
+        d.line([(x,bot),(x,y)],fill=col,width=14)
+        r=26
+        d.ellipse([x-r,y-r,x+r,y+r],fill=col)
+        d.text((x,y-r-26),f"{yv:g}%",font=SANS_B(64 if big else 52),
+               fill=C["fg"],anchor="ms")
+        d.text((x,bot+30),f"below {xv}",font=SANS_M(38),fill=C["subtle"],anchor="ma")
+        d.text((x,bot+84),"µg/L",font=SANS(32),fill=C["dim"],anchor="ma")
     d.text((left,top-64),"PERCENT BELOW THE CUT-OFF",font=SANS_B(30),fill=C["dim"])
 
 def card2():
@@ -125,9 +140,8 @@ def card2():
     d.text((M,250),"The prevalence is just",font=SERIF(104),fill=C["fg"])
     d.text((M,378),"where you read the axis.",font=SERIF(104),fill=C["fg"])
     curve(d,700,1700,M+90,W-M-40)
-    d.text((M,1960),"One curve. Three readings. The line is drawn straight between the",font=SANS(42),fill=C["subtle"])
-    d.text((M,2016),"three published cut-offs, because the paper reports those three",font=SANS(42),fill=C["subtle"])
-    d.text((M,2072),"and not a distribution.",font=SANS(42),fill=C["subtle"])
+    d.text((M,1960),"Three published cut-offs, read off one cohort. Nothing was",font=SANS(42),fill=C["subtle"])
+    d.text((M,2016),"measured between them, so nothing is drawn between them.",font=SANS(42),fill=C["subtle"])
     d.text((M,2380),METHOD,font=SANS_B(28),fill=C["dim"])
     return img,"s2-curve.png"
 
@@ -151,7 +165,7 @@ def card3():
         d.text((W-M,y+146),ci,font=SANS(32),fill=C["dim"],anchor="ra")
         y+=250
     d.line([(M,y),(W-M,y)],fill=C["rule"],width=3)
-    panel(d,y+120,["12.0 is the WHO line for women.","13.0 is the line used for men."],280,68)
+    panel(d,y+120,["12.0 is the WHO line for women.","13.0 is the line used for men."],size=68)
     d.text((M,y+470),"A 1.0 g/dL move nearly triples the count, in the same blood.",font=SANS_M(44),fill=C["muted"])
     d.text((M,2380),METHOD,font=SANS_B(28),fill=C["dim"])
     return img,"s3-haemoglobin.png"
@@ -166,7 +180,7 @@ def card4():
     d.text((M,1340),"of those with iron deficiency did NOT have",font=SANS_M(50),fill=C["muted"])
     d.text((M,1406),"iron-deficiency anaemia",font=SANS_M(50),fill=C["muted"])
     d.text((M,1490),"95% CI 80.8 to 86.4",font=SANS(36),fill=C["dim"])
-    panel(d,1700,["A pathway that starts at haemoglobin","sees the last sixth of the problem."],280,70)
+    panel(d,1700,["A pathway that starts at haemoglobin","sees the last sixth of the problem."],size=70)
     d.text((M,2060),"and calls the other five sixths normal.",font=SANS_M(46),fill=C["muted"])
     d.text((M,2380),METHOD,font=SANS_B(28),fill=C["dim"])
     return img,"s4-83pc.png"
@@ -177,7 +191,7 @@ def card5():
     d.text((M,250),"Ask for the number,",font=SERIF(116),fill=C["fg"])
     d.text((M,388),"not the verdict.",font=SERIF(116),fill=C["fg"])
     d.text((M,600),"Then ask which line they are measuring it against.",font=SANS(52),fill=C["subtle"])
-    panel(d,780,["Those are two different questions,","and you are owed both answers."],300,72)
+    panel(d,780,["Those are two different questions,","and you are owed both answers."],size=72)
     d.text((M,1240),"A reference range is not a health target.",font=SANS_M(48),fill=C["muted"])
     for i,ln in enumerate(["It describes the group that was tested. If a large share of",
                            "them were already deficient, their results sit inside the",
@@ -194,7 +208,7 @@ def linkedin():
     d.text((M,250),"The prevalence is just",font=SERIF(104),fill=C["fg"])
     d.text((M,378),"where you read the axis.",font=SERIF(104),fill=C["fg"])
     curve(d,700,1700,M+90,W-M-40)
-    d.text((M,1960),"One curve. Three readings. Nobody was re-tested; only the",font=SANS(42),fill=C["subtle"])
+    d.text((M,1960),"Three readings of one cohort. Nobody was re-tested; only the",font=SANS(42),fill=C["subtle"])
     d.text((M,2016),"cut-off moved.",font=SANS(42),fill=C["subtle"])
     d.text((M,2380),METHOD,font=SANS_B(28),fill=C["dim"])
     return img,"linkedin-curve.png"

@@ -3,7 +3,11 @@
 Minimalist animated explainers, 1080x1920, ink surface, with the logo outro.
 
     python3 build.py            → beat1-bloods-normal-ink.mp4   34s
-    python3 build_symptoms.py   → beat-iron-symptoms-ink.mp4    34s
+    python3 build_symptoms.py   → beat-iron-symptoms-ink.mp4    38s
+
+build_symptoms.py clears frames2/ before it renders. build.py does NOT, so if it
+is ever shortened, delete the directory first: ffmpeg reads %05d.png until it
+hits a gap and would run off the end of the new render into the old one.
 
 Frames are drawn with PIL, not rendered from a browser. A draw-on line is a
 polyline truncated at frame n, so the whiteboard effect is exact and costs
@@ -36,9 +40,19 @@ were deleted as unsupported; pica replaced the latter.
 Nothing on screen carries a number, a prevalence or a threshold. That is
 deliberate and it should stay that way.
 
-ONE OBJECTION LEFT OPEN. All six symptoms in reel 2 also describe
-hypothyroidism, depression, sleep apnoea and coeliac disease. A closing
-differential beat was offered and not taken.
+THAT OBJECTION IS NOW CLOSED, 2026-08-19. The differential beat was built. Reel
+2 ran 34s and now runs 38s: at 20s every symptom dims and the four conditions
+they also fit are named, and at 25s the three that are on their own an
+indication to test come back with a ring on the dot.
+
+Those three are fatigue, restless legs and pica, which is rows 0, 4 and 5. They
+are not a judgement call. Auerbach, DeLoughery and Tirnauer, JAMA
+2025;333(20):1813-1823, PMID 40159291, says testing is indicated for patients
+with anaemia and/or symptoms of iron deficiency, naming those three. PMID checked
+through pubmed.py, not taken from a corpus.
+
+The reel is STILL HELD. The differential answered the clinical objection; the
+lane objection in the HOLD note is a separate call and is untouched.
 
 STANDING WARNING. The Gemini Notebook `Iron: Diagnosis` corpus returned three
 FABRICATED PMIDs during this gate. The papers were real, the identifiers were
