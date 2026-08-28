@@ -22,7 +22,7 @@ import bio
 import build as B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DUR = 31
+DUR = 38
 CELLS = [(272, 858), (540, 858), (808, 858)]
 R = 112
 
@@ -30,16 +30,16 @@ R = 112
 def frame(f):
     img = Image.new("RGB", (S.W, S.H), B.FIELD)
     d = ImageDraw.Draw(img, "RGBA")
-    out = 1 - B.seg(f, 25.6, 26.4)
+    out = 1 - B.seg(f, 32.6, 33.4)
 
     if out > 0.01:
         S.titlecard(d, f, "07", "Soluble transferrin receptor",
                     "What the cells are asking for", out)
 
-        grow = B.seg(f, 7.0, 11.5)
+        grow = B.seg(f, 14, 18.5)
         n = 1 + int(round(4 * grow))
         for i, (cx, cy) in enumerate(CELLS):
-            p = max(0.0, min(1.0, B.seg(f, 3.0, 6.4) * 3 - i * 0.5))
+            p = max(0.0, min(1.0, B.seg(f, 10, 13.4) * 3 - i * 0.5))
             bio.cell(d, cx, cy, R, alpha=out, draw_p=p,
                      antennae=n, ant_a=grow, seed=0.6 + i * 1.3)
 
@@ -58,26 +58,27 @@ def frame(f):
                 fade = B.seg(f, t, t + 0.7) * (1 - B.smooth(max(0.0, (rise - 0.55) / 0.45)))
                 if fade > 0.01:
                     d.ellipse([x-8, y-8, x+8, y+8], fill=B.mix(B.ACCENT, fade * out))
-        a = B.seg(f, 17.0, 18.0) * (1 - B.seg(f, 21.6, 22.4)) * out
+        a = B.seg(f, 24, 25) * (1 - B.seg(f, 28.6, 29.4)) * out
         if a > 0:
             d.text((S.W/2, 560), "COUNTED IN THE BLOOD", font=B.SANS_B(30),
                    fill=B.mix(B.EYEBROW, a), anchor="ma")
 
-        a = B.seg(f, 23.0, 24.2) * out
+        a = B.seg(f, 30, 31.2) * out
         if a > 0:
-            d.line([(110, 1200), (110 + (S.W-220)*B.seg(f, 22.8, 23.8), 1200)],
+            d.line([(110, 1200), (110 + (S.W-220)*B.seg(f, 29.8, 30.8), 1200)],
                    fill=B.mix(B.RULE, a), width=4)
             d.text((S.W/2, 1238), "Ferritin says what is stored.", font=B.SERIF(52), fill=B.mix(B.FG, a), anchor="ma")
             d.text((S.W/2, 1308), "This says what the cells want.", font=B.SERIF(52), fill=B.mix(B.FG, a), anchor="ma")
 
         S.narrate(d, f, [
-            (3.0,  8.2,  "Cells take iron in through receptors on their surface."),
-            (8.4,  13.2, "Run them short, and they put up more of them."),
-            (13.4, 18.6, "Pieces snap off into the blood, and those are what is counted."),
-            (18.8, 22.4, "It is less disturbed by inflammation than ferritin is."),
+            (2.6, 5.9, "Cells pull iron in through receptors on their surface."),
+            (6.1, 10.4, "Run a cell short of iron and it puts up more receptors."),
+            (10.6, 16.0, "Pieces of them snap off into the blood, and that is what this test counts."),
+            (16.2, 19.1, "More receptors in the blood means hungrier cells."),
+            (19.3, 22.6, "It is less disturbed by inflammation than ferritin is."),
         ], out)
 
-    S.outro(img, d, f, 26.8)
+    S.outro(img, d, f, 33.8)
     return img
 
 

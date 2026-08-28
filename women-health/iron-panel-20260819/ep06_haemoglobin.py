@@ -22,7 +22,7 @@ import bio
 import build as B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DUR = 31
+DUR = 38
 CELLS = [(cx, cy) for cy in (720, 884) for cx in (250, 443, 636, 829)]
 STAGE = [(250, "STORES GO"), (540, "SUPPLY TIGHTENS"), (830, "HAEMOGLOBIN FALLS")]
 
@@ -30,18 +30,18 @@ STAGE = [(250, "STORES GO"), (540, "SUPPLY TIGHTENS"), (830, "HAEMOGLOBIN FALLS"
 def frame(f):
     img = Image.new("RGB", (S.W, S.H), B.FIELD)
     d = ImageDraw.Draw(img, "RGBA")
-    out = 1 - B.seg(f, 25.6, 26.4)
+    out = 1 - B.seg(f, 32.6, 33.4)
 
     if out > 0.01:
         S.titlecard(d, f, "06", "Haemoglobin", "The iron already at work", out)
 
-        pale = 0.62 * B.seg(f, 19.0, 21.6)
+        pale = 0.62 * B.seg(f, 26, 28.6)
         for i, (cx, cy) in enumerate(CELLS):
-            p = max(0.0, min(1.0, (B.seg(f, 3.0, 6.6) * len(CELLS) - i * 0.45)))
+            p = max(0.0, min(1.0, (B.seg(f, 10, 13.6) * len(CELLS) - i * 0.45)))
             bio.red_cell(d, cx, cy, 72, alpha=out, pale=pale, draw_p=p, seed=0.4 + i)
 
         # the sequence, so "last" is a position and not an assertion
-        ln = B.seg(f, 12.8, 14.0)
+        ln = B.seg(f, 19.8, 21)
         if ln > 0:
             d.line([(190, 1088), (190 + 700*ln, 1088)], fill=B.mix(B.RULE, out), width=4)
         for i, (x, lab) in enumerate(STAGE):
@@ -50,21 +50,22 @@ def frame(f):
                 d.ellipse([x-13, 1075, x+13, 1101], fill=B.mix(B.ACCENT, a))
                 d.text((x, 1122), lab, font=B.SANS_B(26), fill=B.mix(B.EYEBROW, a), anchor="ma")
 
-        a = B.seg(f, 23.0, 24.2) * out
+        a = B.seg(f, 30, 31.2) * out
         if a > 0:
-            d.line([(110, 1250), (110 + (S.W-220)*B.seg(f, 22.8, 23.8), 1250)],
+            d.line([(110, 1250), (110 + (S.W-220)*B.seg(f, 29.8, 30.8), 1250)],
                    fill=B.mix(B.RULE, a), width=4)
             d.text((S.W/2, 1288), "A normal haemoglobin", font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
             d.text((S.W/2, 1360), "rules out very little.",  font=B.SERIF(56), fill=B.mix(B.FG, a), anchor="ma")
 
         S.narrate(d, f, [
-            (3.0,  8.2,  "Haemoglobin is iron already inside your red cells."),
-            (8.4,  12.6, "It is what carries oxygen from your lungs to everything else."),
-            (12.8, 18.6, "In the order things go wrong, it is the last to move."),
-            (18.8, 22.4, "Anaemia is where the shortage ends, not where it starts."),
+            (2.6, 6.3, "Haemoglobin is the iron-carrying protein inside your red blood cells."),
+            (6.5, 10.5, "This test measures how much of it is in your blood."),
+            (10.7, 14.8, "It is what carries oxygen from your lungs to everything else."),
+            (15.0, 19.4, "In the order things go wrong, it is the last to move."),
+            (19.6, 23.3, "Anaemia is where the shortage ends, not where it starts."),
         ], out)
 
-    S.outro(img, d, f, 26.8)
+    S.outro(img, d, f, 33.8)
     return img
 
 

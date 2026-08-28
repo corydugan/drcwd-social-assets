@@ -24,7 +24,7 @@ import bio
 import build as B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DUR = 30
+DUR = 37
 
 ROAD_Y = 900
 READS = [("SERUM IRON",  "the seats that are taken"),
@@ -35,20 +35,20 @@ READS = [("SERUM IRON",  "the seats that are taken"),
 def frame(f):
     img = Image.new("RGB", (S.W, S.H), B.FIELD)
     d = ImageDraw.Draw(img, "RGBA")
-    out = 1 - B.seg(f, 25.0, 25.8)
+    out = 1 - B.seg(f, 32, 32.8)
 
     if out > 0.01:
         S.titlecard(d, f, "05", "Transferrin", "The carrier itself", out)
 
-        bio.liver(d, S.W/2, 700, 196, alpha=out, draw_p=B.seg(f, 3.0, 5.8),
-                  label="LIVER", label_a=B.seg(f, 5.4, 6.4) * out)
+        bio.liver(d, S.W/2, 700, 196, alpha=out, draw_p=B.seg(f, 10, 12.8),
+                  label="LIVER", label_a=B.seg(f, 12.4, 13.4) * out)
 
         # the carriers it builds, rolling out below it
-        cp = B.seg(f, 6.8, 10.8)
+        cp = B.seg(f, 13.8, 17.8)
         for i, x in enumerate(bio.COL_X):
             p = max(0.0, min(1.0, cp * 4 - i * 0.5))
             bio.carrier(d, x, ROAD_Y, filled=bio.FILL[i], draw_p=p, alpha=out,
-                        seat_a=B.seg(f, 9.0, 10.6), load_a=B.seg(f, 10.0, 11.6))
+                        seat_a=B.seg(f, 16, 17.6), load_a=B.seg(f, 17, 18.6))
         bio.road(d, ROAD_Y + bio.TRUCK_H + 21, cp, out)
 
         # the three readings, all of the same fleet
@@ -60,21 +60,22 @@ def frame(f):
                 d.text((200, y), big, font=B.SANS_B(38), fill=B.mix(B.FG, a))
                 d.text((520, y + 6), sub, font=B.SANS(32), fill=B.mix(B.FG_SUBTLE, a))
 
-        a = B.seg(f, 22.6, 23.8) * out
+        a = B.seg(f, 29.6, 30.8) * out
         if a > 0:
-            d.line([(110, 1400), (110 + (S.W-220)*B.seg(f, 22.4, 23.4), 1400)],
+            d.line([(110, 1400), (110 + (S.W-220)*B.seg(f, 29.4, 30.4), 1400)],
                    fill=B.mix(B.RULE, a), width=4)
             d.text((S.W/2, 1438), "One protein.",  font=B.SERIF(58), fill=B.mix(B.FG, a), anchor="ma")
             d.text((S.W/2, 1510), "Three numbers.", font=B.SERIF(58), fill=B.mix(B.FG, a), anchor="ma")
 
         S.narrate(d, f, [
-            (3.0,  8.0,  "Your liver builds the carrier that moves iron around."),
-            (8.2,  12.8, "Each one holds up to two atoms of iron, and no more."),
-            (13.0, 18.4, "Three lines on your panel are readings of this one protein."),
-            (18.6, 22.2, "Learn the carrier and three of them stop being separate."),
+            (2.6, 5.9, "Transferrin is the protein that carries iron through your blood."),
+            (6.1, 11.5, "Your liver builds it, and how much of it you have is what this test measures."),
+            (11.7, 15.7, "Each one holds up to two atoms of iron, and no more."),
+            (15.9, 19.5, "Three lines on your panel are readings of this one protein."),
+            (19.7, 23.0, "Learn the carrier and three of them stop being separate."),
         ], out)
 
-    S.outro(img, d, f, 26.2)
+    S.outro(img, d, f, 33.2)
     return img
 
 

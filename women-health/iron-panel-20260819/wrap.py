@@ -90,10 +90,9 @@ def intro_frame(pick):
             if len(path) > 1:
                 d.line(path, fill=B.mix(B.ACCENT, out), width=4, joint="curve")
 
-        a = B.seg(f, 7.0, 7.6) * out
-        if a > 0:
-            d.text((S.W/2, 1508), "This one.", font=B.SERIF(56),
-                   fill=B.mix(B.FG, a), anchor="ma")
+        # "This one." was removed 2026-08-28, Cory's call: the box already says
+        # which marker this is, so the line was restating the picture. Nothing
+        # replaces it. The hold after the box lets the reveal land on its own.
         return img
     return frame
 
@@ -105,12 +104,21 @@ def outro_frame(f):
     return img
 
 
-def encode(frames_dir, mp4, dur):
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error",
-                    "-framerate", str(S.FPS), "-i", os.path.join(frames_dir, "%05d.png"),
-                    "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
-                    "-t", str(dur), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18",
-                    "-c:a", "aac", "-b:a", "128k", mp4], check=True)
+def encode(frames_dir, mp4, dur, audio=None):
+    """audio: an optional wav laid under these frames. Added 2026-08-28 so the
+    intro can be narrated in the same voice as the hero. Without it the intro
+    is silent, which left a dead four seconds at the head of every wrapped
+    episode. The wav is padded and cut to dur so the xfade offsets downstream
+    stay measured off INTRO_DUR rather than off whatever the TTS returned."""
+    cmd = ["ffmpeg", "-y", "-loglevel", "error",
+           "-framerate", str(S.FPS), "-i", os.path.join(frames_dir, "%05d.png")]
+    if audio:
+        cmd += ["-i", audio, "-af", "apad,aresample=48000", "-ac", "2"]
+    else:
+        cmd += ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000"]
+    cmd += ["-t", str(dur), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18",
+            "-c:a", "aac", "-b:a", "128k", mp4]
+    subprocess.run(cmd, check=True)
 
 
 def duration(path):
@@ -126,10 +134,20 @@ def has_audio(path):
     return "audio" in r.stdout
 
 
-def conform(hero, out):
+def conform(hero, out, trim_tail=0.0):
+    """trim_tail cuts SECONDS off the end of the hero before it is joined.
+
+    Added 2026-08-28. Every ink episode renders its OWN delta-and-wordmark
+    outro, and this script appends another one, so a wrapped episode played the
+    identical sign-off animation twice, back to back, for about eight of its
+    forty-eight seconds. Spotted by Cory watching it, not by any gate here.
+    Pass the episode's own outro length and the join has exactly one close."""
     vf = ("scale=1080:1920:force_original_aspect_ratio=decrease,"
           "pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0x0B0B0C,fps=30,setsar=1")
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", hero]
+    cmd = ["ffmpeg", "-y", "-loglevel", "error"]
+    if trim_tail > 0:
+        cmd += ["-t", f"{duration(hero) - trim_tail:.3f}"]
+    cmd += ["-i", hero]
     if not has_audio(hero):
         cmd += ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
                 "-shortest"]
@@ -161,11 +179,15 @@ def main():
     tmp = os.path.join(HERE, ".wrap")
     os.makedirs(tmp, exist_ok=True)
     print(f"  marker {pick+1:02d}  {MARKERS[pick]}")
+    narr = (sys.argv[sys.argv.index("--intro-audio") + 1]
+            if "--intro-audio" in sys.argv else None)
     print("  intro"); encode(render_dir("frames-intro", intro_frame(pick), INTRO_DUR),
-                             f"{tmp}/intro.mp4", INTRO_DUR)
+                             f"{tmp}/intro.mp4", INTRO_DUR, audio=narr)
     print("  outro"); encode(render_dir("frames-outro", outro_frame, OUTRO_DUR),
                              f"{tmp}/outro.mp4", OUTRO_DUR)
-    print("  hero");  conform(hero, f"{tmp}/hero.mp4")
+    trim = (float(sys.argv[sys.argv.index("--trim-tail") + 1])
+            if "--trim-tail" in sys.argv else 0.0)
+    print("  hero");  conform(hero, f"{tmp}/hero.mp4", trim_tail=trim)
     print("  join")
     # crossfade rather than cut. The offsets are measured off the conformed hero
     # rather than assumed: a generator rarely returns the duration it advertises.

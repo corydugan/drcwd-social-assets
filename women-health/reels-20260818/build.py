@@ -69,7 +69,13 @@ LO, HI = x_at(-1.96), x_at(1.96)
 # ---- outro geometry, in lockup-SVG units, measured from the rendered bboxes
 S = 1.56
 DELTA_U = [(32, 38), (9, 80), (55, 80)]
-WM_U    = (77.3, 36.3, 432.3, 59.0)     # x, y, w, h
+# Width changed 432.3 -> 336.3 on 2026-08-28, Cory's call, when the wordmark
+# became "drCWDugan" instead of "Dr. Cory Dugan". These videos carry a female
+# TTS voiceover, and closing on the personal name implied the narrator was him.
+# The number is not arbitrary: wordmark.png is 1009x177, so at h=59.0 the
+# natural width is 59.0 * 1009/177 = 336.3. Get it wrong and the strip stretches.
+# The previous asset is kept beside it as wordmark-dr-cory-dugan.png.
+WM_U    = (77.3, 36.3, 336.3, 59.0)     # x, y, w, h
 CONTENT_W, CONTENT_H = (WM_U[0] + WM_U[2]) - 9, WM_U[3]
 OX = (W - CONTENT_W * S) / 2
 OY = 880
