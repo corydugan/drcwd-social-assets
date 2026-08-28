@@ -1,0 +1,116 @@
+Build a 55 second vertical motion explainer, 1080 x 1920 at 30fps, as a single self-contained animated piece with a beat timeline I can scrub and edit. It is one episode of a series called THE IRON PANEL, and this episode is about TRANSFERRIN SATURATION.
+
+Build it the way a motion piece is built, not as a slideshow: things travel, doors open, quantities fill. Nothing should simply fade in, sit still, and fade out. If a beat has no movement in it, the beat is wrong.
+
+## The single hardest constraint: no silence, and no motion without words
+
+A voiceover runs the entire length of this piece, continuously, from about 0.5 seconds to about 52 seconds. There is never a stretch where the narration has stopped and the animation is still going, and never a stretch where the picture is idle while the narration runs. Every beat carries both.
+
+Write the narration text into the piece as an on-screen line at the TOP of the frame, not the bottom. The words lead and the eye drops into the picture beneath them.
+
+Give me the narration script as a separate plain text block alongside the build, one line per beat, so I can send it to a text to speech engine and have it match the timing exactly.
+
+## Beat structure
+
+Ten named beats. Each is 5.5 seconds. Name them on the timeline exactly as below so I can scrub to any of them.
+
+1. PANEL. The hook, and the whole series context in one beat.
+2. NAME. What transferrin saturation is.
+3. CARRIER. Introduce the protein itself.
+4. SEATS. Reveal that it has two binding sites.
+5. FERRIC. Iron has to change form before it can bind.
+6. FLEET. One carrier becomes many, all in motion.
+7. COUNT. Every binding site laid out, occupied and empty.
+8. SHARE. Saturation read as a proportion.
+9. MEANING. Why it is on a blood test.
+10. SIGNATURE. The brand close.
+
+## What happens in each beat
+
+PANEL. Open on the line "Ever had a blood test for iron and not been told what the markers were?" Then a list writes itself on, numbered 01 to 11: Serum ferritin, Serum iron, Transferrin saturation, Total iron-binding capacity, Transferrin, Haemoglobin, Soluble transferrin receptor, Mean corpuscular volume, Hepcidin, Zinc protoporphyrin, C-reactive protein. A thin accent rectangle then draws itself around row 03, Transferrin saturation, and the other ten dim back to about a quarter opacity. The narration is speaking continuously across this whole beat, starting as the first words appear, so the list is being written while the voice is talking. Do not leave a pause between the question and the list.
+
+NAME. The panel clears. State plainly what transferrin saturation measures: the proportion of the blood's iron carrying sites that currently have iron in them.
+
+CARRIER. A single transferrin molecule enters frame and travels along a vessel. Draw it as a clean, ruled, mechanical object, not a blob, and keep it moving across the whole beat. Label it TRANSFERRIN, THE CARRIER. Say that the liver builds it and that it is what moves iron through the blood.
+
+SEATS. The carrier settles to centre frame and its two binding sites are revealed on it, as two empty rings. Two, exactly two, and the picture must count the way the biochemistry counts.
+
+FERRIC. A loose iron ion approaches the carrier labelled Fe2+, is oxidised as it arrives, and becomes Fe3+ before it drops into one of the two rings and fills it. Show the change of state as a visible moment. This is the beat that earns the detail: iron must be in its ferric form before transferrin can carry it.
+
+FLEET. The one carrier multiplies into a field of carriers, eight or so, all travelling, some with both sites filled, some with one, most with none. They should be moving continuously, not parked.
+
+COUNT. Every binding site in that field lifts out of the carriers and lines up as a single row of cells, occupied ones solid, empty ones outlined. The row assembles by animation, cell by cell.
+
+SHARE. The occupied portion of that row separates from the empty portion, so the proportion reads at a glance. Label it SATURATION, THE SHARE THAT IS TAKEN. Do not print a percentage.
+
+MEANING. Close the argument: a low saturation is one of the two readings a clinician uses to call iron deficiency. State that it reads how full the transport is, not how much iron there is.
+
+SIGNATURE. Everything clears to the field colour. An equilateral triangle draws itself on as an outline, fills solid, then the wordmark drCWDugan writes on beside it, and a thin accent rule draws underneath. Nothing else. This is the only place the brand name appears.
+
+## Visual system, and these are hard constraints
+
+Field colour #0B0B0C on every frame. This is a dark piece and the field is never white and never purple.
+
+Palette, and use only these:
+- field #0B0B0C
+- primary text #FFFFFF
+- secondary text #E4E5E7
+- muted text and labels #C8CACE
+- hairlines and rules #2A2A2D
+- the accent, used for the ONE thing that matters in each beat #D8CFE7
+- the eyebrow and small caps labels #8A6FB8
+
+Purple is an accent and an ink. It is never a background fill and never a large area of colour. Neutrals carry more than ninety percent of every frame.
+
+Typography:
+- display and headlines: DM Serif Display
+- body, labels and small caps: DM Sans
+- any figure, unit or evidence string: IBM Plex Sans
+
+Line art only. Strokes at 4 to 6 pixels. No gradients, no drop shadows, no 3D, no glow, no bevels. Exactly one element per beat may be filled solid, and that element is the point of the beat. Everything else is a hairline.
+
+Keep 35 to 40 percent of the frame as clear field. This is a vertical phone format and it should feel spacious, not packed.
+
+Minimum readable size is 32 pixels on this 1080 wide canvas. Anything smaller is decoration and should be cut rather than shrunk.
+
+## Text layout, and this one has bitten this project before
+
+Do not size any label, callout or box by estimating its width from character count multiplied by a per character constant. That under measures real glyph advance and the longest strings overflow. Let the text lay out its own box, so overflow is structurally impossible regardless of string length. Verify every text box at several time points and confirm nothing extends past its container.
+
+## Voice and copy rules, non negotiable
+
+Australian spelling throughout. Haemoglobin, not hemoglobin.
+
+No em dashes and no en dashes anywhere. Use a comma, parentheses, or a full stop.
+
+The words prove, proven, fact and absolute are banned from every piece of on-screen text.
+
+No exclamation marks. No emoji.
+
+Write micrograms per litre as ug/L if it appears at all, never the micro sign, because uppercase transforms map it to a capital Greek mu and it ships as a thousandfold unit error.
+
+Print no numbers, no prevalences and no thresholds on screen. No percentage figures, no reference ranges, no cut-offs. The proportion is shown as a picture and never written as a number. The only digits allowed are the panel row numbers 01 to 11 in the first beat.
+
+First person singular if the narration ever refers to the author, though it should mostly not.
+
+## This episode must stand completely alone
+
+Someone will meet this video first, having seen none of the others. Nothing in it may assume a previous episode. Do not write "the same carriers", "the fleet" as though it were already introduced, "the store", or "as we saw". Every object is introduced the first time it appears, in this video, in a way that makes sense with no prior context.
+
+## The science, and please keep it exactly this
+
+Transferrin is a protein made in the liver that transports iron through the blood.
+
+Each transferrin molecule binds up to two atoms of ferric iron, Fe3+. Iron must be oxidised from the ferrous form, Fe2+, to the ferric form before transferrin can bind it.
+
+Transferrin saturation is the proportion of the available iron binding sites that are occupied. It is a measure of how full the transport is, not a measure of how much iron the body holds.
+
+A low transferrin saturation is one of the two readings used to diagnose iron deficiency, the other being serum ferritin.
+
+Do not state any threshold, any percentage, or any reference range. Do not claim what a normal value is.
+
+## Deliverables
+
+1. The animated piece, 1080 x 1920, 30fps, about 55 seconds, with the ten named beats editable on a timeline.
+2. The narration script as plain text, one line per beat, with the beat name and its start time, so I can generate a voiceover that matches.
+3. Tell me anywhere you had to invent a fact I did not supply, so I can check it before this goes anywhere near an audience.
