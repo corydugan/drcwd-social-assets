@@ -101,12 +101,16 @@ def frame(t):
     ps=win(t,30.0,31.6)
     if ps>0:
         o=ps
+        # SIGNOFF is the BRAND mark, not the personal name. Changed 2026-08-27,
+        # Cory's call: the voiceover is a female TTS voice, and closing on
+        # "Dr Cory Dugan" implied the narrator was him. The brand mark does not
+        # make that claim. Matches the .brandbar lockup on the concept cards.
         body.append(f'<g opacity="{o:.2f}"><polygon points="392,980 424,1032 360,1032" fill="{PAPER}"/>'
-                    f'<text x="452" y="1032" fill="{PAPER}" font-family="{HEAD}" font-size="58">Dr Cory Dugan</text></g>')
+                    f'<text x="452" y="1032" fill="{PAPER}" font-family="{HEAD}" font-size="58">drCWDugan</text></g>')
         # dim everything else
         s.append(f'<rect width="{W}" height="{H}" fill="{INK}" opacity="{o*0.97:.2f}"/>')
         s.append(f'<g opacity="{o:.2f}"><polygon points="392,980 424,1032 360,1032" fill="{PAPER}"/>'
-                 f'<text x="452" y="1032" fill="{PAPER}" font-family="{HEAD}" font-size="58">Dr Cory Dugan</text></g>')
+                 f'<text x="452" y="1032" fill="{PAPER}" font-family="{HEAD}" font-size="58">drCWDugan</text></g>')
         s.append('</svg>'); return "".join(s[:2]+["<defs>"+"".join(defs)+"</defs>"]+body+s[2:])
     s.append("<defs>"+"".join(defs)+"</defs>")
     s.extend(body); s.append('</svg>')
