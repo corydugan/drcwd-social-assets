@@ -1,0 +1,12 @@
+# The Iron Panel 01, Serum ferritin. Claude Design build, 55.80s silent.
+# Cue times measured by frame-differencing the headline band at 30fps.
+0.15  | Ever had an iron test and not had it explained to you?
+3.45  | Eleven markers, and one question. Am I iron deficient?
+8.05  | This one is serum ferritin. Ferritin is the cage your body keeps iron in, inside its cells.
+14.60 | Iron coming in is either sent off to be used, or it is put into storage.
+20.10 | Only a small amount of ferritin is found in the blood, and that is what the test measures. It reflects the size of the store.
+28.40 | Haemoglobin is different. That is the iron already at work, carrying oxygen.
+34.60 | When iron runs short, the store empties first.
+38.70 | Haemoglobin only falls once the store is gone.
+42.80 | Which is why a full blood count can come back normal in someone who is already iron deficient.
+50.20 | Serum ferritin is the first of these markers to fall.
