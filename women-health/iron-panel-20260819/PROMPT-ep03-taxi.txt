@@ -1,0 +1,73 @@
+Re-cut this piece with a revised script. The runtime stays about 63 seconds, the look stays exactly as it is, and the beat count drops from twelve to eleven.
+
+Two things change in substance.
+
+First, drop the liver entirely. Do not say or show that transferrin is made in the liver. It is a true thing and it is not what this episode is about, and it costs a beat.
+
+Second, the metaphor is now explicitly a TAXI, and it should run through both the words and the picture. Transferrin is a taxi with two seats. Iron is the customer. A taxi carrying no iron is an empty taxi, not an abstract carrier. Draw the carriers so they read as vehicles that pick people up, and let the iron ions behave like passengers boarding and riding.
+
+## The new narration, final. Use these words exactly.
+
+1. Ever had an iron test and not understood it?
+2. Eleven markers. Each answers part of the question.
+3. This is transferrin. It carries iron around the body through the circulation.
+4. Each transferrin has two seats. Two, and never more.
+5. Iron cannot board its taxi as it is. It has to be ferric, not ferrous.
+6. There are a high number of these taxis in the blood, all moving, whether they have iron customers or not.
+7. Most of them are actually empty.
+8. It is this ratio that is called transferrin saturation.
+9. Lift every seat out. Some taken, some free.
+10. A low share, alongside ferritin, calls iron deficiency.
+11. It reads how full the transport is, not how much iron.
+
+## The beat lengths, measured not estimated
+
+I generated each line as speech and timed it. Each beat is its spoken length plus 0.8 seconds of headroom.
+
+1. spoken 3.01s, beat 3.8s
+2. spoken 3.69s, beat 4.5s
+3. spoken 5.65s, beat 6.5s
+4. spoken 4.01s, beat 4.8s
+5. spoken 5.45s, beat 6.3s
+6. spoken 5.93s, beat 6.7s
+7. spoken 2.69s, beat 3.5s
+8. spoken 4.17s, beat 5.0s
+9. spoken 4.73s, beat 5.5s
+10. spoken 4.93s, beat 5.7s
+11. spoken 4.45s, beat 5.3s
+
+That totals 57.5 seconds. Add a signature beat of about 5.5 seconds for the delta, the wordmark drCWDugan and the rule, and the finished piece is about 63 seconds.
+
+## What happens in each beat
+
+1. The hook, over the opening.
+2. The eleven markers write on, numbered 01 to 11, and a thin accent rectangle draws around 03, Transferrin saturation, while the other ten dim back.
+3. A single taxi enters and travels. It is introduced as transferrin here, with no mention of where it is made. It should be moving through a vessel for the whole beat.
+4. The taxi settles and its two seats are revealed as two empty rings. Two, exactly two.
+5. An iron ion approaches the taxi and cannot get in. It is labelled Fe2+. It is then oxidised, visibly changing state, becomes Fe3+, and only then boards and fills a seat. The refusal and the change of state are the whole point of this beat, so give the failed attempt real screen time before the change happens.
+6. The one taxi becomes a field of taxis, all in motion, crossing the frame. Some carry two iron customers, some carry one, most carry none. They should keep moving for the entire beat rather than parking.
+7. Hold on how many are empty. Dim or lift the loaded ones so the emptiness is the thing you see.
+8. Name it. The ratio of occupied seats to all seats is transferrin saturation. Put the label SATURATION on screen here, not earlier.
+9. Every seat lifts out of the taxis and assembles into a single row, occupied ones solid, empty ones outlined, building cell by cell.
+10. The occupied portion separates from the empty portion so the share reads at a glance.
+11. The closing statement, then the signature.
+
+## The thing to get right
+
+Every beat contains motion for its whole length. Never reach the end of a beat's movement and then hold a finished frame while the timeline catches up. There must never be a stretch where the words have stopped and the picture is still going, and never a stretch where the picture is idle while the words run.
+
+## Unchanged constraints, restated so nothing drifts
+
+Field #0B0B0C. Text #FFFFFF, secondary #E4E5E7, muted #C8CACE, hairlines #2A2A2D, accent #D8CFE7, eyebrow #8A6FB8. Purple is ink and accent only, never a background fill.
+
+DM Serif Display for display, DM Sans for body and labels, IBM Plex Sans for any figure or unit. Line art, strokes 4 to 6 pixels, no gradients, no shadows, no glow. One filled element per beat at most.
+
+Minimum readable size 32 pixels on the 1080 wide canvas. Let text lay out its own box rather than estimating width from character count.
+
+Australian spelling. No em dashes or en dashes. No exclamation marks. The words prove, proven, fact and absolute are banned from on-screen text. No numbers, prevalences or thresholds on screen, except the panel row numbers 01 to 11 in the opening beat.
+
+This episode stands completely alone. Nothing may assume another episode was watched.
+
+## Deliverable
+
+The re-cut piece at about 63 seconds, and the narration script back as plain text with each line's start time in seconds, so I can generate the voiceover to land exactly on those cues.

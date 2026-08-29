@@ -1,0 +1,110 @@
+Build a vertical motion explainer, 1080 x 1920 at 30fps, running about 63 seconds, with a beat timeline I can scrub and edit. It is one episode of a series called THE IRON PANEL. This episode is number 01, SERUM FERRITIN.
+
+## First, propose the idea, and tell me what it is
+
+I am not giving you a metaphor for this one. Read the science below and invent the picture yourself.
+
+Open your reply with a single line naming your metaphor, before anything else, so I can judge the idea before we iterate on the execution. Something like "METAPHOR: ______". Then build it.
+
+The one constraint on the idea: it has to make ONE thing obvious, which is that the store empties before the working iron does. Everything else in the episode serves that.
+
+For context on the register, episode 03 in this series treats transferrin as a taxi with two seats and iron as its passengers. You do not have to be in that family, and you should not force it. Ferritin is not a carrier, it is a store, so a transport metaphor may be the wrong shape entirely.
+
+## The science, and please keep it exactly this
+
+Ferritin is the protein your body stores iron in, inside its cells.
+
+A small amount of it leaks into the blood, and that is what a ferritin blood test measures. So the reading is a read on the SIZE OF THE STORE rather than on the iron currently in use.
+
+Haemoglobin is the iron already at work, inside red blood cells, carrying oxygen.
+
+When iron runs short, the store is what empties first. Haemoglobin only falls once the store is gone. That ordering is the whole point of the episode: it is why a full blood count can come back normal in someone who is already iron deficient.
+
+### Two things you must NOT do
+
+Do not say ferritin tells you exactly how much iron is stored. It does not. Ferritin is an acute phase reactant and rises with inflammation, so a normal ferritin in an inflamed person does not settle the question. The word "exactly" is the first thing a haematologist would attack and the episode does not need it.
+
+Do not open the inflammation topic here at all. It has its own episode later in the series. Mentioning it in half a sentence is worse than leaving it out.
+
+Print no threshold, no reference range and no percentage. Do not say what a normal value is.
+
+## The series opening, reused verbatim
+
+Every episode opens the same way and this is fixed. Two beats.
+
+Beat one, on screen and spoken: "Ever had an iron test and not had it explained to you?"
+
+Beat two, on screen, ending in an ellipsis: "I'm sure some of these look familiar in a blood panel, trying to answer the question....." while the eleven markers write themselves on, numbered 01 to 11: Serum ferritin, Serum iron, Transferrin saturation, Total iron-binding capacity, Transferrin, Haemoglobin, Soluble transferrin receptor, Mean corpuscular volume, Hepcidin, Zinc protoporphyrin, C-reactive protein. A thin accent rectangle then draws around row 01, Serum ferritin, and the other ten dim back to about a quarter opacity.
+
+The voiceover completes that ellipsis out loud with "Am I iron deficient?" so do not put those words on screen. The screen trails off, the voice finishes the thought.
+
+The list must be writing itself on WHILE the voice is talking. Do not leave a pause between the question and the list.
+
+## Timing, and this is the instruction that matters most
+
+Time every beat against how long its narration takes to say ALOUD, never against how long it takes to read silently. Speech runs about 2.4 words per second. Take the spoken length of the line and add 0.8 seconds of headroom, and that is the beat.
+
+Three earlier rounds of this series failed on exactly this: beats were sized for reading, so the voiceover overran every one of them and lapped into the next.
+
+Aim for about 100 words of narration in total across the whole piece, which lands at roughly 63 seconds including a closing signature beat.
+
+There must never be a stretch where the narration has stopped and the animation is still running, and never a stretch where the picture is idle while the narration runs. Every beat carries motion for its whole length. If a beat has no movement in it, the beat is wrong. Do not reach the end of a movement and then hold a finished frame while the timeline catches up.
+
+## Narration sits at the TOP of frame
+
+The words lead and the eye drops into the picture beneath them. Not a caption at the foot.
+
+## This episode stands completely alone
+
+Someone will meet this video first, having seen none of the others. Nothing may assume a previous episode. Do not write "the same", "as we saw", "the fleet", or refer to any object as though it were already introduced. Introduce everything the first time it appears.
+
+## The closing beat
+
+Everything clears to the field colour. An equilateral triangle draws on as an outline, fills solid, then the wordmark drCWDugan writes on beside it, and a thin accent rule draws underneath. Nothing else. About 5.5 seconds. This is the only place the brand name appears.
+
+## Visual system, hard constraints
+
+Field colour #0B0B0C on every frame. This is a dark piece and the field is never white and never purple.
+
+Use only these:
+- field #0B0B0C
+- primary text #FFFFFF
+- secondary text #E4E5E7
+- muted text and labels #C8CACE
+- hairlines and rules #2A2A2D
+- the accent, for the ONE thing that matters in each beat #D8CFE7
+- the eyebrow and small caps labels #8A6FB8
+
+Purple is an accent and an ink. Never a background fill, never a large area of colour. Neutrals carry more than ninety percent of every frame.
+
+Typography:
+- display and headlines: DM Serif Display
+- body, labels and small caps: DM Sans
+- any figure, unit or evidence string: IBM Plex Sans
+
+Line art only, strokes 4 to 6 pixels. No gradients, no drop shadows, no 3D, no glow. Exactly one element per beat may be filled solid, and that element is the point of the beat.
+
+Keep 35 to 40 percent of the frame as clear field.
+
+Minimum readable size is 32 pixels on this 1080 wide canvas. Anything smaller should be cut rather than shrunk.
+
+Do not size any label or callout by estimating its width from character count multiplied by a per character constant. That under measures real glyph advance and long strings overflow. Let the text lay out its own box so overflow is structurally impossible.
+
+## Copy rules, non negotiable
+
+Australian spelling throughout. Haemoglobin, not the American spelling.
+
+No em dashes and no en dashes anywhere. Use a comma, parentheses, or a full stop.
+
+The words prove, proven, fact and absolute are banned from every piece of on-screen text.
+
+No exclamation marks. No emoji.
+
+No numbers, prevalences or thresholds on screen, except the panel row numbers 01 to 11 in the opening.
+
+## Deliverables
+
+1. Your metaphor, stated in one line at the very top of your reply.
+2. The animated piece, 1080 x 1920, 30fps, about 63 seconds, with named beats editable on a timeline.
+3. The narration script as plain text, one line per beat, with each line's start time in seconds, so I can generate a voiceover that lands exactly on those cues.
+4. Tell me anywhere you had to invent a fact I did not supply, so I can check it before this goes anywhere near an audience.

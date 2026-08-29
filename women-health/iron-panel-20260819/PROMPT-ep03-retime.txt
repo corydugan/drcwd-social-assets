@@ -1,0 +1,36 @@
+Re-time this piece. The visuals, the copy, the palette and the beat order are all correct and none of them should change. The only problem is duration: the beats are timed to how long the narration takes to READ SILENTLY, and this piece is going to carry a spoken voiceover.
+
+Speech takes roughly twenty to thirty percent longer than silent reading. I generated the voiceover for the narration exactly as written and measured every line against the slot it currently has. Nine of the twelve lines overrun, and the cumulative drift is about eleven seconds across a sixty-one second piece, so the voice ends up lapping over the following beat and never recovers.
+
+Here is the measurement. The first number is how long that line takes to say out loud, the second is the slot it currently has, and the third is the shortfall.
+
+Ever had a blood test for iron and not been told what the markers were? 4.13s spoken, 4.50s slot, fits
+Eleven markers. All holding a different piece of the clinical puzzle to answer the question. 5.69s spoken, 6.76s slot, fits
+Transferrin saturation is the proportion of the blood's iron carrying sites that have iron in them right now. 6.73s spoken, 5.62s slot, short by 1.1s
+This is transferrin. The liver builds it, and it carries iron through the blood. 5.33s spoken, 5.50s slot, fits
+Every transferrin molecule has two binding sites. Two seats for iron, and no more than two. 6.85s spoken, 5.50s slot, short by 1.4s
+Iron cannot board as it is. 2.57s spoken, 2.00s slot, short by 0.6s
+It has to be oxidised, ferrous to ferric, before transferrin can bind it. 6.09s spoken, 3.50s slot, short by 2.6s
+The blood holds a great many carriers at once, all moving. Some loaded, some part loaded, most empty. 8.25s spoken, 5.50s slot, short by 2.8s
+Lift out every binding site and lay them in a row. Some are occupied. Some are still free. 7.41s spoken, 5.50s slot, short by 1.9s
+Saturation is that share, the seats with iron in them set against all the seats there are. 6.37s spoken, 5.50s slot, short by 0.9s
+A low saturation, alongside serum ferritin, is one of the two readings used to call iron deficiency. 7.41s spoken, 3.12s slot, short by 4.3s
+It reads how full the transport is, not how much iron the body holds. 5.69s spoken, 7.88s slot, fits
+
+## What to change
+
+Give every line at least its spoken duration plus one second of headroom, so the voice finishes and the picture has a beat to breathe before the next line arrives. Using the numbers above that means these minimum slot lengths, in order: 5.2, 6.8, 7.8, 6.4, 7.9, 3.6, 7.1, 9.3, 8.5, 7.4, 8.5, 6.7. That totals about eighty-five seconds of narration, so the finished piece runs roughly ninety seconds including the signature beat.
+
+Stretch the ANIMATION inside each beat to fill its new length. Do not simply hold a finished frame for longer while the voice catches up. If a beat gets three more seconds, the movement in it should take three more seconds: the carrier travels further, the ions arrive more slowly, the row of binding sites assembles at a gentler rate. A held still frame with a voice over it is the exact failure this whole rebuild is meant to remove.
+
+Keep the crossfades and the reveal timings proportional to their new beats rather than fixed, so nothing snaps.
+
+## The rule going forward, for every episode in this series
+
+Time every beat against the SPOKEN length of its narration, never the read length. A useful working figure is one hundred and forty words per minute, which is about 2.4 words per second, then add one second of headroom per beat. A beat should never be shorter than its own line takes to say aloud.
+
+There must never be a stretch where the narration has stopped and the animation is still running, and never a stretch where the picture is idle while the narration runs. Both of those are failures. Every beat carries motion and words together, from the first second to the last.
+
+## Deliverable
+
+The same piece, same look, same words, re-timed so a spoken voiceover fits without any line lapping into the next. Give me back the final narration script as plain text with each line's start time in seconds, measured from the re-timed piece, so I can generate the voiceover to land exactly on those cues.

@@ -1,0 +1,61 @@
+Rebuild this piece with a much shorter script and a native runtime of about 63 seconds. Do not speed anything up: the animation should be genuinely paced at 63 seconds, not a longer piece played fast.
+
+The problem with the current version is not the animation, it is the word count. The narration runs about 200 words, which takes roughly 85 seconds to say aloud, which is why the piece had to grow to 92 seconds. Cut to 100 words and the whole thing lands at about a minute with the motion still breathing.
+
+Everything else stays exactly as it is: the look, the palette, the beat order, the diagram, the Fe2+ to Fe3+ oxidation moment, the row of binding sites, the signature. Only the words change, and the beats re-time to fit them.
+
+## The new narration, final. Use these words exactly.
+
+1. Ever had an iron test and not understood it?
+2. Eleven markers. Each answers part of the question.
+3. Transferrin saturation: how many iron carrying sites are full.
+4. This is transferrin. Your liver builds it to carry iron.
+5. Two binding sites. Two seats, never more.
+6. Iron cannot board as it is.
+7. It must be oxidised, ferrous to ferric, first.
+8. The blood holds many carriers, all moving. Most seats empty.
+9. Lift every seat out. Some taken, some free.
+10. Saturation is the share that is taken.
+11. A low share, with ferritin, calls iron deficiency.
+12. It reads how full the transport is, not how much iron.
+
+## The beat lengths, measured not estimated
+
+I generated each line as speech and timed it. Give each beat its spoken length plus 0.8 seconds of headroom, which gives these durations in order:
+
+1. spoken 2.97s, beat 3.8s
+2. spoken 3.65s, beat 4.5s
+3. spoken 4.81s, beat 5.6s
+4. spoken 4.73s, beat 5.5s
+5. spoken 3.93s, beat 4.7s
+6. spoken 2.69s, beat 3.5s
+7. spoken 4.13s, beat 4.9s
+8. spoken 5.33s, beat 6.1s
+9. spoken 4.61s, beat 5.4s
+10. spoken 3.17s, beat 4.0s
+11. spoken 4.17s, beat 5.0s
+12. spoken 4.01s, beat 4.8s
+
+That totals 57.8 seconds of narration. Add a signature beat of about 5.5 seconds for the delta, the wordmark drCWDugan and the rule, and the finished piece is about 63 seconds.
+
+## The thing to get right
+
+Every beat must contain motion for its whole length. Do not reach the end of a beat's movement and then hold a finished frame while the timeline catches up. A shorter script means each beat has less time, so the movement inside it should be correspondingly quicker and tighter, not the same movement followed by a pause. If a beat is 3.8 seconds, something should be moving for all 3.8 of them.
+
+There must never be a stretch where the words have stopped and the picture is still going, and never a stretch where the picture is idle while the words run.
+
+## Unchanged constraints, restated so nothing drifts
+
+Field #0B0B0C. Text #FFFFFF, secondary #E4E5E7, muted #C8CACE, hairlines #2A2A2D, accent #D8CFE7, eyebrow #8A6FB8. Purple is ink and accent only, never a background fill.
+
+DM Serif Display for display, DM Sans for body and labels, IBM Plex Sans for any figure or unit. Line art, strokes 4 to 6 pixels, no gradients, no shadows, no glow. One filled element per beat at most.
+
+Minimum readable size 32 pixels on the 1080 wide canvas. Let text lay out its own box rather than estimating width from character count.
+
+Australian spelling. No em dashes or en dashes. No exclamation marks. The words prove, proven, fact and absolute are banned from on-screen text. No numbers, prevalences or thresholds on screen, except the panel row numbers 01 to 11 in the opening beat.
+
+This episode stands completely alone. Nothing may assume another episode was watched.
+
+## Deliverable
+
+The re-cut piece at about 63 seconds, and the narration script back as plain text with each line's start time in seconds, so I can generate the voiceover to land exactly on those cues.

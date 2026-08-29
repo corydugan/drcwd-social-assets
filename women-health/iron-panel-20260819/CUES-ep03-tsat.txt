@@ -1,0 +1,14 @@
+# The Iron Panel, Transferrin Saturation, v6 FINAL. Cue times measured by
+# frame-differencing the narration band at 8fps. The line at 39.00 has no
+# on-screen text: it covers the big TRANSFERRIN SATURATION title card, which
+# would otherwise run 9.25 seconds in silence.
+0.12  | Ever had an iron test and not had it explained to you?
+4.12  | I'm sure some of these look familiar in a blood panel, trying to answer the question. Am I iron deficient?
+10.88 | This is transferrin. It carries iron around the body through the circulation.
+16.50 | Each transferrin has two seats.
+19.50 | Iron cannot board its taxi as it is. It has to be in its ferric form, rather than its ferrous form.
+27.38 | There are a high number of these taxis in the blood, all moving, whether they have iron passengers or not.
+34.38 | Most of them are actually empty.
+39.00 | It is this ratio, the seats taken against all the seats there are, that is called transferrin saturation.
+47.75 | A low saturation, alongside a low ferritin, is a strong indicator of iron deficiency.
+56.25 | It reads how full the transport is, not how much iron.
