@@ -1,0 +1,128 @@
+Build a vertical motion explainer, 1080 x 1920 at 30fps, running about 63 seconds, with a beat timeline I can scrub and edit. It is one episode of a series called THE IRON PANEL. This episode covers TOTAL IRON-BINDING CAPACITY, which is row 04 of the eleven on the panel.
+
+Do not put an episode number anywhere in the piece or in your reply. The panel row number and the publication order are different things and they have already been confused once. The row number belongs in the opening list and nowhere else.
+
+## First, propose the idea, and tell me what it is
+
+Open your reply with a single line naming your metaphor, before anything else, so I can judge the idea before we iterate on the execution. Something like "METAPHOR: ______". Then build it.
+
+The one constraint on the idea: it has to make ONE thing obvious, and it is the counter-intuitive one in the whole panel: capacity is the room for iron, not the iron. When iron runs short the liver builds MORE carriers, so the capacity goes UP while the iron on board does not. The room grows, the occupied places do not move, and the share visibly falls.
+
+An earlier hand-built cut of this episode used this picture: a row of tick marks that grows longer while the number of filled marks stays exactly where it was, under the line MORE SEATS. THE SAME IRON. You may take it, better it, or replace it entirely. It is prior art and not an instruction.
+
+For context on the register, the transferrin saturation episode treats transferrin as a taxi with two seats and iron as its passengers, and the serum ferritin episode treats ferritin as a cage the body keeps iron in. You do not have to be in that family, and you should not force it.
+
+## The science, and please keep it exactly this
+
+Total iron-binding capacity measures how much iron your blood could carry if every carrier were full.
+
+It is a count of the room, not a count of the iron.
+
+Iron travels bound to a carrier protein called transferrin, which your liver builds, and each carrier has two places an iron atom can sit. Capacity counts every one of those places, whether or not it is used.
+
+Run short of iron and the liver builds more carriers. So the room goes up while the iron on board does not, and the capacity rises as the iron runs out.
+
+### Two things you must NOT do
+
+Do not let a rising capacity read as an improvement. A number going up looks like good news to anyone who has not been told otherwise, and the whole reason this episode exists is that this one goes up when things are getting worse. Make the direction unmissable.
+
+Do not attach a figure to the growth. The picture shows a direction. How far capacity actually moves depends on the assay and on how far the deficiency has run, so any number on screen would be an invention.
+
+Print no threshold, no reference range and no percentage. Do not say what a normal value is.
+
+## The series opening, reused verbatim
+
+Every episode opens the same way and this is fixed. Two beats.
+
+Beat one, on screen and spoken: "Ever had an iron test and not had it explained to you?"
+
+Beat two, on screen, ending in an ellipsis: "I'm sure some of these look familiar in a blood panel, trying to answer the question....." while the eleven markers write themselves on, numbered 01 to 11: Serum ferritin, Serum iron, Transferrin saturation, Total iron-binding capacity, Transferrin, Haemoglobin, Soluble transferrin receptor, Mean corpuscular volume, Hepcidin, Zinc protoporphyrin, C-reactive protein. A thin accent rectangle then draws around row 04, Total iron-binding capacity, and the other ten dim back to about a quarter opacity.
+
+The voiceover completes that ellipsis out loud with "Am I iron deficient?" so do not put those words on screen. The screen trails off, the voice finishes the thought.
+
+The list must be writing itself on WHILE the voice is talking. Do not leave a pause between the question and the list.
+
+## Timing, and this is the instruction that matters most
+
+Time every beat against how long its narration takes to say ALOUD, never against how long it takes to read silently. Speech runs about 2.4 words per second. Take the spoken length of the line and add 0.8 seconds of headroom, and that is the beat.
+
+Three earlier rounds of this series failed on exactly this: beats were sized for reading, so the voiceover overran every one of them and lapped into the next.
+
+Aim for about 100 words of narration in total across the whole piece, which lands at roughly 63 seconds including a closing signature beat. Do not go past 110 words. A rebuild of episode 03 ran to about 200 words, which takes roughly 85 seconds to say aloud, and the piece had to be stretched to 92 seconds to hold it. Cut the words, do not stretch the picture.
+
+Pace the animation genuinely at 63 seconds. Do not build a longer piece and play it fast.
+
+There must never be a stretch where the narration has stopped and the animation is still running, and never a stretch where the picture is idle while the narration runs. Every beat carries motion for its whole length. If a beat has no movement in it, the beat is wrong. Do not reach the end of a movement and then hold a finished frame while the timeline catches up.
+
+An audit of the hand-built series measured an average of 19.0 seconds of silence inside a 45 second video, which is 42 per cent of it, made of a fixed gap after the intro hook and a long tail where the voice had finished and the animation had not. That is the failure this section exists to stop.
+
+Build it the way a motion piece is built, not as a slideshow: things travel, doors open, quantities fill. Nothing should simply fade in, sit still, and fade out.
+
+## Narration sits at the TOP of frame
+
+The words lead and the eye drops into the picture beneath them. Not a caption at the foot.
+
+## This episode stands completely alone
+
+Someone will meet this video first, having seen none of the others. Nothing may assume a previous episode. Do not write "the same", "as we saw", "the fleet", "the store", "these carriers", or refer to any object as though it were already introduced. Introduce everything the first time it appears, in this video, in a way that makes sense with no prior context.
+
+Five of eleven episodes failed an audit on exactly this, so it is checked every time.
+
+## The closing beat
+
+Everything clears to the field colour. An equilateral triangle draws on as an outline, fills solid, then the wordmark drCWDugan writes on beside it, and a thin accent rule draws underneath. Nothing else. About 5.5 seconds. This is the only place the brand name appears.
+
+## Visual system, hard constraints
+
+Field colour #0B0B0C on every frame. This is a dark piece and the field is never white and never purple.
+
+Use only these:
+- field #0B0B0C
+- primary text #FFFFFF
+- secondary text #E4E5E7
+- muted text and labels #C8CACE
+- hairlines and rules #2A2A2D
+- the accent, for the ONE thing that matters in each beat #D8CFE7
+- the eyebrow and small caps labels #8A6FB8
+
+Purple is an accent and an ink. Never a background fill, never a large area of colour. Neutrals carry more than ninety percent of every frame.
+
+Typography:
+- display and headlines: DM Serif Display
+- body, labels and small caps: DM Sans
+- any figure, unit or evidence string: IBM Plex Sans
+
+Line art only, strokes 4 to 6 pixels. No gradients, no drop shadows, no 3D, no glow, no bevels. Exactly one element per beat may be filled solid, and that element is the point of the beat. Everything else is a hairline.
+
+Organs and cells are drawn loose and organic. Machinery, carriers and containers are drawn ruled and mechanical. That contrast is deliberate and it carries meaning.
+
+Keep 35 to 40 percent of the frame as clear field. This is a vertical phone format and it should feel spacious, not packed.
+
+Minimum readable size is 32 pixels on this 1080 wide canvas. Anything smaller is decoration and should be cut rather than shrunk.
+
+## Text layout, and this one has bitten this project before
+
+Do not size any label, callout or box by estimating its width from character count multiplied by a per character constant. That under measures real glyph advance and long strings overflow. Let the text lay out its own box so overflow is structurally impossible regardless of string length. Verify every text box at several time points and confirm nothing extends past its container.
+
+## Copy rules, non negotiable
+
+Australian spelling throughout. Haemoglobin, not the American spelling.
+
+No em dashes and no en dashes anywhere. Use a comma, parentheses, or a full stop.
+
+The words prove, proven, fact and absolute are banned from every piece of on-screen text and from the narration.
+
+No exclamation marks. No emoji.
+
+Write micrograms per litre as ug/L if it appears at all, never the micro sign, because uppercase transforms map it to a capital Greek mu and it ships as a thousandfold unit error.
+
+First person singular if the narration ever refers to the author, though it should mostly not.
+
+Print no numbers, no prevalences and no thresholds on screen. The only digits allowed are the panel row numbers 01 to 11 in the opening.
+
+## Deliverables
+
+1. Your metaphor, stated in one line at the very top of your reply.
+2. The animated piece, 1080 x 1920, 30fps, about 63 seconds, with named beats editable on a timeline.
+3. The narration script as plain text, one line per beat, with the beat name and its start time in seconds, so I can generate a voiceover that lands exactly on those cues.
+4. Tell me anywhere you had to invent a fact I did not supply, so I can check it before this goes anywhere near an audience.
