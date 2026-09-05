@@ -6,7 +6,7 @@ Do not put an episode number anywhere in the piece or in your reply. The panel r
 
 Open your reply with a single line naming your metaphor, before anything else, so I can judge the idea before we iterate on the execution. Something like "METAPHOR: ______". Then build it.
 
-The one constraint on the idea: it has to make ONE thing obvious, which is that this reading changes LATE. A red cell already in circulation does not shrink. Only newly built ones come out smaller, and a red cell lives for months, so a low reading says the shortage has been running a long time.
+The one constraint on the idea: it has to make ONE thing obvious, which is that this reading changes LATE. Iron deficiency does not shrink a red cell that is already in circulation. Only newly built ones come out smaller, and a red cell lives for months, so a low reading says the shortage has been running a long time.
 
 An earlier hand-built cut of this episode used this picture: a row of cells at full size above a row of smaller, paler ones, each row measured by a bracket rather than by a number, closing on SMALL CELLS MEAN IT HAS BEEN GOING ON A LONG TIME. You may take it, better it, or replace it entirely. It is prior art and not an instruction.
 
@@ -20,13 +20,13 @@ Every red cell is built to a size, and iron is one of the things it is built fro
 
 That is all a low reading is: cells built short.
 
-A red cell already in circulation does not shrink. Only newly built ones are smaller, and a red cell lives for months, so this reading moves last of all.
+Iron deficiency does not shrink a red cell that is already in circulation. Only newly built ones are smaller, and a red cell lives for months, so this reading moves last of all.
 
 ### Two things you must NOT do
 
 Do not say that a low reading means iron deficiency. Small red cells have several causes, and the inherited haemoglobin conditions are the ones a haematologist would name first. This episode is about WHEN the reading moves and not about what it diagnoses, so keep it there.
 
-Do not draw or imply that existing cells shrink. They do not, and the whole timing argument collapses if the picture says they do. The size difference has to appear as newly built cells arriving smaller.
+Do not draw or imply that iron deficiency shrinks a cell already in circulation. It does not, and the whole timing argument collapses if the picture says it does. The size difference has to appear as newly built cells arriving smaller.
 
 Print no threshold, no reference range and no percentage. Do not say what a normal value is.
 

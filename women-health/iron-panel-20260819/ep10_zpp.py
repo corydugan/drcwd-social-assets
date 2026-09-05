@@ -8,6 +8,18 @@ is the measurement.
 
 Zinc being inserted into protoporphyrin IX in place of iron when iron supply
 falls short at the final step of haem synthesis is the definition Cory supplied.
+It now has a primary source, added 2026-09-05 by the science gate: Labbe, Vreman
+and Stevenson, Clin Chem 1999;45(12):2060-72, PMID 10585337, which states that
+zinc becomes an alternative metal substrate for ferrochelatase during iron
+insufficiency.
+
+LEAD ALSO RAISES ZPP, and the mechanism is NOT what a Claude Design prompt first
+said on 2026-09-05. Lead does not meaningfully inhibit ferrochelatase: Fujita
+2002, Tohoku J Exp Med, PMID 12498316, measured the inhibition of purified
+ferrochelatase by lead as essentially nil even under pathological conditions, and
+found the real effect on iron-reducing activity. So lead starves the final step of
+its iron substrate, which is the SAME mechanism as iron deficiency rather than a
+different one. Cadmium is the direct enzyme inhibitor, not lead.
 
 Iron is drawn in grape and zinc in white. Two greys would have been true to the
 palette and useless on screen, and the whole beat is that the viewer sees the

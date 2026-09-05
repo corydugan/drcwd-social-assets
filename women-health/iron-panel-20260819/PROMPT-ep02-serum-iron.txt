@@ -6,7 +6,7 @@ Do not put an episode number anywhere in the piece or in your reply. The panel r
 
 Open your reply with a single line naming your metaphor, before anything else, so I can judge the idea before we iterate on the execution. Something like "METAPHOR: ______". Then build it.
 
-The one constraint on the idea: it has to make ONE thing obvious, which is that serum iron counts the iron in transit at this moment, and that it moves with the last meal and across the day, so on its own it settles nothing. Everything else in the episode serves that.
+The one constraint on the idea: it has to make ONE thing obvious, which is that serum iron counts the iron in transit at this moment, and that it moves with the last meal and from hour to hour, so on its own it settles nothing. Everything else in the episode serves that.
 
 An earlier hand-built cut of this episode used this picture: a fleet of carriers on a road, with the occupied seats lit and the empty ones left as outlines, under the line SERUM IRON EQUALS THE SEATS THAT ARE TAKEN. You may take it, better it, or replace it entirely. It is prior art and not an instruction.
 
@@ -20,7 +20,7 @@ It does not drift loose in the blood. It travels bound to a carrier protein call
 
 So serum iron is a count of the places that are occupied, right now.
 
-It rises after a meal and drifts across the day. It is a snapshot of the traffic, not a measure of the supply.
+It rises after a meal and moves about from hour to hour. It is a snapshot of the traffic, not a measure of the supply.
 
 ### Two things you must NOT do
 

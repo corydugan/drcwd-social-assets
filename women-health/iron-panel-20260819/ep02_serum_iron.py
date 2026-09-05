@@ -9,9 +9,19 @@ That last part is the reason this episode exists rather than being folded into
 saturation. Auerbach, DeLoughery and Tirnauer, JAMA 2025;333(20):1813-1823, PMID
 40159291, gives the diagnosis to ferritin and to transferrin saturation. Serum
 iron is not the test, it is one of the two numbers saturation is built from.
-Circadian movement in plasma iron: Cao et al, Biol Trace Elem Res 2012, PMID
-22198869, and Casale et al, Age Ageing 1981, PMID 7246335. Both checked through
-pubmed.py.
+THE POSTPRANDIAL RISE: Nguyen et al, Clin Biochem 2017, PMID 28947322, n=276,307,
+which reports iron needing roughly five hours after a meal to return to baseline.
+Added 2026-09-05 by the science gate, because the two PMIDs below were attached to
+a claim they do not cover.
+
+WITHIN-DAY MOVEMENT: Cao et al, Biol Trace Elem Res 2012, PMID 22198869, and
+Casale et al, Age Ageing 1981, PMID 7246335. Both checked through pubmed.py, and
+both are thinner than this docstring used to imply: Cao is 19 healthy men and
+Casale is 30 aged arteriosclerotic patients, neither being women of reproductive
+age. Dale 2002, PMID 12090432, found NO consistent diurnal pattern in 20 healthy
+adults. So the narration says the reading moves from hour to hour, which every one
+of these supports, rather than that it drifts across the day, which would assert a
+systematic circadian pattern that is disputed.
 
 THE FLEET is defined in bio.py, not here. Episodes 02 to 05 draw the same eight
 carriers with the same five taken seats, and light a different part each time.
