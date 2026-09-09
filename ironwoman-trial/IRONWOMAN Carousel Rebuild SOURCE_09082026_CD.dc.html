@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="da1ef6bb-36b6-4094-bd5d-0454b3968eae"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>/* @font-face: local OFL copies of the three brand faces, pinned so a rendered
+   asset does not depend on a network fetch. Sources: uploads/ supplied with the
+   brand kit (DM Serif Display, DM Sans 400/500/700, IBM Plex Sans variable).
+   IBM Plex Sans is the FIGURES face and is not optional: DM Sans carries no
+   tnum table, so tabular-nums on it is a silent no-op. */
+@font-face{font-family:'DM Serif Display';src:url("4544e7e8-1ad3-4f90-9b58-bead353f9368") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("8ecf83cd-5306-4d45-8f35-fc662768cc05") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("2a98b200-3177-4e01-8178-2b8ebbbbd43b") format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("67f1518d-4604-4d0b-b544-d08adca5639a") format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url("810c8d16-d1b6-475a-805b-1721421bf891") format('truetype-variations');font-weight:100 700;font-style:normal;font-display:swap}
+/* IBM Plex Mono is the EVIDENCE voice for anything rendered to a file
+   (--font-mono-asset). Pinned rather than left to a system stack, because the
+   same HTML otherwise rasterises differently on macOS, Windows and Linux,
+   which is drift by construction. The web token --font-mono stays ui-monospace. */
+@font-face{font-family:'IBM Plex Mono';src:url("3961e97b-8d45-4cb1-b5e6-ea0d256d942e") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url("571621f2-40f3-45a3-bdfe-e953cb55c6f7") format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url("8b5a184c-73f3-44f5-a1c8-bc2ebe87883e") format('truetype');font-weight:700;font-style:normal;font-display:swap}
+</style>
+<style>/* COLOUR, base palette. Values copied verbatim from
+   drcwd-design-system/colors_and_type.css (v3 "Authority").
+   Rule 1: grape is accent and ink only, never a page fill. Neutrals carry
+   over 90% of every layout. */
+:root{
+  /* Brand grapes */
+  --grape-900:#1b112e;   /* deepest, dense accents only */
+  --grape-800:#352051;   /* PRIMARY grape: links, numerals, key marks */
+  --grape-700:#4a2f70;   /* secondary grape: hovers, mid-strength fills */
+  --grape-600:#6b4f9e;   /* tertiary: illustration, chart secondary */
+  --grape-500:#8a6fb8;   /* soft grape: chart/data tertiary, ink eyebrow */
+  --grape-200:#d8cfe7;   /* data-baseline rule, ink accent */
+  --grape-100:#ece8f3;   /* whisper: chart fills, soft backgrounds */
+  --grape-050:#f6f4fa;   /* barely-there tint */
+
+  /* Neutrals, the workhorses */
+  --ink-max:#0B0B0C;     /* the INK SURFACE field, and stat displays on paper */
+  --ink-1000:#1C1C1E;    /* body text, strong emphasis */
+  --ink-900:#2A2A2D;     /* near-body */
+  --ink-700:#4A4A4F;     /* secondary text */
+  --ink-500:#6E6F75;     /* muted, meta, captions */
+  --ink-400:#9CA0A6;     /* placeholder, disabled */
+  --ink-300:#C8CACE;     /* hairlines (strong) */
+  --ink-200:#E4E5E7;     /* hairlines (default) */
+  --ink-100:#EFEFEF;     /* dividers, wash */
+  --ink-050:#F7F7F6;     /* off-white surface */
+  --paper:#FFFFFF;       /* the PAPER SURFACE field */
+
+  /* Status, data viz and form states only */
+  --status-up:#4a2f70;
+  --status-down:#B5524A;   /* desaturated terracotta */
+  --status-warn:#B58A3A;   /* desaturated mustard */
+
+  /* DATA-VIZ RAMP: brand-inherited, no rainbow. Sequential light to dark. */
+  --dv-seq-1:var(--grape-100);
+  --dv-seq-2:var(--grape-500);
+  --dv-seq-3:var(--grape-600);
+  --dv-seq-4:var(--grape-800);
+  /* Categorical series, max 5. Discipline over variety. */
+  --dv-cat-1:var(--grape-800);
+  --dv-cat-2:var(--grape-500);
+  --dv-cat-3:var(--ink-500);
+  --dv-cat-4:var(--status-warn);
+  --dv-cat-5:var(--status-down);
+}
+</style>
+<style>/* SURFACES. Two PEER surfaces, not a light mode and a dark mode.
+   paper is the default workhorse, ink is a full peer used when the message
+   wants weight rather than clinical calm. Set the surface on the root:
+       <div class="slide">                  paper
+       <div class="slide" data-surface="ink">
+   A component never hard-codes a colour and never reads a raw palette token.
+   It reads --surface-*. */
+:root{
+  --surface:var(--paper);                    /* the field */
+  --surface-fg:var(--ink-1000);              /* headline, primary text */
+  --surface-fg-strong:var(--ink-max);        /* stat displays, the hero number */
+  --surface-fg-muted:var(--ink-700);         /* labels, body, citations */
+  --surface-fg-subtle:var(--ink-500);        /* micro-caps, meta */
+  --surface-rule:var(--ink-200);             /* hairline dividers */
+  --surface-eyebrow:var(--grape-700);        /* tracked micro-caps kicker */
+  --surface-stroke:var(--grape-600);         /* load-bearing line art */
+  --surface-accent:var(--grape-800);         /* TYPE colour: eyebrows, links, tags */
+  --surface-on-accent:var(--paper);
+  --surface-logo:var(--grape-800);           /* the lockup reads this, never --surface-fg */
+  --surface-track:var(--ink-100);            /* bar-chart 0 to 100 track */
+  --surface-baseline:var(--grape-200);       /* chart baseline, axis rule */
+  --surface-veil:rgba(255,255,255,.9);       /* sticky nav over content */
+  /* FILL vs ACCENT. accent is a TYPE colour, fill is a BLOCK colour. On paper
+     both are grape-800 and the split is invisible. On ink they must diverge. */
+  --surface-fill:var(--grape-800);
+  --surface-fill-edge:var(--grape-900);
+  --surface-on-fill:var(--paper);
+  --surface-footer:var(--ink-1000);
+
+  /* SEMANTIC ALIASES. These alias the surface layer, so every rule that reads
+     --color-* flips with the surface with no rule rewritten. */
+  --color-bg:var(--surface);
+  --color-bg-soft:var(--ink-050);
+  --color-bg-accent:var(--grape-050);        /* rare, section dividers only */
+  --color-fg:var(--surface-fg);
+  --color-fg-strong:var(--surface-fg-strong);
+  --color-fg-muted:var(--surface-fg-muted);
+  --color-fg-subtle:var(--surface-fg-subtle);
+  --color-fg-faint:var(--ink-400);
+  --color-fg-on-grape:var(--surface-on-accent);
+  --color-accent:var(--surface-accent);
+  --color-accent-hover:var(--grape-700);
+  --color-accent-soft:var(--grape-600);
+  --color-border:var(--surface-rule);
+  --color-border-strong:var(--ink-300);
+  --color-rule:var(--surface-rule);
+  --color-data-baseline:var(--surface-baseline);
+  --color-link:var(--surface-accent);
+  --color-link-hover:var(--grape-700);
+}
+
+/* Ink surface. Contrast against #0B0B0C, measured: fg 19.67:1 · fg-muted
+   15.61:1 · fg-subtle 11.99:1 · stroke 15.61:1 · accent 13.12:1.
+   The primary grape #352051 is a PAPER colour: it is 1.39:1 as text here, so
+   it survives only as a FILL with white on it (14.22:1). */
+[data-surface="ink"]{
+  --surface:var(--ink-max);
+  --surface-fg:var(--paper);
+  --surface-fg-strong:var(--paper);
+  --surface-fg-muted:var(--ink-200);
+  --surface-fg-subtle:var(--ink-300);
+  --surface-rule:var(--ink-900);
+  --surface-eyebrow:var(--grape-500);
+  --surface-stroke:var(--ink-200);
+  --surface-accent:var(--grape-200);        /* type only. grape-500 is the rare colour, spent by hand */
+  --surface-on-accent:var(--ink-max);
+  --surface-logo:var(--paper);
+  --surface-track:var(--ink-900);
+  --surface-veil:rgba(11,11,12,.9);
+  --surface-fill:var(--grape-800);
+  --surface-fill-edge:var(--grape-600);     /* 3.04:1, so the block has a visible boundary */
+  --surface-on-fill:var(--paper);
+  --surface-footer:var(--ink-900);          /* on ink the footer lifts, not darkens */
+  --surface-baseline:var(--grape-500);
+}
+</style>
+<style>/* TYPE. DM Serif Display for display and headlines. DM Sans for everything
+   else. IBM Plex Sans for every figure, because DM Sans has no tnum table:
+   its digit 1 sits at 0.456 (Regular) to 0.517 (Bold) the width of its 0, so
+   any column of numbers set in it fails to line up. */
+:root{
+  --font-serif:'DM Serif Display','Instrument Serif',Georgia,'Times New Roman',serif;
+  --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --font-figures:'IBM Plex Sans','IBM Plex Mono',ui-monospace,monospace;
+  --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;      /* web */
+  --font-mono-asset:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace; /* rendered assets */
+
+  /* Scale: editorial and generous. Serif display, sans body and UI. */
+  --fs-display-xl:clamp(3.25rem,5.5vw,5.25rem); /* @kind font */ /* 52 to 84px, hero */
+  --fs-display-lg:clamp(2.5rem,4vw,3.75rem); /* @kind font */ /* 40 to 60px, section opener */
+  --fs-display-md:clamp(2rem,3vw,2.75rem); /* @kind font */ /* 32 to 44px */
+  --fs-display-sm:clamp(1.625rem,2vw,2rem); /* @kind font */ /* 26 to 32px */
+  --fs-stat:clamp(2.5rem,4vw,3.75rem); /* @kind font */ /* tabular stat display */
+  --fs-heading-lg:1.5rem; /* @kind font */ /* 24px */
+  --fs-heading-md:1.25rem; /* @kind font */ /* 20px */
+  --fs-heading-sm:1.0625rem; /* @kind font */ /* 17px */
+  --fs-body-lg:1.125rem; /* @kind font */ /* 18px, lead */
+  --fs-body:1rem; /* @kind font */ /* 16px */
+  --fs-body-sm:0.9375rem; /* @kind font */ /* 15px */
+  --fs-meta:0.8125rem; /* @kind font */ /* 13px, eyebrow, caption */
+  --fs-micro:0.6875rem; /* @kind font */ /* 11px, tags, method labels */
+
+  --lh-display:1.05; /* @kind font */
+  --lh-heading:1.2; /* @kind font */
+  --lh-body:1.6; /* @kind font */
+  --lh-tight:1.3; /* @kind font */
+  --tracking-display:-0.02em; /* @kind font */ /* tighten the serif for headlines, never positive */
+  --tracking-body:0; /* @kind font */
+  --tracking-eyebrow:0.14em; /* @kind font */
+  --tracking-tag:0.08em; /* @kind font */
+  --tracking-method:0.18em; /* @kind font */
+  --fw-light:300; /* @kind font */
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+}
+</style>
+<style>/* SPACING, 4px base. RADII minimal: editorial cards are squared, soft chrome
+   only on interactive elements and data tiles. Cards lean on borders, not
+   shadow. */
+:root{
+  --space-0:0; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  --space-16:64px; --space-20:80px; --space-24:96px; --space-32:128px; --space-40:160px;
+
+  --section-y:clamp(72px,9vw,144px); /* @kind spacing */
+  --section-y-tight:clamp(48px,6vw,80px); /* @kind spacing */
+
+  --container-narrow:760px; /* @kind spacing */   /* prose */
+  --container:1120px; /* @kind spacing */         /* default */
+  --container-wide:1280px; /* @kind spacing */
+  --gutter:clamp(20px,4vw,48px); /* @kind spacing */
+
+  --radius-0:0; --radius-xs:2px; --radius-sm:4px; --radius-md:8px;
+  --radius-lg:12px; --radius-xl:16px; --radius-pill:999px;
+
+  --bw-hair:1px; /* @kind spacing */
+  --bw-rule:1px; /* @kind spacing */
+  --bw-strong:2px; /* @kind spacing */
+
+  --shadow-0:none;
+  --shadow-xs:0 1px 2px rgba(28,28,30,.04);
+  --shadow-sm:0 2px 8px rgba(28,28,30,.05),0 1px 2px rgba(28,28,30,.04);
+  --shadow-md:0 8px 24px rgba(28,28,30,.06),0 2px 6px rgba(28,28,30,.04);
+  --shadow-lg:0 24px 48px rgba(28,28,30,.08),0 4px 10px rgba(28,28,30,.04);
+}
+</style>
+<style>/* MOTION. Restrained: fades and short travel, no bounce, no scale-up.
+   Hover changes colour or border, never size. */
+:root{
+  --ease-out:cubic-bezier(0.22,1,0.36,1); /* @kind other */
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1); /* @kind other */
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --dur-fast:120ms; /* @kind other */
+  --dur-base:200ms; /* @kind other */
+  --dur-slow:320ms; /* @kind other */
+  --dur-slower:600ms; /* @kind other */
+  --z-base:1; /* @kind other */
+  --z-sticky:10; /* @kind other */
+  --z-nav:50; /* @kind other */
+  --z-overlay:100; /* @kind other */
+  --z-modal:200; /* @kind other */
+  --z-toast:300; /* @kind other */
+}
+</style>
+<style>/* SEMANTIC TYPE, drop-in helpers. Copied from colors_and_type.css.
+   Every class here reads --surface-*, never a raw palette token, so it works
+   on paper and on ink without a second version. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--surface-fg);background:var(--surface);font-weight:var(--fw-regular);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+h1,.h1,.display-xl{font-family:var(--font-serif);font-size:var(--fs-display-xl);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h2,.h2,.display-lg{font-family:var(--font-serif);font-size:var(--fs-display-lg);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h3,.h3,.display-md{font-family:var(--font-serif);font-size:var(--fs-display-md);line-height:var(--lh-heading);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h4,.h4{font-family:var(--font-sans);font-size:var(--fs-heading-lg);line-height:var(--lh-heading);font-weight:var(--fw-medium);letter-spacing:-0.005em;color:var(--color-fg);margin:0}
+h5,.h5{font-family:var(--font-sans);font-size:var(--fs-heading-md);line-height:var(--lh-heading);font-weight:var(--fw-medium);color:var(--color-fg);margin:0}
+h6,.h6{font-family:var(--font-sans);font-size:var(--fs-heading-sm);line-height:var(--lh-heading);font-weight:var(--fw-semibold);color:var(--color-fg);margin:0}
+
+/* Signature emphasis: serif italic inside a serif headline */
+.display-italic,em.display{font-style:italic;font-family:var(--font-serif)}
+
+p{font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--color-fg-muted);margin:0 0 1em;text-wrap:pretty}
+p.lead{font-size:var(--fs-body-lg);line-height:1.55;color:var(--color-fg-muted);max-width:60ch}
+small,.meta{font-size:var(--fs-meta);color:var(--color-fg-subtle)}
+
+.eyebrow{font-family:var(--font-sans);font-size:var(--fs-meta);font-weight:var(--fw-medium);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--surface-eyebrow)}
+.tag{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tag);text-transform:uppercase;color:var(--surface-fg-subtle)}
+
+/* Service numerals "01 / 02 / 03", serif italic grape */
+.numeral{font-family:var(--font-serif);font-style:italic;font-size:var(--fs-display-md);color:var(--surface-accent);line-height:1;letter-spacing:-0.01em}
+
+/* ---- THE AUTHORITY SIGNATURE: the evidence voice ---- */
+
+/* STAT: big equal-width numerals, the credibility hero. MUST read
+   --font-figures: the two feature declarations below do nothing on DM Sans. */
+.stat{font-family:var(--font-figures);font-weight:var(--fw-bold);font-size:var(--fs-stat);font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;color:var(--surface-fg-strong);line-height:1;letter-spacing:-0.02em}
+.stat--grape{color:var(--surface-accent)}
+
+/* METHOD LABEL: small-caps tag ABOVE data ("METHOD" / "n =" / "EVIDENCE") */
+.method-label{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-method);text-transform:uppercase;color:var(--surface-fg-subtle)}
+
+/* DATA BASELINE: the thin grape "measured" rule under a stat block */
+.data-baseline{border:0;border-top:var(--bw-strong) solid var(--surface-baseline);width:48px;margin:var(--space-3) 0 0}
+
+/* EVIDENCE: mono voice for n=, p-values, CIs, model metrics */
+.evidence,.stat-meta{font-family:var(--font-mono-asset);font-size:var(--fs-body-sm);color:var(--surface-fg-muted);letter-spacing:0}
+
+/* CITATION: visible rigour. A diagram without a source is decoration. */
+.citation{font-family:var(--font-sans);font-size:var(--fs-meta);color:var(--surface-fg-subtle);line-height:var(--lh-tight)}
+.citation a{border-bottom:1px dotted currentColor}
+
+/* Vertical rhythm. Headings carry margin:0 so layouts own spacing; these
+   adjacent-sibling rules add breathing room only where text follows. */
+.eyebrow+h1,.eyebrow+h2,.eyebrow+h3,.eyebrow+.h1,.eyebrow+.h2,.eyebrow+.h3{margin-top:var(--space-3)}
+h1+p,h2+p,h3+p,h4+p,h5+p,.h1+p,.h2+p,.h3+p,h1+.lead,h2+.lead,h3+.lead{margin-top:var(--space-5)}
+h1+h2,h2+h3,h3+h4{margin-top:var(--space-4)}
+
+/* Keep evidence units intact: "p < .001" must never break */
+.nowrap{white-space:nowrap}
+
+a{color:var(--color-link);text-decoration:none;border-bottom:1px solid currentColor;transition:color var(--dur-fast) var(--ease-out)}
+a:hover{color:var(--color-link-hover)}
+a:focus-visible{outline:2px solid var(--surface-accent);outline-offset:2px;border-radius:2px}
+code,pre,kbd{font-family:var(--font-mono);font-size:.875em}
+hr{border:0;border-top:var(--bw-hair) solid var(--color-rule);margin:var(--space-12) 0}
+::selection{background:var(--grape-100);color:var(--color-fg)}
+</style>
+<style>/* COMPONENT LAYER. The shared chrome and component classes the brand ships,
+   lifted from drcwd-website/styles/site.css. Surface-aware: the ink block at
+   the foot repoints the few rules that read raw palette tokens.
+   Do not hand-pick colours here. */
+
+:root{--nav-h:68px}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.wrap-narrow{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--space-4);top:var(--space-4);background:var(--grape-800);color:#fff;padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);z-index:var(--z-toast)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:var(--z-nav);background:var(--surface-veil);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--surface-rule)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;border:0}
+.brand .wm{font-family:var(--font-serif);font-size:21px;color:var(--surface-logo);line-height:1}
+.nav-links{display:flex;align-items:center;gap:var(--space-6);list-style:none;margin:0;padding:0}
+.nav-links a{font-family:var(--font-sans);font-size:var(--fs-body-sm);color:var(--surface-fg-muted);text-decoration:none;border:0}
+.nav-links a:hover{color:var(--grape-800)}
+.nav-links a[aria-current="page"]{color:var(--grape-800);font-weight:var(--fw-medium)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:var(--space-2)}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--grape-800);margin:5px 0}
+
+/* BUTTONS. Pill, 10px/20px, medium. Hover moves colour only, never size. */
+.btn{font-family:var(--font-sans);font-weight:var(--fw-medium);font-size:var(--fs-body-sm);padding:10px 20px;border-radius:var(--radius-pill);border:1px solid transparent;text-decoration:none;display:inline-block;cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
+.btn-primary{background:var(--grape-800);color:#fff}
+.btn-primary:hover{background:var(--grape-700);color:#fff}
+.btn-ghost{background:transparent;color:var(--grape-800);border:1px solid var(--grape-800)}
+.btn-ghost:hover{border-color:var(--grape-700);color:var(--grape-700)}
+.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#fff}
+.btn:focus-visible{outline:2px solid var(--grape-800);outline-offset:2px}
+.btn[disabled],.btn[aria-disabled="true"]{background:var(--ink-100);color:var(--ink-400);border-color:transparent;cursor:not-allowed}
+
+/* LAYOUT PRIMITIVES */
+.hero{padding:var(--section-y) 0 var(--section-y-tight)}
+.hero .eyebrow{display:block;margin-bottom:var(--space-5)}
+.hero h1{max-width:36ch;font-size:clamp(1.7rem,2.9vw,2.35rem);line-height:1.16;text-wrap:balance}
+.hero p.lead{margin-top:var(--space-6)}
+.hero .cta-row{display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-8)}
+section{padding:var(--section-y) 0}
+section.tight{padding:var(--section-y-tight) 0}
+.lede{max-width:62ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:start}
+.byline-strip{font-size:var(--fs-body-sm);color:var(--surface-fg-subtle);margin-top:var(--space-6)}
+.soft{background:var(--ink-050)}
+
+/* OFFER LIST: grape-ruled items */
+.offer-list{list-style:none;margin:var(--space-6) 0 0;padding:0;display:grid;gap:var(--space-5)}
+.offer-list li{border-left:2px solid var(--grape-800);padding:2px 0 2px var(--space-5)}
+.offer-list b{font-family:var(--font-sans);color:var(--surface-fg)}
+
+/* NUMBERED STEPS and STAGES */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-10)}
+.step .numeral{display:block;margin-bottom:var(--space-3)}
+.step h3{font-family:var(--font-sans);font-size:var(--fs-heading-md);margin:0 0 var(--space-2)}
+.stages{margin-top:var(--space-10);border-top:1px solid var(--surface-rule)}
+.stage{display:grid;grid-template-columns:120px 1fr;gap:var(--space-8);padding:var(--space-10) 0;border-bottom:1px solid var(--surface-rule)}
+.stage .numeral{line-height:1.1}
+.stage h3{font-family:var(--font-sans);font-size:var(--fs-heading-lg);font-weight:var(--fw-medium);margin:0 0 var(--space-3)}
+.stage p{max-width:62ch;margin:0}
+.stage p+p{margin-top:var(--space-3)}
+
+/* STAT BAND */
+.statband{border-top:2px solid var(--ink-1000);border-bottom:1px solid var(--surface-rule);padding:var(--space-10) 0;margin-top:var(--space-6)}
+.statband .row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8)}
+.statband .method-label{display:block;margin-bottom:var(--space-3)}
+.statband .stat{display:block}
+.statband .cap{display:block;margin-top:var(--space-3);color:var(--surface-fg-muted);font-size:var(--fs-body-sm);max-width:30ch}
+
+/* TOOL and OFFER CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6)}
+.tool-card{display:flex;flex-direction:column;border:1px solid var(--surface-rule);border-radius:var(--radius-lg);padding:var(--space-8);background:var(--paper);text-decoration:none;transition:border-color var(--dur-fast) var(--ease-out)}
+.tool-card:hover{border-color:var(--grape-800)}
+.tool-card .tag{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--grape-800);margin-bottom:var(--space-4)}
+.tool-card h3{font-family:var(--font-serif);font-weight:400;font-size:var(--fs-heading-lg);margin:0 0 var(--space-3);color:var(--ink-1000)}
+.tool-card p{margin:0;color:var(--surface-fg-muted);font-size:var(--fs-body-sm);line-height:var(--lh-body);flex:1}
+.tool-card .go{margin-top:var(--space-6);font-family:var(--font-sans);font-size:var(--fs-body-sm);font-weight:var(--fw-medium);color:var(--grape-800)}
+
+/* DOORS: the three-avenue router on the home page */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-4)}
+.door{display:flex;flex-direction:column;border:1px solid var(--grape-200);border-top:4px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-10) var(--space-8);background:var(--grape-050);text-decoration:none;transition:background var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.door:hover{background:var(--grape-100);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.door .door-label{display:block;font-family:var(--font-serif);font-size:var(--fs-heading-lg);font-weight:var(--fw-regular);letter-spacing:normal;text-transform:none;line-height:1.15;color:var(--grape-800);margin:0 0 var(--space-3)}
+.door .door-promise{display:block;font-family:var(--font-sans);font-size:var(--fs-body);font-weight:var(--fw-medium);line-height:1.4;color:var(--ink-900);margin:0 0 var(--space-4)}
+.door .door-micro{font-size:var(--fs-body-sm);color:var(--color-fg-muted);margin:0;flex:1}
+.door .door-go{margin-top:var(--space-8);font-family:var(--font-sans);font-size:var(--fs-body-sm);font-weight:var(--fw-medium);color:var(--grape-800)}
+.door .door-go::after{content:" \2192"}
+.door .door-icon{color:var(--grape-800);margin-bottom:var(--space-4)}
+.door .door-icon svg{width:30px;height:30px;display:block}
+.door:focus-visible{outline:2px solid var(--grape-800);outline-offset:3px}
+
+/* FAQ */
+.faq-list{margin-top:var(--space-10);border-top:1px solid var(--surface-rule)}
+.faq-item{padding:var(--space-8) 0;border-bottom:1px solid var(--surface-rule)}
+.faq-item h3{font-family:var(--font-sans);font-size:var(--fs-heading-md);font-weight:var(--fw-medium);margin:0 0 var(--space-3);color:var(--surface-fg)}
+.faq-item p{max-width:62ch;margin:0}
+
+/* CTA BAND: grape rules top and bottom */
+.ctaband{background:var(--paper);border-top:2px solid var(--grape-800);border-bottom:2px solid var(--grape-800)}
+.ctaband h2{color:var(--grape-800)}
+.ctaband p{color:var(--surface-fg-muted)}
+.ctaband .btn-on{background:var(--grape-800);color:#fff}
+.ctaband .btn-on:hover{background:var(--grape-700);color:#fff}
+
+/* CREDIBILITY STRIP */
+.cred{border-top:1px solid var(--color-rule)}
+.cred p{margin:0;color:var(--color-fg-muted);font-size:var(--fs-body-sm)}
+.cred p b{color:var(--color-fg);font-weight:var(--fw-semibold)}
+
+/* CALLOUT TREATMENTS, four emphasis tiers. wash = quiet tint · accent =
+   white card + top rule · tint = grape wash · solid = grape fill, and solid
+   is the ONE high-emphasis box per page. The html:root prefix bumps
+   specificity so a treatment beats a page's own base-box rule. */
+html:root .callout--wash{background:var(--grape-050);border:1px solid var(--grape-100);border-left:3px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-8)}
+html:root .callout--wash h3,html:root .callout--wash h4{color:var(--grape-800)}
+html:root .callout--accent{background:var(--paper);border:1px solid var(--surface-rule);border-top:4px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-8);box-shadow:var(--shadow-sm)}
+html:root .callout--accent h3,html:root .callout--accent h4{color:var(--grape-800)}
+html:root .callout--tint{background:var(--grape-100);border:1px solid var(--grape-200);border-radius:var(--radius-lg);padding:var(--space-8)}
+html:root .callout--tint h3,html:root .callout--tint h4,html:root .callout--tint .price{color:var(--grape-800)}
+html:root .callout--solid{background:var(--grape-800);border:1px solid var(--grape-900);border-radius:var(--radius-lg);padding:var(--space-8);box-shadow:var(--shadow-md);color:#fff}
+html:root .callout--solid h3,html:root .callout--solid h4,html:root .callout--solid .price{color:#fff}
+html:root .callout--solid p,html:root .callout--solid label,html:root .callout--solid .fine,html:root .callout--solid small{color:var(--grape-100)}
+html:root .callout--solid .btn-primary,html:root .callout--solid .btn-on{background:#fff;color:var(--grape-800)}
+html:root .callout--solid .btn-primary:hover,html:root .callout--solid .btn-on:hover{background:var(--grape-050)}
+
+/* FOOTER */
+footer.site{background:var(--surface-footer);color:var(--ink-300);padding:var(--space-16) 0 var(--space-10);font-size:var(--fs-body-sm)}
+footer.site a{color:var(--ink-300);text-decoration:none;border:0}
+footer.site a:hover{color:#fff}
+footer.site a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.foot-top{display:flex;justify-content:space-between;gap:var(--space-16);flex-wrap:wrap}
+.foot-brand .wm{font-family:var(--font-serif);font-size:20px;color:#fff}
+.foot-brand p{color:var(--ink-300);max-width:40ch;margin-top:var(--space-3)}
+.foot-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.foot-col .foot-h{font-family:var(--font-sans);font-size:var(--fs-meta);font-weight:var(--fw-semibold);line-height:var(--lh-heading);text-transform:uppercase;letter-spacing:var(--tracking-tag);color:var(--ink-400);margin:0 0 var(--space-3)}
+.foot-col a{display:block;margin-bottom:var(--space-2)}
+.foot-fine{margin-top:var(--space-12);padding-top:var(--space-5);border-top:1px solid rgba(255,255,255,.1);color:var(--ink-400)}
+.foot-fine a{color:var(--ink-400)}
+.foot-fine a:hover{color:#fff}
+
+/* FIGURES: the minimal visualisations. Line art reads --surface-stroke,
+   labels read --surface-fg-muted, and exactly ONE element is filled with
+   --surface-fill. Surface-aware, so one figure works on both surfaces. */
+.figure{margin:var(--space-8) 0 var(--space-10);max-width:560px}
+.figure svg{display:block;overflow:visible;width:100%;height:auto}
+.figure .method-label{display:block;margin-bottom:var(--space-3)}
+.figure figcaption{font-family:var(--font-sans);font-size:var(--fs-meta);color:var(--surface-fg-subtle);line-height:var(--lh-tight);margin-top:var(--space-4);max-width:46ch}
+.figure .fig-line{stroke:var(--surface-stroke);fill:none}
+.figure .fig-fill{fill:var(--surface-fill);stroke:var(--surface-fill-edge)}
+.figure .fig-lbl{font-family:var(--font-sans);font-size:13px;fill:var(--surface-fg-muted)}
+.figure .fig-lbl-on{font-family:var(--font-sans);font-size:13px;fill:var(--surface-on-fill)}
+.figure .fig-micro{font-family:var(--font-sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:var(--surface-fg-subtle)}
+.figure .fig-num{font-family:var(--font-figures);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums lining-nums;fill:var(--surface-fg-strong)}
+.figure .fig-num-on{font-family:var(--font-figures);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums lining-nums;fill:var(--surface-on-fill)}
+.figure .fig-mark{stroke:var(--surface-fg-strong)}
+
+/* ---- INK OVERRIDES. Only the rules that read a RAW palette token, which is
+   deliberate on paper and wrong on ink where grape-800 is 2.9:1 on the
+   field. ---- */
+html:root[data-surface="ink"] .callout--wash{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-left-color:var(--surface-accent)}
+html:root[data-surface="ink"] .callout--accent{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-top-color:var(--surface-accent);box-shadow:none}
+html:root[data-surface="ink"] .callout--tint{background:var(--surface-fill);border-color:var(--surface-fill-edge)}
+html:root[data-surface="ink"] .callout--solid{background:var(--surface-fill);border-color:var(--surface-fill-edge);color:var(--surface-on-fill)}
+html:root[data-surface="ink"] .callout--wash h3,html:root[data-surface="ink"] .callout--wash h4,html:root[data-surface="ink"] .callout--accent h3,html:root[data-surface="ink"] .callout--accent h4,html:root[data-surface="ink"] .callout--tint h3,html:root[data-surface="ink"] .callout--tint h4,html:root[data-surface="ink"] .callout--tint .price{color:var(--surface-fg)}
+html:root[data-surface="ink"] .callout--solid h3,html:root[data-surface="ink"] .callout--solid h4,html:root[data-surface="ink"] .callout--solid .price,html:root[data-surface="ink"] .callout--solid p,html:root[data-surface="ink"] .callout--solid label,html:root[data-surface="ink"] .callout--solid .fine,html:root[data-surface="ink"] .callout--solid small{color:var(--surface-on-fill)}
+html:root[data-surface="ink"] .callout--solid .btn-primary,html:root[data-surface="ink"] .callout--solid .btn-on{background:var(--ink-max);color:var(--surface-on-fill);border-color:var(--ink-max)}
+[data-surface="ink"] h1,[data-surface="ink"] h2,[data-surface="ink"] h3,[data-surface="ink"] h4{color:var(--surface-fg)}
+[data-surface="ink"] a{color:var(--surface-accent)}
+[data-surface="ink"] .eyebrow{color:var(--surface-eyebrow)}
+[data-surface="ink"] .btn-primary{background:var(--surface-fill);color:var(--surface-on-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .btn-primary:hover{background:var(--grape-700);color:var(--surface-on-fill)}
+[data-surface="ink"] .nav-links a.btn-primary,[data-surface="ink"] .nav-links a.btn-primary:hover{color:var(--surface-on-fill)}
+[data-surface="ink"] .btn-ghost{color:var(--surface-fg);border-color:var(--surface-fg-subtle)}
+[data-surface="ink"] .btn-ghost:hover{color:var(--surface-accent);border-color:var(--surface-accent)}
+[data-surface="ink"] .btn:focus-visible,[data-surface="ink"] a:focus-visible{outline-color:var(--surface-accent)}
+[data-surface="ink"] .nav-links a:hover,[data-surface="ink"] .nav-links a[aria-current="page"]{color:var(--surface-accent)}
+[data-surface="ink"] .nav-toggle span{background:var(--surface-fg)}
+[data-surface="ink"] .skip:focus{background:var(--surface-accent);color:var(--ink-max)}
+[data-surface="ink"] .offer-list li{border-left-color:var(--surface-accent)}
+[data-surface="ink"] .statband{border-top-color:var(--surface-fg)}
+[data-surface="ink"] .tool-card{background:var(--surface-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .tool-card:hover{border-color:var(--surface-accent)}
+[data-surface="ink"] .tool-card h3{color:var(--surface-fg)}
+[data-surface="ink"] .tool-card .tag{color:var(--surface-eyebrow)}
+[data-surface="ink"] .tool-card .go,[data-surface="ink"] .go{color:var(--surface-accent)}
+[data-surface="ink"] .door{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-top-color:var(--surface-accent)}
+[data-surface="ink"] .door:hover{background:var(--grape-700)}
+[data-surface="ink"] .door .door-label,[data-surface="ink"] .door .door-promise{color:var(--surface-fg)}
+[data-surface="ink"] .door .door-micro{color:var(--surface-fg-muted)}
+[data-surface="ink"] .door .door-go,[data-surface="ink"] .door .door-icon{color:var(--surface-accent)}
+[data-surface="ink"] .soft{background:var(--ink-900)}
+[data-surface="ink"] .ctaband{background:var(--surface);border-top-color:var(--surface-accent);border-bottom-color:var(--surface-accent)}
+[data-surface="ink"] .ctaband h2{color:var(--surface-fg)}
+[data-surface="ink"] .ctaband .btn-on{background:var(--surface-fill);color:var(--surface-on-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .ctaband .btn-on:hover{background:var(--grape-700);color:var(--surface-on-fill)}
+[data-surface="ink"] footer.site{border-top:1px solid var(--ink-900)}
+[data-surface="ink"] .cred p b{color:var(--surface-fg)}
+[data-surface="ink"] .btn[disabled],[data-surface="ink"] .btn[aria-disabled="true"]{background:var(--ink-900);color:var(--ink-500)}
+
+/* RESPONSIVE */
+@media (max-width:1000px){.nav-links{gap:var(--space-4)}}
+@media (max-width:900px){
+  .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--surface);border-bottom:1px solid var(--surface-rule);padding:var(--space-5) var(--gutter);gap:var(--space-5)}
+  .nav-links.show{display:flex}
+  .nav-toggle{display:block}
+}
+@media (max-width:860px){.doors{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .statband .row{grid-template-columns:1fr;gap:var(--space-8)}
+  .two{grid-template-columns:1fr;gap:var(--space-8)}
+  .steps{grid-template-columns:1fr}
+  .stage{grid-template-columns:1fr;gap:var(--space-3)}
+  .hero h1{font-size:clamp(1.7rem,7vw,2.35rem)}
+  .foot-top,.foot-cols{gap:var(--space-8)}
+}
+@media (max-width:640px){.figure{max-width:100%}}
+</style>
+<style>/* drCWDugan design system v3 "Authority". Global entry point.
+   Imports only. Edit the imported files, never this one. */
+/* @font-face: local OFL copies of the three brand faces, pinned so a rendered
+   asset does not depend on a network fetch. Sources: uploads/ supplied with the
+   brand kit (DM Serif Display, DM Sans 400/500/700, IBM Plex Sans variable).
+   IBM Plex Sans is the FIGURES face and is not optional: DM Sans carries no
+   tnum table, so tabular-nums on it is a silent no-op. */
+@font-face{font-family:'DM Serif Display';src:url("4544e7e8-1ad3-4f90-9b58-bead353f9368") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("8ecf83cd-5306-4d45-8f35-fc662768cc05") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("2a98b200-3177-4e01-8178-2b8ebbbbd43b") format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url("67f1518d-4604-4d0b-b544-d08adca5639a") format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans';src:url("810c8d16-d1b6-475a-805b-1721421bf891") format('truetype-variations');font-weight:100 700;font-style:normal;font-display:swap}
+/* IBM Plex Mono is the EVIDENCE voice for anything rendered to a file
+   (--font-mono-asset). Pinned rather than left to a system stack, because the
+   same HTML otherwise rasterises differently on macOS, Windows and Linux,
+   which is drift by construction. The web token --font-mono stays ui-monospace. */
+@font-face{font-family:'IBM Plex Mono';src:url("3961e97b-8d45-4cb1-b5e6-ea0d256d942e") format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url("571621f2-40f3-45a3-bdfe-e953cb55c6f7") format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url("8b5a184c-73f3-44f5-a1c8-bc2ebe87883e") format('truetype');font-weight:700;font-style:normal;font-display:swap}
+
+/* COLOUR, base palette. Values copied verbatim from
+   drcwd-design-system/colors_and_type.css (v3 "Authority").
+   Rule 1: grape is accent and ink only, never a page fill. Neutrals carry
+   over 90% of every layout. */
+:root{
+  /* Brand grapes */
+  --grape-900:#1b112e;   /* deepest, dense accents only */
+  --grape-800:#352051;   /* PRIMARY grape: links, numerals, key marks */
+  --grape-700:#4a2f70;   /* secondary grape: hovers, mid-strength fills */
+  --grape-600:#6b4f9e;   /* tertiary: illustration, chart secondary */
+  --grape-500:#8a6fb8;   /* soft grape: chart/data tertiary, ink eyebrow */
+  --grape-200:#d8cfe7;   /* data-baseline rule, ink accent */
+  --grape-100:#ece8f3;   /* whisper: chart fills, soft backgrounds */
+  --grape-050:#f6f4fa;   /* barely-there tint */
+
+  /* Neutrals, the workhorses */
+  --ink-max:#0B0B0C;     /* the INK SURFACE field, and stat displays on paper */
+  --ink-1000:#1C1C1E;    /* body text, strong emphasis */
+  --ink-900:#2A2A2D;     /* near-body */
+  --ink-700:#4A4A4F;     /* secondary text */
+  --ink-500:#6E6F75;     /* muted, meta, captions */
+  --ink-400:#9CA0A6;     /* placeholder, disabled */
+  --ink-300:#C8CACE;     /* hairlines (strong) */
+  --ink-200:#E4E5E7;     /* hairlines (default) */
+  --ink-100:#EFEFEF;     /* dividers, wash */
+  --ink-050:#F7F7F6;     /* off-white surface */
+  --paper:#FFFFFF;       /* the PAPER SURFACE field */
+
+  /* Status, data viz and form states only */
+  --status-up:#4a2f70;
+  --status-down:#B5524A;   /* desaturated terracotta */
+  --status-warn:#B58A3A;   /* desaturated mustard */
+
+  /* DATA-VIZ RAMP: brand-inherited, no rainbow. Sequential light to dark. */
+  --dv-seq-1:var(--grape-100);
+  --dv-seq-2:var(--grape-500);
+  --dv-seq-3:var(--grape-600);
+  --dv-seq-4:var(--grape-800);
+  /* Categorical series, max 5. Discipline over variety. */
+  --dv-cat-1:var(--grape-800);
+  --dv-cat-2:var(--grape-500);
+  --dv-cat-3:var(--ink-500);
+  --dv-cat-4:var(--status-warn);
+  --dv-cat-5:var(--status-down);
+}
+
+/* SURFACES. Two PEER surfaces, not a light mode and a dark mode.
+   paper is the default workhorse, ink is a full peer used when the message
+   wants weight rather than clinical calm. Set the surface on the root:
+       <div class="slide">                  paper
+       <div class="slide" data-surface="ink">
+   A component never hard-codes a colour and never reads a raw palette token.
+   It reads --surface-*. */
+:root{
+  --surface:var(--paper);                    /* the field */
+  --surface-fg:var(--ink-1000);              /* headline, primary text */
+  --surface-fg-strong:var(--ink-max);        /* stat displays, the hero number */
+  --surface-fg-muted:var(--ink-700);         /* labels, body, citations */
+  --surface-fg-subtle:var(--ink-500);        /* micro-caps, meta */
+  --surface-rule:var(--ink-200);             /* hairline dividers */
+  --surface-eyebrow:var(--grape-700);        /* tracked micro-caps kicker */
+  --surface-stroke:var(--grape-600);         /* load-bearing line art */
+  --surface-accent:var(--grape-800);         /* TYPE colour: eyebrows, links, tags */
+  --surface-on-accent:var(--paper);
+  --surface-logo:var(--grape-800);           /* the lockup reads this, never --surface-fg */
+  --surface-track:var(--ink-100);            /* bar-chart 0 to 100 track */
+  --surface-baseline:var(--grape-200);       /* chart baseline, axis rule */
+  --surface-veil:rgba(255,255,255,.9);       /* sticky nav over content */
+  /* FILL vs ACCENT. accent is a TYPE colour, fill is a BLOCK colour. On paper
+     both are grape-800 and the split is invisible. On ink they must diverge. */
+  --surface-fill:var(--grape-800);
+  --surface-fill-edge:var(--grape-900);
+  --surface-on-fill:var(--paper);
+  --surface-footer:var(--ink-1000);
+
+  /* SEMANTIC ALIASES. These alias the surface layer, so every rule that reads
+     --color-* flips with the surface with no rule rewritten. */
+  --color-bg:var(--surface);
+  --color-bg-soft:var(--ink-050);
+  --color-bg-accent:var(--grape-050);        /* rare, section dividers only */
+  --color-fg:var(--surface-fg);
+  --color-fg-strong:var(--surface-fg-strong);
+  --color-fg-muted:var(--surface-fg-muted);
+  --color-fg-subtle:var(--surface-fg-subtle);
+  --color-fg-faint:var(--ink-400);
+  --color-fg-on-grape:var(--surface-on-accent);
+  --color-accent:var(--surface-accent);
+  --color-accent-hover:var(--grape-700);
+  --color-accent-soft:var(--grape-600);
+  --color-border:var(--surface-rule);
+  --color-border-strong:var(--ink-300);
+  --color-rule:var(--surface-rule);
+  --color-data-baseline:var(--surface-baseline);
+  --color-link:var(--surface-accent);
+  --color-link-hover:var(--grape-700);
+}
+
+/* Ink surface. Contrast against #0B0B0C, measured: fg 19.67:1 · fg-muted
+   15.61:1 · fg-subtle 11.99:1 · stroke 15.61:1 · accent 13.12:1.
+   The primary grape #352051 is a PAPER colour: it is 1.39:1 as text here, so
+   it survives only as a FILL with white on it (14.22:1). */
+[data-surface="ink"]{
+  --surface:var(--ink-max);
+  --surface-fg:var(--paper);
+  --surface-fg-strong:var(--paper);
+  --surface-fg-muted:var(--ink-200);
+  --surface-fg-subtle:var(--ink-300);
+  --surface-rule:var(--ink-900);
+  --surface-eyebrow:var(--grape-500);
+  --surface-stroke:var(--ink-200);
+  --surface-accent:var(--grape-200);        /* type only. grape-500 is the rare colour, spent by hand */
+  --surface-on-accent:var(--ink-max);
+  --surface-logo:var(--paper);
+  --surface-track:var(--ink-900);
+  --surface-veil:rgba(11,11,12,.9);
+  --surface-fill:var(--grape-800);
+  --surface-fill-edge:var(--grape-600);     /* 3.04:1, so the block has a visible boundary */
+  --surface-on-fill:var(--paper);
+  --surface-footer:var(--ink-900);          /* on ink the footer lifts, not darkens */
+  --surface-baseline:var(--grape-500);
+}
+
+/* TYPE. DM Serif Display for display and headlines. DM Sans for everything
+   else. IBM Plex Sans for every figure, because DM Sans has no tnum table:
+   its digit 1 sits at 0.456 (Regular) to 0.517 (Bold) the width of its 0, so
+   any column of numbers set in it fails to line up. */
+:root{
+  --font-serif:'DM Serif Display','Instrument Serif',Georgia,'Times New Roman',serif;
+  --font-sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --font-figures:'IBM Plex Sans','IBM Plex Mono',ui-monospace,monospace;
+  --font-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;      /* web */
+  --font-mono-asset:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace; /* rendered assets */
+
+  /* Scale: editorial and generous. Serif display, sans body and UI. */
+  --fs-display-xl:clamp(3.25rem,5.5vw,5.25rem); /* @kind font */ /* 52 to 84px, hero */
+  --fs-display-lg:clamp(2.5rem,4vw,3.75rem); /* @kind font */ /* 40 to 60px, section opener */
+  --fs-display-md:clamp(2rem,3vw,2.75rem); /* @kind font */ /* 32 to 44px */
+  --fs-display-sm:clamp(1.625rem,2vw,2rem); /* @kind font */ /* 26 to 32px */
+  --fs-stat:clamp(2.5rem,4vw,3.75rem); /* @kind font */ /* tabular stat display */
+  --fs-heading-lg:1.5rem; /* @kind font */ /* 24px */
+  --fs-heading-md:1.25rem; /* @kind font */ /* 20px */
+  --fs-heading-sm:1.0625rem; /* @kind font */ /* 17px */
+  --fs-body-lg:1.125rem; /* @kind font */ /* 18px, lead */
+  --fs-body:1rem; /* @kind font */ /* 16px */
+  --fs-body-sm:0.9375rem; /* @kind font */ /* 15px */
+  --fs-meta:0.8125rem; /* @kind font */ /* 13px, eyebrow, caption */
+  --fs-micro:0.6875rem; /* @kind font */ /* 11px, tags, method labels */
+
+  --lh-display:1.05; /* @kind font */
+  --lh-heading:1.2; /* @kind font */
+  --lh-body:1.6; /* @kind font */
+  --lh-tight:1.3; /* @kind font */
+  --tracking-display:-0.02em; /* @kind font */ /* tighten the serif for headlines, never positive */
+  --tracking-body:0; /* @kind font */
+  --tracking-eyebrow:0.14em; /* @kind font */
+  --tracking-tag:0.08em; /* @kind font */
+  --tracking-method:0.18em; /* @kind font */
+  --fw-light:300; /* @kind font */
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+}
+
+/* SPACING, 4px base. RADII minimal: editorial cards are squared, soft chrome
+   only on interactive elements and data tiles. Cards lean on borders, not
+   shadow. */
+:root{
+  --space-0:0; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px;
+  --space-16:64px; --space-20:80px; --space-24:96px; --space-32:128px; --space-40:160px;
+
+  --section-y:clamp(72px,9vw,144px); /* @kind spacing */
+  --section-y-tight:clamp(48px,6vw,80px); /* @kind spacing */
+
+  --container-narrow:760px; /* @kind spacing */   /* prose */
+  --container:1120px; /* @kind spacing */         /* default */
+  --container-wide:1280px; /* @kind spacing */
+  --gutter:clamp(20px,4vw,48px); /* @kind spacing */
+
+  --radius-0:0; --radius-xs:2px; --radius-sm:4px; --radius-md:8px;
+  --radius-lg:12px; --radius-xl:16px; --radius-pill:999px;
+
+  --bw-hair:1px; /* @kind spacing */
+  --bw-rule:1px; /* @kind spacing */
+  --bw-strong:2px; /* @kind spacing */
+
+  --shadow-0:none;
+  --shadow-xs:0 1px 2px rgba(28,28,30,.04);
+  --shadow-sm:0 2px 8px rgba(28,28,30,.05),0 1px 2px rgba(28,28,30,.04);
+  --shadow-md:0 8px 24px rgba(28,28,30,.06),0 2px 6px rgba(28,28,30,.04);
+  --shadow-lg:0 24px 48px rgba(28,28,30,.08),0 4px 10px rgba(28,28,30,.04);
+}
+
+/* MOTION. Restrained: fades and short travel, no bounce, no scale-up.
+   Hover changes colour or border, never size. */
+:root{
+  --ease-out:cubic-bezier(0.22,1,0.36,1); /* @kind other */
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1); /* @kind other */
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --dur-fast:120ms; /* @kind other */
+  --dur-base:200ms; /* @kind other */
+  --dur-slow:320ms; /* @kind other */
+  --dur-slower:600ms; /* @kind other */
+  --z-base:1; /* @kind other */
+  --z-sticky:10; /* @kind other */
+  --z-nav:50; /* @kind other */
+  --z-overlay:100; /* @kind other */
+  --z-modal:200; /* @kind other */
+  --z-toast:300; /* @kind other */
+}
+
+/* SEMANTIC TYPE, drop-in helpers. Copied from colors_and_type.css.
+   Every class here reads --surface-*, never a raw palette token, so it works
+   on paper and on ink without a second version. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--surface-fg);background:var(--surface);font-weight:var(--fw-regular);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+h1,.h1,.display-xl{font-family:var(--font-serif);font-size:var(--fs-display-xl);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h2,.h2,.display-lg{font-family:var(--font-serif);font-size:var(--fs-display-lg);line-height:var(--lh-display);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h3,.h3,.display-md{font-family:var(--font-serif);font-size:var(--fs-display-md);line-height:var(--lh-heading);letter-spacing:var(--tracking-display);font-weight:var(--fw-regular);color:var(--color-fg);margin:0}
+h4,.h4{font-family:var(--font-sans);font-size:var(--fs-heading-lg);line-height:var(--lh-heading);font-weight:var(--fw-medium);letter-spacing:-0.005em;color:var(--color-fg);margin:0}
+h5,.h5{font-family:var(--font-sans);font-size:var(--fs-heading-md);line-height:var(--lh-heading);font-weight:var(--fw-medium);color:var(--color-fg);margin:0}
+h6,.h6{font-family:var(--font-sans);font-size:var(--fs-heading-sm);line-height:var(--lh-heading);font-weight:var(--fw-semibold);color:var(--color-fg);margin:0}
+
+/* Signature emphasis: serif italic inside a serif headline */
+.display-italic,em.display{font-style:italic;font-family:var(--font-serif)}
+
+p{font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);color:var(--color-fg-muted);margin:0 0 1em;text-wrap:pretty}
+p.lead{font-size:var(--fs-body-lg);line-height:1.55;color:var(--color-fg-muted);max-width:60ch}
+small,.meta{font-size:var(--fs-meta);color:var(--color-fg-subtle)}
+
+.eyebrow{font-family:var(--font-sans);font-size:var(--fs-meta);font-weight:var(--fw-medium);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--surface-eyebrow)}
+.tag{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-medium);letter-spacing:var(--tracking-tag);text-transform:uppercase;color:var(--surface-fg-subtle)}
+
+/* Service numerals "01 / 02 / 03", serif italic grape */
+.numeral{font-family:var(--font-serif);font-style:italic;font-size:var(--fs-display-md);color:var(--surface-accent);line-height:1;letter-spacing:-0.01em}
+
+/* ---- THE AUTHORITY SIGNATURE: the evidence voice ---- */
+
+/* STAT: big equal-width numerals, the credibility hero. MUST read
+   --font-figures: the two feature declarations below do nothing on DM Sans. */
+.stat{font-family:var(--font-figures);font-weight:var(--fw-bold);font-size:var(--fs-stat);font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;color:var(--surface-fg-strong);line-height:1;letter-spacing:-0.02em}
+.stat--grape{color:var(--surface-accent)}
+
+/* METHOD LABEL: small-caps tag ABOVE data ("METHOD" / "n =" / "EVIDENCE") */
+.method-label{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-method);text-transform:uppercase;color:var(--surface-fg-subtle)}
+
+/* DATA BASELINE: the thin grape "measured" rule under a stat block */
+.data-baseline{border:0;border-top:var(--bw-strong) solid var(--surface-baseline);width:48px;margin:var(--space-3) 0 0}
+
+/* EVIDENCE: mono voice for n=, p-values, CIs, model metrics */
+.evidence,.stat-meta{font-family:var(--font-mono-asset);font-size:var(--fs-body-sm);color:var(--surface-fg-muted);letter-spacing:0}
+
+/* CITATION: visible rigour. A diagram without a source is decoration. */
+.citation{font-family:var(--font-sans);font-size:var(--fs-meta);color:var(--surface-fg-subtle);line-height:var(--lh-tight)}
+.citation a{border-bottom:1px dotted currentColor}
+
+/* Vertical rhythm. Headings carry margin:0 so layouts own spacing; these
+   adjacent-sibling rules add breathing room only where text follows. */
+.eyebrow+h1,.eyebrow+h2,.eyebrow+h3,.eyebrow+.h1,.eyebrow+.h2,.eyebrow+.h3{margin-top:var(--space-3)}
+h1+p,h2+p,h3+p,h4+p,h5+p,.h1+p,.h2+p,.h3+p,h1+.lead,h2+.lead,h3+.lead{margin-top:var(--space-5)}
+h1+h2,h2+h3,h3+h4{margin-top:var(--space-4)}
+
+/* Keep evidence units intact: "p < .001" must never break */
+.nowrap{white-space:nowrap}
+
+a{color:var(--color-link);text-decoration:none;border-bottom:1px solid currentColor;transition:color var(--dur-fast) var(--ease-out)}
+a:hover{color:var(--color-link-hover)}
+a:focus-visible{outline:2px solid var(--surface-accent);outline-offset:2px;border-radius:2px}
+code,pre,kbd{font-family:var(--font-mono);font-size:.875em}
+hr{border:0;border-top:var(--bw-hair) solid var(--color-rule);margin:var(--space-12) 0}
+::selection{background:var(--grape-100);color:var(--color-fg)}
+
+/* COMPONENT LAYER. The shared chrome and component classes the brand ships,
+   lifted from drcwd-website/styles/site.css. Surface-aware: the ink block at
+   the foot repoints the few rules that read raw palette tokens.
+   Do not hand-pick colours here. */
+
+:root{--nav-h:68px}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.wrap-narrow{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--space-4);top:var(--space-4);background:var(--grape-800);color:#fff;padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);z-index:var(--z-toast)}
+
+/* NAV */
+header.nav{position:sticky;top:0;z-index:var(--z-nav);background:var(--surface-veil);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--surface-rule)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;border:0}
+.brand .wm{font-family:var(--font-serif);font-size:21px;color:var(--surface-logo);line-height:1}
+.nav-links{display:flex;align-items:center;gap:var(--space-6);list-style:none;margin:0;padding:0}
+.nav-links a{font-family:var(--font-sans);font-size:var(--fs-body-sm);color:var(--surface-fg-muted);text-decoration:none;border:0}
+.nav-links a:hover{color:var(--grape-800)}
+.nav-links a[aria-current="page"]{color:var(--grape-800);font-weight:var(--fw-medium)}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:var(--space-2)}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--grape-800);margin:5px 0}
+
+/* BUTTONS. Pill, 10px/20px, medium. Hover moves colour only, never size. */
+.btn{font-family:var(--font-sans);font-weight:var(--fw-medium);font-size:var(--fs-body-sm);padding:10px 20px;border-radius:var(--radius-pill);border:1px solid transparent;text-decoration:none;display:inline-block;cursor:pointer;transition:background var(--dur-fast) var(--ease-out)}
+.btn-primary{background:var(--grape-800);color:#fff}
+.btn-primary:hover{background:var(--grape-700);color:#fff}
+.btn-ghost{background:transparent;color:var(--grape-800);border:1px solid var(--grape-800)}
+.btn-ghost:hover{border-color:var(--grape-700);color:var(--grape-700)}
+.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#fff}
+.btn:focus-visible{outline:2px solid var(--grape-800);outline-offset:2px}
+.btn[disabled],.btn[aria-disabled="true"]{background:var(--ink-100);color:var(--ink-400);border-color:transparent;cursor:not-allowed}
+
+/* LAYOUT PRIMITIVES */
+.hero{padding:var(--section-y) 0 var(--section-y-tight)}
+.hero .eyebrow{display:block;margin-bottom:var(--space-5)}
+.hero h1{max-width:36ch;font-size:clamp(1.7rem,2.9vw,2.35rem);line-height:1.16;text-wrap:balance}
+.hero p.lead{margin-top:var(--space-6)}
+.hero .cta-row{display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-8)}
+section{padding:var(--section-y) 0}
+section.tight{padding:var(--section-y-tight) 0}
+.lede{max-width:62ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:start}
+.byline-strip{font-size:var(--fs-body-sm);color:var(--surface-fg-subtle);margin-top:var(--space-6)}
+.soft{background:var(--ink-050)}
+
+/* OFFER LIST: grape-ruled items */
+.offer-list{list-style:none;margin:var(--space-6) 0 0;padding:0;display:grid;gap:var(--space-5)}
+.offer-list li{border-left:2px solid var(--grape-800);padding:2px 0 2px var(--space-5)}
+.offer-list b{font-family:var(--font-sans);color:var(--surface-fg)}
+
+/* NUMBERED STEPS and STAGES */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);margin-top:var(--space-10)}
+.step .numeral{display:block;margin-bottom:var(--space-3)}
+.step h3{font-family:var(--font-sans);font-size:var(--fs-heading-md);margin:0 0 var(--space-2)}
+.stages{margin-top:var(--space-10);border-top:1px solid var(--surface-rule)}
+.stage{display:grid;grid-template-columns:120px 1fr;gap:var(--space-8);padding:var(--space-10) 0;border-bottom:1px solid var(--surface-rule)}
+.stage .numeral{line-height:1.1}
+.stage h3{font-family:var(--font-sans);font-size:var(--fs-heading-lg);font-weight:var(--fw-medium);margin:0 0 var(--space-3)}
+.stage p{max-width:62ch;margin:0}
+.stage p+p{margin-top:var(--space-3)}
+
+/* STAT BAND */
+.statband{border-top:2px solid var(--ink-1000);border-bottom:1px solid var(--surface-rule);padding:var(--space-10) 0;margin-top:var(--space-6)}
+.statband .row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8)}
+.statband .method-label{display:block;margin-bottom:var(--space-3)}
+.statband .stat{display:block}
+.statband .cap{display:block;margin-top:var(--space-3);color:var(--surface-fg-muted);font-size:var(--fs-body-sm);max-width:30ch}
+
+/* TOOL and OFFER CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6)}
+.tool-card{display:flex;flex-direction:column;border:1px solid var(--surface-rule);border-radius:var(--radius-lg);padding:var(--space-8);background:var(--paper);text-decoration:none;transition:border-color var(--dur-fast) var(--ease-out)}
+.tool-card:hover{border-color:var(--grape-800)}
+.tool-card .tag{font-family:var(--font-sans);font-size:var(--fs-micro);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--grape-800);margin-bottom:var(--space-4)}
+.tool-card h3{font-family:var(--font-serif);font-weight:400;font-size:var(--fs-heading-lg);margin:0 0 var(--space-3);color:var(--ink-1000)}
+.tool-card p{margin:0;color:var(--surface-fg-muted);font-size:var(--fs-body-sm);line-height:var(--lh-body);flex:1}
+.tool-card .go{margin-top:var(--space-6);font-family:var(--font-sans);font-size:var(--fs-body-sm);font-weight:var(--fw-medium);color:var(--grape-800)}
+
+/* DOORS: the three-avenue router on the home page */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-top:var(--space-4)}
+.door{display:flex;flex-direction:column;border:1px solid var(--grape-200);border-top:4px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-10) var(--space-8);background:var(--grape-050);text-decoration:none;transition:background var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.door:hover{background:var(--grape-100);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.door .door-label{display:block;font-family:var(--font-serif);font-size:var(--fs-heading-lg);font-weight:var(--fw-regular);letter-spacing:normal;text-transform:none;line-height:1.15;color:var(--grape-800);margin:0 0 var(--space-3)}
+.door .door-promise{display:block;font-family:var(--font-sans);font-size:var(--fs-body);font-weight:var(--fw-medium);line-height:1.4;color:var(--ink-900);margin:0 0 var(--space-4)}
+.door .door-micro{font-size:var(--fs-body-sm);color:var(--color-fg-muted);margin:0;flex:1}
+.door .door-go{margin-top:var(--space-8);font-family:var(--font-sans);font-size:var(--fs-body-sm);font-weight:var(--fw-medium);color:var(--grape-800)}
+.door .door-go::after{content:" \2192"}
+.door .door-icon{color:var(--grape-800);margin-bottom:var(--space-4)}
+.door .door-icon svg{width:30px;height:30px;display:block}
+.door:focus-visible{outline:2px solid var(--grape-800);outline-offset:3px}
+
+/* FAQ */
+.faq-list{margin-top:var(--space-10);border-top:1px solid var(--surface-rule)}
+.faq-item{padding:var(--space-8) 0;border-bottom:1px solid var(--surface-rule)}
+.faq-item h3{font-family:var(--font-sans);font-size:var(--fs-heading-md);font-weight:var(--fw-medium);margin:0 0 var(--space-3);color:var(--surface-fg)}
+.faq-item p{max-width:62ch;margin:0}
+
+/* CTA BAND: grape rules top and bottom */
+.ctaband{background:var(--paper);border-top:2px solid var(--grape-800);border-bottom:2px solid var(--grape-800)}
+.ctaband h2{color:var(--grape-800)}
+.ctaband p{color:var(--surface-fg-muted)}
+.ctaband .btn-on{background:var(--grape-800);color:#fff}
+.ctaband .btn-on:hover{background:var(--grape-700);color:#fff}
+
+/* CREDIBILITY STRIP */
+.cred{border-top:1px solid var(--color-rule)}
+.cred p{margin:0;color:var(--color-fg-muted);font-size:var(--fs-body-sm)}
+.cred p b{color:var(--color-fg);font-weight:var(--fw-semibold)}
+
+/* CALLOUT TREATMENTS, four emphasis tiers. wash = quiet tint · accent =
+   white card + top rule · tint = grape wash · solid = grape fill, and solid
+   is the ONE high-emphasis box per page. The html:root prefix bumps
+   specificity so a treatment beats a page's own base-box rule. */
+html:root .callout--wash{background:var(--grape-050);border:1px solid var(--grape-100);border-left:3px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-8)}
+html:root .callout--wash h3,html:root .callout--wash h4{color:var(--grape-800)}
+html:root .callout--accent{background:var(--paper);border:1px solid var(--surface-rule);border-top:4px solid var(--grape-800);border-radius:var(--radius-lg);padding:var(--space-8);box-shadow:var(--shadow-sm)}
+html:root .callout--accent h3,html:root .callout--accent h4{color:var(--grape-800)}
+html:root .callout--tint{background:var(--grape-100);border:1px solid var(--grape-200);border-radius:var(--radius-lg);padding:var(--space-8)}
+html:root .callout--tint h3,html:root .callout--tint h4,html:root .callout--tint .price{color:var(--grape-800)}
+html:root .callout--solid{background:var(--grape-800);border:1px solid var(--grape-900);border-radius:var(--radius-lg);padding:var(--space-8);box-shadow:var(--shadow-md);color:#fff}
+html:root .callout--solid h3,html:root .callout--solid h4,html:root .callout--solid .price{color:#fff}
+html:root .callout--solid p,html:root .callout--solid label,html:root .callout--solid .fine,html:root .callout--solid small{color:var(--grape-100)}
+html:root .callout--solid .btn-primary,html:root .callout--solid .btn-on{background:#fff;color:var(--grape-800)}
+html:root .callout--solid .btn-primary:hover,html:root .callout--solid .btn-on:hover{background:var(--grape-050)}
+
+/* FOOTER */
+footer.site{background:var(--surface-footer);color:var(--ink-300);padding:var(--space-16) 0 var(--space-10);font-size:var(--fs-body-sm)}
+footer.site a{color:var(--ink-300);text-decoration:none;border:0}
+footer.site a:hover{color:#fff}
+footer.site a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.foot-top{display:flex;justify-content:space-between;gap:var(--space-16);flex-wrap:wrap}
+.foot-brand .wm{font-family:var(--font-serif);font-size:20px;color:#fff}
+.foot-brand p{color:var(--ink-300);max-width:40ch;margin-top:var(--space-3)}
+.foot-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.foot-col .foot-h{font-family:var(--font-sans);font-size:var(--fs-meta);font-weight:var(--fw-semibold);line-height:var(--lh-heading);text-transform:uppercase;letter-spacing:var(--tracking-tag);color:var(--ink-400);margin:0 0 var(--space-3)}
+.foot-col a{display:block;margin-bottom:var(--space-2)}
+.foot-fine{margin-top:var(--space-12);padding-top:var(--space-5);border-top:1px solid rgba(255,255,255,.1);color:var(--ink-400)}
+.foot-fine a{color:var(--ink-400)}
+.foot-fine a:hover{color:#fff}
+
+/* FIGURES: the minimal visualisations. Line art reads --surface-stroke,
+   labels read --surface-fg-muted, and exactly ONE element is filled with
+   --surface-fill. Surface-aware, so one figure works on both surfaces. */
+.figure{margin:var(--space-8) 0 var(--space-10);max-width:560px}
+.figure svg{display:block;overflow:visible;width:100%;height:auto}
+.figure .method-label{display:block;margin-bottom:var(--space-3)}
+.figure figcaption{font-family:var(--font-sans);font-size:var(--fs-meta);color:var(--surface-fg-subtle);line-height:var(--lh-tight);margin-top:var(--space-4);max-width:46ch}
+.figure .fig-line{stroke:var(--surface-stroke);fill:none}
+.figure .fig-fill{fill:var(--surface-fill);stroke:var(--surface-fill-edge)}
+.figure .fig-lbl{font-family:var(--font-sans);font-size:13px;fill:var(--surface-fg-muted)}
+.figure .fig-lbl-on{font-family:var(--font-sans);font-size:13px;fill:var(--surface-on-fill)}
+.figure .fig-micro{font-family:var(--font-sans);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:var(--surface-fg-subtle)}
+.figure .fig-num{font-family:var(--font-figures);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums lining-nums;fill:var(--surface-fg-strong)}
+.figure .fig-num-on{font-family:var(--font-figures);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums lining-nums;fill:var(--surface-on-fill)}
+.figure .fig-mark{stroke:var(--surface-fg-strong)}
+
+/* ---- INK OVERRIDES. Only the rules that read a RAW palette token, which is
+   deliberate on paper and wrong on ink where grape-800 is 2.9:1 on the
+   field. ---- */
+html:root[data-surface="ink"] .callout--wash{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-left-color:var(--surface-accent)}
+html:root[data-surface="ink"] .callout--accent{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-top-color:var(--surface-accent);box-shadow:none}
+html:root[data-surface="ink"] .callout--tint{background:var(--surface-fill);border-color:var(--surface-fill-edge)}
+html:root[data-surface="ink"] .callout--solid{background:var(--surface-fill);border-color:var(--surface-fill-edge);color:var(--surface-on-fill)}
+html:root[data-surface="ink"] .callout--wash h3,html:root[data-surface="ink"] .callout--wash h4,html:root[data-surface="ink"] .callout--accent h3,html:root[data-surface="ink"] .callout--accent h4,html:root[data-surface="ink"] .callout--tint h3,html:root[data-surface="ink"] .callout--tint h4,html:root[data-surface="ink"] .callout--tint .price{color:var(--surface-fg)}
+html:root[data-surface="ink"] .callout--solid h3,html:root[data-surface="ink"] .callout--solid h4,html:root[data-surface="ink"] .callout--solid .price,html:root[data-surface="ink"] .callout--solid p,html:root[data-surface="ink"] .callout--solid label,html:root[data-surface="ink"] .callout--solid .fine,html:root[data-surface="ink"] .callout--solid small{color:var(--surface-on-fill)}
+html:root[data-surface="ink"] .callout--solid .btn-primary,html:root[data-surface="ink"] .callout--solid .btn-on{background:var(--ink-max);color:var(--surface-on-fill);border-color:var(--ink-max)}
+[data-surface="ink"] h1,[data-surface="ink"] h2,[data-surface="ink"] h3,[data-surface="ink"] h4{color:var(--surface-fg)}
+[data-surface="ink"] a{color:var(--surface-accent)}
+[data-surface="ink"] .eyebrow{color:var(--surface-eyebrow)}
+[data-surface="ink"] .btn-primary{background:var(--surface-fill);color:var(--surface-on-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .btn-primary:hover{background:var(--grape-700);color:var(--surface-on-fill)}
+[data-surface="ink"] .nav-links a.btn-primary,[data-surface="ink"] .nav-links a.btn-primary:hover{color:var(--surface-on-fill)}
+[data-surface="ink"] .btn-ghost{color:var(--surface-fg);border-color:var(--surface-fg-subtle)}
+[data-surface="ink"] .btn-ghost:hover{color:var(--surface-accent);border-color:var(--surface-accent)}
+[data-surface="ink"] .btn:focus-visible,[data-surface="ink"] a:focus-visible{outline-color:var(--surface-accent)}
+[data-surface="ink"] .nav-links a:hover,[data-surface="ink"] .nav-links a[aria-current="page"]{color:var(--surface-accent)}
+[data-surface="ink"] .nav-toggle span{background:var(--surface-fg)}
+[data-surface="ink"] .skip:focus{background:var(--surface-accent);color:var(--ink-max)}
+[data-surface="ink"] .offer-list li{border-left-color:var(--surface-accent)}
+[data-surface="ink"] .statband{border-top-color:var(--surface-fg)}
+[data-surface="ink"] .tool-card{background:var(--surface-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .tool-card:hover{border-color:var(--surface-accent)}
+[data-surface="ink"] .tool-card h3{color:var(--surface-fg)}
+[data-surface="ink"] .tool-card .tag{color:var(--surface-eyebrow)}
+[data-surface="ink"] .tool-card .go,[data-surface="ink"] .go{color:var(--surface-accent)}
+[data-surface="ink"] .door{background:var(--surface-fill);border-color:var(--surface-fill-edge);border-top-color:var(--surface-accent)}
+[data-surface="ink"] .door:hover{background:var(--grape-700)}
+[data-surface="ink"] .door .door-label,[data-surface="ink"] .door .door-promise{color:var(--surface-fg)}
+[data-surface="ink"] .door .door-micro{color:var(--surface-fg-muted)}
+[data-surface="ink"] .door .door-go,[data-surface="ink"] .door .door-icon{color:var(--surface-accent)}
+[data-surface="ink"] .soft{background:var(--ink-900)}
+[data-surface="ink"] .ctaband{background:var(--surface);border-top-color:var(--surface-accent);border-bottom-color:var(--surface-accent)}
+[data-surface="ink"] .ctaband h2{color:var(--surface-fg)}
+[data-surface="ink"] .ctaband .btn-on{background:var(--surface-fill);color:var(--surface-on-fill);border-color:var(--surface-fill-edge)}
+[data-surface="ink"] .ctaband .btn-on:hover{background:var(--grape-700);color:var(--surface-on-fill)}
+[data-surface="ink"] footer.site{border-top:1px solid var(--ink-900)}
+[data-surface="ink"] .cred p b{color:var(--surface-fg)}
+[data-surface="ink"] .btn[disabled],[data-surface="ink"] .btn[aria-disabled="true"]{background:var(--ink-900);color:var(--ink-500)}
+
+/* RESPONSIVE */
+@media (max-width:1000px){.nav-links{gap:var(--space-4)}}
+@media (max-width:900px){
+  .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--surface);border-bottom:1px solid var(--surface-rule);padding:var(--space-5) var(--gutter);gap:var(--space-5)}
+  .nav-links.show{display:flex}
+  .nav-toggle{display:block}
+}
+@media (max-width:860px){.doors{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .statband .row{grid-template-columns:1fr;gap:var(--space-8)}
+  .two{grid-template-columns:1fr;gap:var(--space-8)}
+  .steps{grid-template-columns:1fr}
+  .stage{grid-template-columns:1fr;gap:var(--space-3)}
+  .hero h1{font-size:clamp(1.7rem,7vw,2.35rem)}
+  .foot-top,.foot-cols{gap:var(--space-8)}
+}
+@media (max-width:640px){.figure{max-width:100%}}
+
+</style>
+<script src="ee81e2aa-5d89-4219-af58-8b3a300bb3de"></script>
+<style>
+  body{margin:0;background:#141416}
+  a{color:#d8cfe7;text-decoration:none}
+  a:hover{color:#FFFFFF}
+</style>
+</helmet>
+
+<section style="display:flex;gap:80px;padding:80px;align-items:flex-start;width:max-content">
+
+  <div data-screen-label="01" style="flex:none;width:2160px;height:2700px;background:#0B0B0C;color:#FFFFFF;padding:176px 176px 176px;box-sizing:border-box;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:30px solid #FFFFFF"></div>
+        <div style="font-family:'DM Serif Display',serif;font-size:56px;letter-spacing:-0.02em;line-height:1">drCWDugan</div>
+      </div>
+      <div style="font-size:34px;color:#C8CACE">1 / 9</div>
+    </div>
+    <div style="height:1px;background:#2A2A2D;margin-top:52px"></div>
+
+    <div style="padding-top:64px;display:flex;flex-direction:column;gap:34px;max-width:1560px">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#8a6fb8;line-height:1.3">IRONWOMAN · RANDOMISED TRIAL</div>
+      <h1 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:108px;line-height:1.1;letter-spacing:-0.02em;text-wrap:pretty">What iron therapy <em style="font-style:italic;color:#d8cfe7">really does</em> for tired, iron-deficient women.</h1>
+      <p style="margin:0;font-size:48px;line-height:1.6;color:#E4E5E7;max-width:1280px;text-wrap:pretty">I put it to the test in a double-blind randomised trial.</p>
+    </div>
+
+    <div style="flex:1;display:flex;align-items:center">
+      <div style="display:flex;align-items:stretch;gap:0;width:100%;max-width:1700px">
+        <div style="flex:1;display:flex;flex-direction:column;gap:26px;padding-right:64px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C8CACE;line-height:1.3">WOMEN RANDOMISED</div>
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:150px;font-weight:400;line-height:1;color:#d8cfe7">26</div>
+        </div>
+        <div style="width:1px;background:#2A2A2D"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:26px;padding:0 64px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C8CACE;line-height:1.3">TIME POINTS</div>
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:150px;font-weight:400;line-height:1;color:#d8cfe7">3</div>
+        </div>
+        <div style="width:1px;background:#2A2A2D"></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:26px;padding-left:64px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C8CACE;line-height:1.3">OUTCOMES THAT MOVED</div>
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:150px;font-weight:400;line-height:1;color:#d8cfe7">5</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:26px;padding-bottom:150px">
+      <div style="font-size:44px;font-weight:500;color:#FFFFFF">Swipe</div>
+      <div style="width:66px;height:66px;border-radius:999px;border:1px solid #d8cfe7;color:#d8cfe7;display:flex;align-items:center;justify-content:center;font-size:38px;line-height:1">→</div>
+    </div>
+    <div style="text-align:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;line-height:1.35;color:#E4E5E7;padding-bottom:150px">Corrected iron status. Better economy. Less fatigue.</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <div style="font-size:34px;color:#C8CACE">Dugan et al., Br J Sports Med 2025.</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF">@dr.cwdugan</div>
+    </div>
+  </div>
+
+  <div data-screen-label="02" style="flex:none;width:2160px;height:2700px;background:#0B0B0C;color:#FFFFFF;padding:176px 176px 176px;box-sizing:border-box;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:30px solid #FFFFFF"></div>
+        <div style="font-family:'DM Serif Display',serif;font-size:56px;letter-spacing:-0.02em;line-height:1">drCWDugan</div>
+      </div>
+      <div style="font-size:34px;color:#C8CACE">2 / 9</div>
+    </div>
+    <div style="height:1px;background:#2A2A2D;margin-top:52px"></div>
+
+    <div style="padding-top:64px;display:flex;flex-direction:column;gap:34px">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#8a6fb8;line-height:1.3">IRONWOMAN · WHAT WE FOUND</div>
+      <h1 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:108px;line-height:1.1;letter-spacing:-0.02em">What iron therapy <em style="font-style:italic;color:#d8cfe7">changed</em>.</h1>
+    </div>
+
+    <div style="padding-top:150px;display:flex;flex-direction:column;gap:34px;width:64%">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C8CACE;line-height:1.3">CHANGED WITH IRON</div>
+      <div style="height:1px;background:#2A2A2D"></div>
+      <div style="display:flex;flex-direction:column;gap:78px;padding-top:44px">
+        <div style="display:flex;align-items:center;gap:44px">
+          <div style="width:98px;height:98px;border-radius:999px;background:#d8cfe7;flex:none;display:flex;align-items:center;justify-content:center">
+            <svg width="52" height="52" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg>
+          </div>
+          <div style="font-size:56px;color:#FFFFFF">Serum ferritin</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:44px">
+          <div style="width:98px;height:98px;border-radius:999px;background:#d8cfe7;flex:none;display:flex;align-items:center;justify-content:center">
+            <svg width="52" height="52" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path></svg>
+          </div>
+          <div style="font-size:56px;color:#FFFFFF">Serum iron</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:44px">
+          <div style="width:98px;height:98px;border-radius:999px;background:#d8cfe7;flex:none;display:flex;align-items:center;justify-content:center">
+            <svg width="52" height="52" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+          </div>
+          <div style="font-size:56px;color:#FFFFFF">Transferrin saturation</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:44px">
+          <div style="width:98px;height:98px;border-radius:999px;background:#d8cfe7;flex:none;display:flex;align-items:center;justify-content:center">
+            <svg width="52" height="52" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+          </div>
+          <div style="font-size:56px;color:#FFFFFF">Running economy</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:44px">
+          <div style="width:98px;height:98px;border-radius:999px;background:#d8cfe7;flex:none;display:flex;align-items:center;justify-content:center">
+            <svg width="52" height="52" sc-camel-view-box="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"></rect><path d="M22 11v2"></path><path d="M6 11v2"></path></svg>
+          </div>
+          <div style="font-size:56px;color:#FFFFFF">Fatigue scores</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1"></div>
+    <div style="text-align:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;line-height:1.35;color:#E4E5E7;padding-bottom:150px">Iron status, economy and fatigue all moved by week 4.</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <div style="font-size:34px;color:#C8CACE">Dugan et al., Br J Sports Med 2025.</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF">@dr.cwdugan</div>
+    </div>
+  </div>
+
+  <div data-screen-label="06" style="flex:none;width:2160px;height:2700px;background:#0B0B0C;color:#FFFFFF;padding:176px 176px 176px;box-sizing:border-box;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:30px solid #FFFFFF"></div>
+        <div style="font-family:'DM Serif Display',serif;font-size:56px;letter-spacing:-0.02em;line-height:1">drCWDugan</div>
+      </div>
+      <div style="font-size:34px;color:#C8CACE">6 / 9</div>
+    </div>
+    <div style="height:1px;background:#2A2A2D;margin-top:52px"></div>
+
+    <div style="padding-top:64px;display:flex;flex-direction:column;gap:34px">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#8a6fb8;line-height:1.3">IRONWOMAN · WHAT IT MEANS</div>
+      <h1 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:108px;line-height:1.1;letter-spacing:-0.02em">What to take from <em style="font-style:italic;color:#d8cfe7">this trial</em>.</h1>
+    </div>
+
+    <div style="padding-top:170px;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#C8CACE;line-height:1.3">THREE THINGS TO CARRY OUT OF IT</div>
+      <div style="width:1px;height:74px;background:#C8CACE"></div>
+      <div style="display:flex;align-items:stretch;gap:52px;width:100%">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+          <div style="width:110px;height:110px;border-radius:999px;background:#d8cfe7;color:#0B0B0C;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:52px">01</div>
+          <div style="width:1px;height:56px;background:#C8CACE"></div>
+          <div style="border:1px solid #C8CACE;border-radius:24px;padding:52px 44px;min-height:290px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center;width:100%">
+            <div style="font-family:'DM Serif Display',serif;font-size:60px;line-height:1.15;letter-spacing:-0.02em">Treat it for how you feel.</div>
+            <div style="font-size:38px;line-height:1.5;color:#C8CACE">Fatigue improved</div>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+          <div style="width:110px;height:110px;border-radius:999px;background:#d8cfe7;color:#0B0B0C;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:52px">02</div>
+          <div style="width:1px;height:56px;background:#C8CACE"></div>
+          <div style="border:1px solid #C8CACE;border-radius:24px;padding:52px 44px;min-height:290px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center;width:100%">
+            <div style="font-family:'DM Serif Display',serif;font-size:60px;line-height:1.15;letter-spacing:-0.02em">The gain shows up in economy.</div>
+            <div style="font-size:38px;line-height:1.5;color:#C8CACE">Same pace, less oxygen</div>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0">
+          <div style="width:110px;height:110px;border-radius:999px;background:#d8cfe7;color:#0B0B0C;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Sans',sans-serif;font-size:52px">03</div>
+          <div style="width:1px;height:56px;background:#C8CACE"></div>
+          <div style="border:1px solid #C8CACE;border-radius:24px;padding:52px 44px;min-height:290px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center;width:100%">
+            <div style="font-family:'DM Serif Display',serif;font-size:60px;line-height:1.15;letter-spacing:-0.02em">Your response is your own.</div>
+            <div style="font-size:38px;line-height:1.5;color:#C8CACE">Responses varied widely</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1"></div>
+    <div style="text-align:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;line-height:1.35;color:#E4E5E7;padding-bottom:150px">Measure it, treat it, then measure it again.</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <div style="font-size:34px;color:#C8CACE">Dugan et al., Br J Sports Med 2025.</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF">@dr.cwdugan</div>
+    </div>
+  </div>
+
+  <div data-screen-label="07" style="flex:none;width:2160px;height:2700px;background:#0B0B0C;color:#FFFFFF;padding:176px 176px 176px;box-sizing:border-box;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:22px">
+        <div style="width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:30px solid #FFFFFF"></div>
+        <div style="font-family:'DM Serif Display',serif;font-size:56px;letter-spacing:-0.02em;line-height:1">drCWDugan</div>
+      </div>
+      <div style="font-size:34px;color:#C8CACE">7 / 9</div>
+    </div>
+    <div style="height:1px;background:#2A2A2D;margin-top:52px"></div>
+
+    <div style="padding-top:64px;display:flex;flex-direction:column;gap:34px">
+      <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#8a6fb8;line-height:1.3">IRONWOMAN · FOR A WORKFORCE</div>
+      <h1 style="margin:0;font-family:'DM Serif Display',serif;font-weight:400;font-size:108px;line-height:1.1;letter-spacing:-0.02em">What this means if you <em style="font-style:italic;color:#d8cfe7">screen people</em>.</h1>
+      <p style="margin:0;font-size:48px;line-height:1.6;color:#E4E5E7;max-width:1360px;text-wrap:pretty">If you screen a workforce, this trial tells you what to measure.</p>
+    </div>
+
+    <div style="padding-top:130px;display:flex;flex-direction:column;gap:0;max-width:1700px">
+      <div style="display:flex;align-items:flex-start;gap:56px">
+        <div style="flex:none;width:110px;display:flex;flex-direction:column;align-items:center;gap:0">
+          <div style="width:36px;height:36px;border-radius:999px;background:#d8cfe7;margin-top:16px"></div>
+          <div style="width:1px;height:230px;background:#C8CACE"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:20px;padding-bottom:78px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#d8cfe7;line-height:1.3">MEASURE</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:72px;line-height:1.15;letter-spacing:-0.02em">Ferritin, and fatigue</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:56px">
+        <div style="flex:none;width:110px;display:flex;flex-direction:column;align-items:center;gap:0">
+          <div style="width:36px;height:36px;border-radius:999px;background:#d8cfe7"></div>
+          <div style="width:1px;height:230px;background:#C8CACE"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:20px;padding-bottom:78px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#d8cfe7;line-height:1.3">EXPECT</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:72px;line-height:1.15;letter-spacing:-0.02em">Economy and how people feel to shift</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:56px">
+        <div style="flex:none;width:110px;display:flex;flex-direction:column;align-items:center">
+          <div style="width:36px;height:36px;border-radius:999px;background:#d8cfe7"></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+          <div style="font-size:30px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#d8cfe7;line-height:1.3">RETEST</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:72px;line-height:1.15;letter-spacing:-0.02em">Because the individual response varies widely</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1"></div>
+    <div style="text-align:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;line-height:1.35;color:#E4E5E7;padding-bottom:150px">Measure the things this trial showed move.</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <div style="font-size:34px;color:#C8CACE">Dugan et al., Br J Sports Med 2025.</div>
+      <div style="font-size:34px;font-weight:700;color:#FFFFFF">@dr.cwdugan</div>
+    </div>
+  </div>
+
+</section>
+</x-dc>
+
+
+</body></html>
