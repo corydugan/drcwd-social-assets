@@ -1,0 +1,74 @@
+REBUILD FOUR SLIDES OF AN EXISTING NINE SLIDE CAROUSEL
+
+Built 2026-09-08. This replaces slides 1, 2, 6 and 7 of the IRONWOMAN carousel. Slides 3, 4, 5, 8 and 9 are FINISHED and are not being rebuilt. The four new slides have to sit beside them without anyone being able to tell which five are older.
+
+UPLOAD THESE FIVE AS REFERENCE BEFORE YOU START: slide3.png, slide4.png, slide5.png, slide8.png, slide9.png. Match their layout, spacing, type and colour exactly. Where this brief and the reference slides disagree, the reference slides win.
+
+TWO THINGS THAT MUST NOT APPEAR, AND THIS IS THE WHOLE REASON FOR THE REBUILD
+
+1. Nothing that tells a reader not to use an exercise or fitness test. No "do not use", no veto of any measurement.
+2. Nothing negative about exercise performance. No "null result", no "did not change", no "did not move", no "not a performance drug", no "the parts that did not work". The trial's published conclusion is positive about exercise performance and the slides must read that way: "intravenous iron therapy corrects iron status and improves both exercise economy and fatigue scores".
+
+CANVAS AND SURFACE
+
+Canvas 2160 x 2700, which is 4:5 portrait. The surface is the drCWDugan ink surface, not a dark mode variant of the paper one. Field #0B0B0C. Foreground #FFFFFF. Muted foreground #E4E5E7. Subtle foreground #C8CACE. Hairline rules #2A2A2D. Eyebrow small caps #8a6fb8. Accent, used for the italic words in a headline and for any filled element, #d8cfe7. There is no gradient anywhere and grape is never the field.
+
+TYPE
+
+Display headlines and the bottom kicker are DM Serif Display. Body text, eyebrows and labels are DM Sans. Any figure, statistic or n value is IBM Plex Sans. Display tracking is -0.02em. Body line height 1.6. Nothing that is meant to be read sits below 32px on a 1080px canvas, which is 64px on this 2160px one.
+
+THE ANATOMY EVERY SLIDE SHARES, TAKEN FROM THE REFERENCE FIVE
+
+Top left carries a small solid triangle followed by the wordmark drCWDugan in serif. Top right carries the slide number as "N / 9" in small muted sans. A hairline rule runs under that header band. Below the rule sits an eyebrow in letterspaced small caps in the purple, then the H1 in serif with one phrase set in italic in the lavender accent. Body content occupies the upper and middle thirds. The lower third stays largely empty, because the layout is field dominant and needs 35 to 40 per cent clear field. A kicker sits near the bottom, centred, serif italic. The footer runs "Dugan et al., Br J Sports Med 2025." on the left in small muted sans and "@dr.cwdugan" on the right in small bold sans.
+
+SLIDE 1 OF 9
+
+Eyebrow: IRONWOMAN · RANDOMISED TRIAL
+H1: What iron therapy really does for tired, iron-deficient women. Set the words "really does" in italic lavender.
+Sub: We put it to the test in a double-blind randomised trial. The results are not what most people expect.
+A "Swipe" label with a circled right arrow sits under the sub.
+Kicker: Corrected iron status. Better economy. Less fatigue.
+
+SLIDE 2 OF 9
+
+Eyebrow: IRONWOMAN · WHAT WE FOUND
+H1: What iron therapy changed. Set the word "changed" in italic lavender.
+This slide previously ran two columns and now runs ONE. There is no second column and no comparison. Five rows, each a lavender filled circular icon on the left and a label in sans on the right, stacked with generous spacing down the left two thirds of the canvas. Use the same icon treatment as the filled left column of the old layout.
+Row 1: Serum ferritin
+Row 2: Serum iron
+Row 3: Transferrin saturation
+Row 4: Running economy
+Row 5: Fatigue scores
+Kicker: Iron status, economy and fatigue all moved by week 4.
+
+SLIDE 6 OF 9
+
+Eyebrow: IRONWOMAN · WHAT IT MEANS
+H1: What to take from this trial. Set "this trial" in italic lavender.
+Three stacked blocks separated by hairline rules, each a serif sub-heading with two lines of sans underneath, exactly as the old slide 6 was built.
+Block 1 heading: Treating it is worth doing for how you feel.
+Block 1 body: Fatigue and running economy improved. Those are the things people actually notice day to day.
+Block 2 heading: The gain shows up in economy.
+Block 2 body: Running economy improved from baseline to week 4, and it was better than placebo. The same pace costs you less oxygen.
+Block 3 heading: Your response will not be the average response.
+Block 3 body: Individual responses varied widely, which is the argument for retesting rather than assuming.
+Kicker: Measure it, treat it, then measure it again.
+
+SLIDE 7 OF 9
+
+Eyebrow: IRONWOMAN · FOR A WORKFORCE
+H1: What this means if you screen people. Set "screen people" in italic lavender.
+Lead paragraph: If you are screening a workforce for iron deficiency, this trial tells you what your program should be measuring.
+Then a three row label and value table, hairline rules between rows, the label in small letterspaced caps on the left and the value in sans on the right. Three rows only, where the old slide had four.
+Row 1 label MEASURE, value: Ferritin, and fatigue
+Row 2 label EXPECT, value: Economy and how people feel to shift
+Row 3 label RETEST, value: Because the individual response varies widely
+Kicker: Measure the things this trial showed move.
+
+VOICE AND MECHANICS
+
+Australian English. First person singular where a voice appears at all. No em dashes and no en dashes as prose punctuation, use a comma or a full stop. The words prove, proven, fact and absolute are banned in rendered slide text. No exclamation marks. No emoji. Write micrograms per litre as ug/L and never as the micro sign, because uppercasing turns the micro sign into a capital Greek mu and that is a thousandfold unit error nobody sees in the source.
+
+WHAT NOT TO DO
+
+Do not renumber the slides. They are 1, 2, 6 and 7 of 9 and the counter in the top right has to say so. Do not add a slide. Do not restyle the footer or the header. Do not introduce a colour that is not in the list above. Do not fill the lower third; the empty space is the design. Do not put a number on a slide that is not in the paper.
