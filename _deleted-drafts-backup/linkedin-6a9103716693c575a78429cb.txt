@@ -1,0 +1,35 @@
+DELETED 2026-09-09 on Cory's instruction, delete all drafts.
+channel: linkedin
+buffer id: 6a9103716693c575a78429cb
+organisation env: buffer.env
+assets:
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/IRONWOMAN-carousel.pdf
+
+--- CAPTION ---
+We gave 14 women a single intravenous iron infusion and 12 a placebo. Four weeks later the iron group was running more efficiently and reporting less fatigue.
+
+That is the IRONWOMAN trial, and the conclusion in the paper is one sentence: intravenous iron therapy corrects iron status and improves both exercise economy and fatigue scores.
+
+Twenty-six iron-deficient, non-anaemic, recreationally active women. Double-blind, randomised, assessed at baseline, day 4 and week 4.
+
+What moved.
+
+1. Serum ferritin, serum iron and transferrin saturation all corrected.
+2. Running economy improved from baseline to week 4, and was better than placebo at week 4.
+3. Fatigue scores improved on iron and not on placebo.
+
+Running economy is the one I keep returning to. It means the same pace costs you less oxygen. For somebody who is tired and training around it, that is the part they actually feel.
+
+The individual responses are the other half of the story. Same 1000 mg infusion, same four weeks, and the rise in ferritin ran from 73 to 508 ug/L. Every woman on iron went up. The size of that rise was not the same in any two of them, which is the argument for measuring rather than assuming.
+
+So if you screen a workforce or a squad for iron deficiency, this trial tells you what to put on the sheet. Measure ferritin. Measure fatigue. Retest, because the average response is nobody's actual response.
+
+Twenty-six participants is small, and they were recreationally active rather than a working cohort.
+
+Educational content, not individual medical advice.
+
+If you screen for iron deficiency, what do you track afterwards?
+
+Dugan C, Peeling P, Buissink P, MacLean B, Lim J, Jayasuriya P, Richards T. Br J Sports Med 2025;59(13):921-930. doi 10.1136/bjsports-2024-108240
+
+#IronDeficiency #WorkforceHealth #WomensHealth

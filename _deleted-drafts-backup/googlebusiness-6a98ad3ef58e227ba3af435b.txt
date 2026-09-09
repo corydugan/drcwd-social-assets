@@ -1,0 +1,19 @@
+DELETED 2026-09-09 on Cory's instruction, delete all drafts.
+channel: googlebusiness
+buffer id: 6a98ad3ef58e227ba3af435b
+organisation env: buffer.env
+assets:
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/infographics/tsat-transferrin-saturation-1200x900.png
+
+--- CAPTION ---
+I keep hearing that people get their iron results back and nobody explains them. So I'm working through the panel one marker at a time.
+
+This one is transferrin saturation. Transferrin is the transport that carries iron through the circulation, two seats to a molecule. There are far more seats in circulation than there is iron to fill them, so most of them sit empty. Transferrin saturation is the share of those seats that are taken.
+
+Which means it reads how full the transport is, not how much iron is in store. A low saturation alongside a low ferritin is a strong indicator of iron deficiency.
+
+The full explainer is here: [PASTE THE INSTAGRAM OR TIKTOK LINK, THEN DELETE THIS BRACKET]
+
+I work with organisations on how their health screening is specified, and on where a panel is missing the thing it was written to catch.
+
+drcorydugan.com

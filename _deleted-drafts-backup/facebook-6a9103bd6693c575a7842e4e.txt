@@ -1,0 +1,27 @@
+DELETED 2026-09-09 on Cory's instruction, delete all drafts.
+channel: facebook
+buffer id: 6a9103bd6693c575a7842e4e
+organisation env: buffer-drcwdugan.env
+assets:
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide1.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide2.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide3.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide4.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide5.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide6.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide7.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide8.png
+  https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/ironwoman-trial/slide9.png
+
+--- CAPTION ---
+We gave 14 women a single iron infusion and 12 a placebo, then measured them at baseline, day 4 and week 4.
+
+By week 4 the iron group was running more efficiently and reporting less fatigue. Iron status came up too: ferritin, serum iron and transferrin saturation all corrected.
+
+The part I keep returning to is how different the responses were. Same 1000 mg infusion, same four weeks, and the rise in ferritin ran from 73 to 508 ug/L. Every woman on iron went up, and no two of them by the same amount.
+
+So if you are tired and iron deficient, treating it is worth doing for how you feel and how you move. And if you are the one measuring it, measure ferritin, measure fatigue, then measure again.
+
+Educational content, not individual medical advice.
+
+Br J Sports Med 2025;59(13):921-930.
