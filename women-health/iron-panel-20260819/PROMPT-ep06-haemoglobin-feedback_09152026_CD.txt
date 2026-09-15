@@ -1,0 +1,13 @@
+This cut is not working. Do not resume the paused fix. Rebuild the diagram beats from Order to RulesOut.
+
+1. Drop the six-box grid. Use ONE vertical column of three containers (Stores, Supply to tissues, Haemoglobin) that visibly drain top to bottom in sequence, as liquid levels, so the picture itself shows the order.
+2. Fill level means quantity and nothing else. Never use a solid accent fill to mark "the point" on a container, because a full box reads as a healthy box. Mark the point with the accent outline or a label instead.
+3. At Falls, the Haemoglobin container must visibly drop LAST, after the other two are already low. At RulesOut, show a normal-looking Haemoglobin level sitting under two near-empty containers above it.
+4. Every label is 32px or larger, and no two labels may occupy the same space at any timestamp. Remove the "Haemoglobin" chip that overlaps the method lines. Check the Ends beat specifically.
+5. Use the whole safe box, x 140 to 820 and y 240 to 1440. The diagram should fill the lower two thirds of it, not sit in the top half.
+6. Redraw the Oxygen beat so it cannot be read as a face: lungs as one clear pair connected to a trachea, red cells as a flowing stream, not three isolated shapes arranged symmetrically.
+7. Each caption shows the whole spoken line for its beat. No line may be cut off while the beat is on screen.
+8. The signature must write the full wordmark drCWDugan beside the triangle.
+9. The opening panel list must show all eleven rows, large enough to read on a phone.
+
+Report back with a screenshot at 0:08, 0:21, 0:33, 0:42 and 0:46 so I can check each fix.
