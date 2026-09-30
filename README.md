@@ -6,5 +6,7 @@ so images posted via Buffer must live at a fetchable URL. This repo is that URL 
 
 - `workforce-iron/` — the 6-post "Workforce-Iron" IG carousel series (2026-06-19 build).
 
+- The video spec for every reel (type, voice, sign-off) moved on 2026-09-29 to `drcwd-design-system/BRAND-VIDEO-SPEC.md`.
+
 Raw URL pattern:
 `https://raw.githubusercontent.com/corydugan/drcwd-social-assets/main/<path>`
