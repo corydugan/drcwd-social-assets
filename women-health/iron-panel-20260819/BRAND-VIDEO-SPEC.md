@@ -110,9 +110,34 @@ moves linearly and nothing bounces.
 > 1.30 - 1.50   hold
 > ```
 >
-> NOT YET SET: the size and exact position in the corner. Instagram Reels and
-> TikTok both lay their action buttons down the right side of the lower frame,
-> so measure the platform safe zone before fixing pixels.
+> **Placement, measured 2026-09-29 against both platforms' own guides.**
+>
+> ```
+> TikTok      In-Feed Standard safe zone template (ads.tiktok.com, "TikTok
+>             Auction In-Feed Ads", Feed.png 2880 x 5120, scaled to 1080 x 1920):
+>             safe x 120 to 960 for y 240 to 840, then x 120 to 780 for
+>             y 840 to 1260. The right rail of buttons owns x 780 and beyond.
+> Instagram   Meta Ads Guide, Instagram Reels: "leaving at least 14% of the top,
+>             35% of the bottom, and 6% on each side ... free": safe x 65 to
+>             1015, y 269 to 1248.
+> BOTH        bottom-right corner of the shared safe area is x 780, y 1248.
+> ```
+>
+> So the sign-off sits as far bottom right as both apps allow, 8 px inside that
+> corner. The true corner of the frame is under the buttons on both apps.
+>
+> ```
+> scale          0.8 of the lockup units (the centred lockup used 1.56)
+> group          x 448 to 772, right-aligned to x 772
+> triangle       apex (466.7, 1111.0), base (448.3, 1144.6) to (485.1, 1144.6)
+> wordmark.png   drCWDugan, top-left (503.0, 1109.6), 269 x 47
+> grape rule     y 1192, x 448.3 to 772, 3 px, #8A6FB8, grows from x 610
+> address        drcorydugan.com, DM Sans Regular 34 px, #E4E5E7,
+>                centred on x 610, baseline y 1232, bottom of type about y 1240
+> ```
+>
+> Checked by drawing it over TikTok's template and Meta's margins: nothing
+> crosses either line.
 >
 > Sections 5 and 10 below record the centred "Dr. Cory Dugan" lockup as it was
 > built in August. They are left intact as history; do not build a new sign-off
