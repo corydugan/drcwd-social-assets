@@ -49,7 +49,7 @@ between a fade and a glow.
 
     display / headlines     DM Serif Display, regular weight, tracking -0.02em
     everything else         DM Sans, regular / medium / bold
-    figures and numerals    IBM Plex Sans
+    figures and numerals    DM Serif Display (2026-09-29; IBM Plex Sans withdrawn)
 
 Both DM faces are on Google Fonts. **DM Sans has no tabular-figures table**, so
 any `font-variant-numeric: tabular-nums` on it is a silent no-op and columns of
@@ -89,6 +89,34 @@ moves linearly and nothing bounces.
 ---
 
 ## 5. THE CLOSING LOCKUP
+
+> **SUPERSEDED 2026-09-29, Cory's call. Brand voice guidelines v2.1 govern.**
+>
+> ```
+> wordmark   drCWDugan, the video sign-off on every reel (wordmark.png)
+> placement  small, BOTTOM RIGHT corner, not the centred lockup below
+> duration   1.5 s in total (Cory, 2026-09-29), down from 3.6 s and 4.6 s
+> ```
+>
+> The same beats in the same order, compressed in proportion from the 4.6 s
+> timeline in section 10, smoothstep throughout:
+>
+> ```
+> 0.00 - 0.39   triangle outline draws, apex first, by arc length
+> 0.36 - 0.55   triangle fills, overlapping
+> 0.52 - 0.82   wordmark wipes left to right, hard edge
+> 0.82 - 1.04   grape rule grows from the centre of the group
+> 1.04 - 1.30   address fades up
+> 1.30 - 1.50   hold
+> ```
+>
+> NOT YET SET: the size and exact position in the corner. Instagram Reels and
+> TikTok both lay their action buttons down the right side of the lower frame,
+> so measure the platform safe zone before fixing pixels.
+>
+> Sections 5 and 10 below record the centred "Dr. Cory Dugan" lockup as it was
+> built in August. They are left intact as history; do not build a new sign-off
+> from them.
 
 This is the signature and it is FOUR BEATS, always in this order. It runs 3.6
 seconds. The field is #0B0B0C and nothing else is on screen.
@@ -499,6 +527,39 @@ Each is answered inside its own episode by the closing line in section 9.
 ---
 
 ## 12. THE VOICE DECISION, 19 August 2026
+
+> **SUPERSEDED ON THE PLATFORM, 2026-09-09. THE VOICE NAME STANDS.**
+>
+> Everything below records what was decided on 19 August and it is left intact,
+> because it is a dated decision and rewriting it would make this file lie about
+> that day. What actually shipped is different, and this is the correction.
+>
+> ```
+> planned 19 Aug    Google Cloud Text-to-Speech, Chirp 3 HD, en-AU female
+> shipped 28 Aug    Gemini TTS, model gemini-2.5-flash-preview-tts
+> the voice         KORE, both times. Cory confirmed it again 2026-09-09
+> ```
+>
+> The Chirp 3 HD platform named below **has never produced a second of audio**.
+> Measured 2026-09-09: the Cloud Text-to-Speech API returns HTTP 403, "has not
+> been used in project 45186475018 before or it is disabled", and
+> `gcloud services list --enabled` does not list `texttospeech.googleapis.com`
+> at all. Cory declined to enable it, so this stays the plan that was not built.
+>
+> Kore survived the platform change because Gemini TTS and Chirp 3 HD share the
+> same voice-family names. On 2026-08-28 Cory ran a six-voice test through Gemini
+> TTS and picked Kore over Erinome, which read as English rather than neutral, over
+> Charon, Algieba, Sadachbia and Iapetus, which were male-leaning, and over Sulafat,
+> which ran long and buried the sign-off.
+>
+> **[2026-09-29] Two lanes, Cory's call:** Kore narrates every EDUCATIONAL reel
+> and is the locked narrator voice. Podcasts, talks and in-person footage carry
+> Cory's own voice. Section 9's "Cory's own, recorded" now applies to those only.
+>
+> **The mechanism is `~/.claude/scripts/voiceover.py`, and Kore is its hardcoded
+> default.** The full description lives in the `The Voice` tab of
+> `NOTEBOOKLM_BUSINESS/OUTREACH AND SOCIAL MEDIA.gdoc`. Do not re-derive the voice
+> from this section.
 
 Researched across three passes: platform landscape, licensing of free tiers, and
 the evidence on accent and gender. Recorded here so it is not re-litigated.
